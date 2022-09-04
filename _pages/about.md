@@ -5,7 +5,7 @@ permalink: /
 subtitle: 
 
 profile:
-  align: left
+  align: right
   image: mypic.jpg
   image_circular: true # crops the image to make it circular
   address:  
