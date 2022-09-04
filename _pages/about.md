@@ -14,10 +14,8 @@ news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
-I'm a fourth-year undergraduate student in [Tsinghua University EE Dept.](https://www.ee.tsinghua.edu.cn/en/). CV can be downloaded [here](https://nicsefc.ee.tsinghua.edu.cn/nics_file/pdf/4b372c9f-e269-49ea-8300-32b7c2479795.pdf).
+I'm a fourth-year undergraduate student in [Tsinghua University EE Department](https://www.ee.tsinghua.edu.cn/en/). CV can be downloaded [here](https://nicsefc.ee.tsinghua.edu.cn/nics_file/pdf/4b372c9f-e269-49ea-8300-32b7c2479795.pdf).
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+**Research**: I've conducted a comprehensive study on CUDA kernel optimization for SpMM (Sparse-Dense Matrix multiplication). Moreover, I'm researching compiler optimization (especially on the IR level) for sparse tensor algebra with GPU intrinsics. Besides, I'm exploring how to add sparse workspace in TACO to enable the compilation of more complex index notations. I've gained rich experience in those projects using CUDA and TACO (The Tensor Algebra Compiler). Also, I have a basic understanding of TVM and MLIR by doing related research on compiler optimization.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
-
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+**Previously**: I've worked with [Yu Wang](http://nicsefc.ee.tsinghua.edu.cn/people/YuWang), [Mingyu Gao](https://people.iiis.tsinghua.edu.cn/~gaomy/), [Sitao Huang](https://sitaohuang.com/), and [Guohao Dai](https://nicsefc.ee.tsinghua.edu.cn/people/GuohaoDai) in [Tsinghua University](https://www.tsinghua.edu.cn/en/). I've also worked with [Fredrik Kjostad](http://fredrikbk.com/) when I was doing a remote summer research in [Stanford University](https://www.stanford.edu/).
