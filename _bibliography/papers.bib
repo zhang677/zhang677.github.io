@@ -4,10 +4,34 @@
 @string{aps = {American Physical Society,}}
 
 @article{zhang2022sgap,
+  abbr={arXiv},
   title={Sgap: Towards Efficient Sparse Tensor Algebra Compilation for GPU},
   author={Genghan, Zhang and Yuetong, Zhao and Yanting, Tao and Zhongming, Yu and Guohao, Dai and Sitao, Huang and Yuan, Wen and Pavlos, Petoumenos and Yu, Wang},
+  abstract={Sparse compiler is a promising solution for sparse tensor algebra
+optimization. In compiler implementation, reduction in sparse-dense hybrid
+algebra plays a key role in performance. Though GPU provides various reduction
+semantics that can better utilize the parallel computing and memory bandwidth
+capacity, the central question is: how to elevate the flexible reduction
+semantics to sparse compilation theory that assumes serial execution.
+Specifically, we have to tackle two main challenges: (1) there are wasted
+parallelism by adopting static synchronization granularity (2) static reduction
+strategy limits optimization space exploration. We propose Sgap: segment group
+and atomic parallelism to solve these problems. Atomic parallelism captures the
+flexible reduction semantics to systematically analyze the optimization space
+of sparse-dense hybrid algebra on GPU. It is a new optimization technique
+beyond current compiler-based and open-source runtime libraries. Segment group
+elevates the flexible reduction semantics to suitable levels of abstraction in
+the sparse compilation theory. It adopts changeable group size and user-defined
+reduction strategy to solve challenge (1) and (2), respectively. Finally, we
+use GPU sparse matrix-matrix multiplication (SpMM) on the TACO compiler as a
+use case to demonstrate the effectiveness of segment group in reduction
+semantics elevation. We achieve up to 1.2x speedup over the original TACO's
+SpMM kernels. We also apply new optimization techniques found by atomic
+parallelism to an open-source state-of-the-art SpMM library dgSPARSE. We
+achieve 1.6x - 2.3x speedup on the algorithm tuned with atomic parallelism.}
   journal={arXiv preprint, arXiv:2209.02882},
   year={2022},
-  url={https://arxiv.org/pdf/2209.02882.pdf},
+  url={https://arxiv.org/pdf/2209.02882},
+  pdf={https://arxiv.org/pdf/2209.02882.pdf}
   selected={true}
 }
