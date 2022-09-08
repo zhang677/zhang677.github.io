@@ -1,6 +1,12 @@
-"Sitao":
+"Huang":
   - firstname: ["Sitao", "S."]
     url: https://sitaohuang.com/
+"Wang":
+  - firstname: ["Yu", "Y."]
+    url: https://scholar.google.com/citations?user=j8JGVvoAAAAJ&hl=en&oi=ao
+"Dai":
+  - firstname: ["Guohao", "G."]
+    url: https://scholar.google.com/citations?user=gz3Tkl0AAAAJ&hl=en&oi=ao
 "Adams":
   - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
     url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
