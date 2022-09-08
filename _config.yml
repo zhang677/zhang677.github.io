@@ -218,8 +218,8 @@ display_tags:  # this tags will be dispalyed on the front page of your blog
 
 scholar:
 
-  last_name: Genghan
-  first_name: [Zhang, Z.]
+  last_name: Zhang
+  first_name: [Genghan, G.]
 
   style: apa
   locale: en
