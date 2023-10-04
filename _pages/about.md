@@ -14,6 +14,6 @@ news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
-I'm a fourth-year undergraduate student in [Tsinghua University Department of Electrical Engineering (EE)](https://www.ee.tsinghua.edu.cn/en/).
+I'm a first-year Ph.D. student in [Stanford University Department of Computer Science](https://www.cs.stanford.edu/).
 
-**Research**: My research interests lie in the theory of sparse programming models and the implementation of sparse programming systems. During my undergraduate study I explored the formulation, exploration, and optimization of tensor algebra design space.
+**Research**: My research interests lie in the theory of sparse programming models and the implementation of sparse programming systems. I have been exploring the formulation, exploration, and optimization of tensor algebra design space.
