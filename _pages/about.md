@@ -14,6 +14,6 @@ news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
-I'm a first-year Ph.D. student in [Stanford University Department of Computer Science](https://www.cs.stanford.edu/).
+I'm a first-year Ph.D. student in [Stanford University Department of Computer Science](https://www.cs.stanford.edu/) advised by Prof. [Kunle Olukotun](https://engineering.stanford.edu/people/oyekunle-olukotun).
 
-**Research**: My research interests lie in the theory of sparse programming models and the implementation of sparse programming systems. I have been exploring the formulation, exploration, and optimization of tensor algebra design space.
+**Research**: My research interests lie in better programming models and systems for domain-specific architectures. I have been exploring the formulation, exploration, and optimization of tensor algebra design space.
