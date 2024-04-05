@@ -20,4 +20,4 @@ I graduated from Tsinghua University in 2023 with a degree in Eletronic Engineer
 
 **Research**: My research interests lie in better programming models and systems for domain-specific architectures. I have been exploring the formulation, exploration, and optimization of tensor algebra design space.
 
-Here is my [CV](../assets/pdf/GenghanZhang_CV.pdf). This site was last updated April 2024.
+Here is my [CV](../assets/pdf/GenghanZhang_CV.pdf). This site was last updated on April 4th, 2024.
