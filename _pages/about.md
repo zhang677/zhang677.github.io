@@ -8,7 +8,7 @@ profile:
   align: right
   image: mypic.jpg
   image_circular: true # crops the image to make it circular
-  address: zgh23 [at] stanford [dot] edu
+  address: zgh23[at]stanford[dot]edu
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
