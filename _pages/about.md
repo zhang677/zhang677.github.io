@@ -8,7 +8,7 @@ profile:
   align: right
   image: mypic.jpg
   image_circular: true # crops the image to make it circular
-  address:  [CV](../assets/pdf/GenghanZhang_CV.pdf).
+  address:
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
@@ -19,3 +19,5 @@ I'm a first-year Ph.D. student in [Stanford University Department of Computer Sc
 I graduated from Tsinghua University in 2019 with a degree in Eletronic Engineering. At Tsinghua, I was fortunate enough to do research at [NICS-EFC Lab](https://nicsefc.ee.tsinghua.edu.cn/) and [IDEAL Lab](https://github.com/tsinghua-ideal).
 
 **Research**: My research interests lie in better programming models and systems for domain-specific architectures. I have been exploring the formulation, exploration, and optimization of tensor algebra design space.
+
+Here is my [CV](../assets/pdf/GenghanZhang_CV.pdf).
