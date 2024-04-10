@@ -1,5 +1,9 @@
-Huang, Sitao:
+"Huang":
+  - firstname: ["Sitao"]:
     url: https://sitaohuang.com/
+  
+  - firstname: ["Hanxian"]:
+    url: https://www.linkedin.com/in/hanxian-huang-729503169/
 "Wang":
   - firstname: ["Yu", "Y."]
     url: https://scholar.google.com/citations?user=j8JGVvoAAAAJ&hl=en&oi=ao
@@ -12,27 +16,32 @@ Huang, Sitao:
 "Gao":
   - firstname: ["Mingyu", "M."]
     url: https://people.iiis.tsinghua.edu.cn/~gaomy/
-Zhao, Chenggang:
+"Zhao":
+  - firstname: ["Chenggang"]:
     url: https://github.com/LyricZhao
+  
+  - firstname: ["Jishen"]:
+    url: https://cseweb.ucsd.edu/~jzhao/
 "Wen":
   - firstname: ["Yuan", "Y."]
     url: https://www.abdn.ac.uk/people/yuan.wen
 "Petoumenos":
   - firstname: ["Pavlos", "P."]
     url: https://personalpages.manchester.ac.uk/staff/pavlos.petoumenos/
-Yang, Shang:
+"Yang":
+  - firstname: ["Shang"]
     url: https://ys-2020.github.io/
+  
+  - firstname: ["June"]
+    url: https://www.linkedin.com/in/yangjunpro/?originalSubdomain=cn
 "Zhang":
   - firstname: ["Hengrui", "H."]
     url: https://ece.princeton.edu/people/hengrui-zhang
-Yang, June:
-    url: https://www.linkedin.com/in/yangjunpro/?originalSubdomain=cn
+
 "Zhu":
   - firstname: ["Feiwen", "F."]
     url: https://www.linkedin.com/in/feiwen-zhu-845aab17/?originalSubdomain=cn
-Zhao, Jishen:
-  - firstname: ["Jishen", "J."]
-    url: https://cseweb.ucsd.edu/~jzhao/
+
 
 "Kjolstad":
   - firstname: ["Fredrik", "F."]
@@ -41,3 +50,7 @@ Zhao, Jishen:
 "Hsu":
   - firstname: ["Olivia", "O."]
     url: https://weiya711.github.io/
+
+"Chen":
+  - firstname: ["Xin"]
+    url: https://xinchenhawaii.github.io/
