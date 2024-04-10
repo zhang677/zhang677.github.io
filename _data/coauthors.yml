@@ -2,8 +2,8 @@
   - firstname: ["Sitao", "S."]:
     url: https://sitaohuang.com/
   
-  # - firstname: ["Hanxian", "H."]:
-  #   url: https://www.linkedin.com/in/hanxian-huang-729503169/
+  - firstname: ["Hanxian", "H."]:
+    url: https://www.linkedin.com/in/hanxian-huang-729503169/
 
 "Wang":
   - firstname: ["Yu", "Y."]
@@ -25,8 +25,8 @@
   - firstname: ["Chenggang", "C."]:
     url: https://github.com/LyricZhao
   
-  # - firstname: ["Jishen", "J."]:
-  #   url: https://cseweb.ucsd.edu/~jzhao/
+  - firstname: ["Jishen", "J."]:
+    url: https://cseweb.ucsd.edu/~jzhao/
 
 "Wen":
   - firstname: ["Yuan", "Y."]
@@ -40,8 +40,8 @@
   - firstname: ["Shang", "S."]:
     url: https://ys-2020.github.io/
   
-  # - firstname: ["June", "J."]:
-  #   url: https://www.linkedin.com/in/yangjunpro/?originalSubdomain=cn
+  - firstname: ["June", "J."]:
+    url: https://www.linkedin.com/in/yangjunpro/?originalSubdomain=cn
 
 "Zhang":
   - firstname: ["Hengrui", "H."]
