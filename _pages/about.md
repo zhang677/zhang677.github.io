@@ -18,6 +18,6 @@ I'm a first-year Ph.D. student in [Stanford University Department of Computer Sc
 
 I graduated from Tsinghua University in 2023 with a degree in Eletronic Engineering. At Tsinghua, I was fortunate enough to do research at [NICS-EFC Lab](https://nicsefc.ee.tsinghua.edu.cn/) and [IDEAL Lab](https://github.com/tsinghua-ideal).
 
-**Research**: My research interests lie in better programming models and systems for domain-specific architectures. I have been exploring the formulation, exploration, and optimization of tensor algebra design space.
+**Research**: My research interests lie in better programming models and systems for domain-specific architectures. I am also interested in optimizing GPU kernels for emerging applications, including sparse and recurrent neural networks.
 
 Here is my [CV](../assets/pdf/GenghanZhang_CV.pdf). This site was last updated on July 10th, 2024.
