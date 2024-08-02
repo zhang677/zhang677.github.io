@@ -1,8 +1,0 @@
-github_users:
-  - zhang677
-
-github_repos:
-  - dgSPARSE/dgSPARSE-Library
-  - tensor-compiler/taco
-  - hpcaitech/ColossalAI
-
