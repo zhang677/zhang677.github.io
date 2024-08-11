@@ -20,4 +20,4 @@ I graduated from Tsinghua University in 2023 with a degree in Eletronic Engineer
 
 **Research**: My research interests lie in better programming models and systems for domain-specific architectures. I am also interested in optimizing GPU kernels for emerging applications, including sparse and recurrent neural networks.
 
-Here is my [CV](../assets/pdf/GenghanZhang_CV.pdf). This site was last updated on August 1st, 2024.
+Here is my [CV](../assets/pdf/GenghanZhang_CV.pdf). This site was last updated on August 11st, 2024.

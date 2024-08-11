@@ -48,6 +48,10 @@ layout: default
             <!-- Selected papers -->
             {%- include selected_papers.html %}
           {%- endif %}
+          {% if page.service -%}
+            <!-- Service -->
+            {%- include service.html %}
+          {%- endif %}
           {%- if page.social %}
           <!-- Social -->
           <div class="social">
