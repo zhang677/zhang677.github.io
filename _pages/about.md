@@ -12,6 +12,7 @@ profile:
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
+service: true
 social: true  # includes social icons at the bottom of the page
 ---
 I'm a second-year Ph.D. student in [Stanford University Department of Computer Science](https://www.cs.stanford.edu/) advised by Professor [Kunle Olukotun](https://engineering.stanford.edu/people/oyekunle-olukotun). I was also privileged to work with Professor [Fredrik Kjolstad](https://fredrikbk.com/) and Professor [Azalia Mirhoseini](http://azaliamirhoseini.com/index.html). 
