@@ -46,9 +46,9 @@ xhttp.send();
 
 I am a computer science PhD student at Stanford University advised by Professor [Kunle Olukotun](https://engineering.stanford.edu/people/oyekunle-olukotun). I was also privileged to work with Professor [Fredrik Kjolstad](https://fredrikbk.com/) and Professor [Azalia Mirhoseini](http://azaliamirhoseini.com/index.html). 
 
-I graduated from Tsinghua University in 2023 with a degree in Eletronic Engineering. At Tsinghua, I was fortunate to do research at [NICS-EFC Lab](https://nicsefc.ee.tsinghua.edu.cn/) and [IDEAL Lab](https://github.com/tsinghua-ideal).
-
 **Research**: My research interests lie in better programming models and systems for domain-specific architectures. I am also interested in optimizing GPU kernels for emerging applications, including sparse and recurrent neural networks.
+
+I graduated from Tsinghua University in 2023 with a bachelor degree in Eletronic Engineering. At Tsinghua, I was fortunate to do research at [NICS-EFC Lab](https://nicsefc.ee.tsinghua.edu.cn/) and [IDEAL Lab](https://github.com/tsinghua-ideal).
 
 <h2 class="tableheading">Publications</h2>
 
