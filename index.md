@@ -50,7 +50,7 @@ I am a computer science PhD student at Stanford University advised by Professor 
 
 I graduated from Tsinghua University in 2023 with a bachelor degree in Eletronic Engineering. At Tsinghua, I was fortunate to do research at [NICS-EFC Lab](https://nicsefc.ee.tsinghua.edu.cn/) and [IDEAL Lab](https://github.com/tsinghua-ideal).
 
-<h2 class="tableheading">Publications</h2>
+<h2 class="tableheading">Selected Publications</h2>
 
 <table border="0">
   {% for pub_keyval in site.data.publications %}
