@@ -14,12 +14,13 @@ agent2025:
     - weixin
     - olivia
     - kunle
-  bibtex: " @article{zhang2025adaptive,
-    <br>      title={Adaptive Self-improvement LLM Agentic System for ML Library Development},
-    <br>      author={Zhang, Genghan and Liang, Weixin and Hsu, Olivia and Olukotun, Kunle},
-    <br>      journal={arXiv preprint arXiv:2502.02534},
-    <br>      year={2025}
-    }"
+  bibtex: 
+    " @article{zhang2025adaptive,
+    <br> title={Adaptive Self-improvement LLM Agentic System for ML Library Development},
+    <br> author={Zhang, Genghan and Liang, Weixin and Hsu, Olivia and Olukotun, Kunle},
+    <br> journal={arXiv preprint arXiv:2502.02534},
+    <br> year={2025}
+    <br> }"
 
 pldi2024:
   title: "Compilation of Modular and General Sparse Workspaces"
@@ -64,7 +65,7 @@ pldi2024:
    <br> address = {New York, NY, USA},
    <br> volume = {8},
    <br> number = {PLDI},
-   <br> url = {https://doi-org.stanford.idm.oclc.org/10.1145/3656426},
+   <br> url = {https://dl.acm.org/doi/10.1145/3656426},
    <br> doi = {10.1145/3656426},
    <br> journal = {Proc. ACM Program. Lang.},
    <br> month = {jun},
