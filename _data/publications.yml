@@ -6,6 +6,7 @@ agent2025:
   venue: "ICLR 2025 Workshop on Reasoning and Planning for Large Language Models"
   year: 2025
   month: May
+  award: "Best Paper Award (2/63)"
   url: "https://arxiv.org/pdf/2502.02534"
   pdf: /publications/agent2025.pdf
   authors:
