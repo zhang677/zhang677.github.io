@@ -99,3 +99,33 @@ I graduated from Tsinghua University in 2023 with a bachelor degree in Eletronic
     </tr>
 {% endfor %}
 </table>
+
+<h2 class="tableheading">Blogs</h2>
+
+<table border="0">
+  {% for blog_keyval in site.data.blogs %}
+    {% assign blog = blog_keyval[1] %}
+    {% assign blog_path = "blog_md/" | append: blog.filename | append: ".md" %}
+    {% for page in site.pages %}
+      {% if page.path == blog_path %}
+        <tr>
+          <td>
+            <b><a href="{{ page.url | relative_url }}" style="color: #464646">{{ page.title }}</a></b><br/>
+            {% if page.authors %}
+              {% for author in page.authors %}
+                {% if forloop.last == true and forloop.length > 1 %}
+                  and
+                {% endif %}
+                <a href="{{site.data.authors[author].site}}" style="color: #464646">{{ site.data.authors[author].name }}</a>
+                {% if forloop.last == false and forloop.length > 2 %}
+                  ,
+                {% endif %}
+              {% endfor %}<br/>
+            {% endif %}
+            <i>{{ page.date | date: "%B %d, %Y" }}</i>
+          </td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</table>
