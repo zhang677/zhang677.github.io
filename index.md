@@ -113,7 +113,13 @@ I graduated from Tsinghua University in 2023 with a bachelor degree in Eletronic
             <b><a href="{{ page.url | relative_url }}" style="color: #464646">{{ page.title }}</a></b><br/>
             {% if page.authors %}
               {% for author in page.authors %}
-                <a href="{{site.data.authors[author].site}}" style="color: #464646">{{ site.data.authors[author].name }}</a>{% if forloop.last == false and forloop.length > 1 %}{% if forloop.index == forloop.length minus 1 %} and {% else %}, {% endif %}{% endif %}
+                {% if forloop.last == true and forloop.length > 1 %}
+                  and
+                {% endif %}
+                <a href="{{site.data.authors[author].site}}" style="color: #464646">{{ site.data.authors[author].name }}</a>
+                {% if forloop.last == false and forloop.length > 2 %}
+                  ,
+                {% endif %}
               {% endfor %}<br/>
             {% endif %}
             <i>{{ page.date | date: "%B %d, %Y" }}</i>
