@@ -56,7 +56,7 @@ We find that adaptive self-improvement can elevate weaker base models above powe
     <strong>Figure 4:</strong> White, green, and orange circles represent unfinished tasks, finished tasks and selected experiences, respectively. Experiences are stratified into 3 levels: hard, medium, and easy based on the number of correct samples. 
   </div>
 </div>
-
+<br>
 
 <strong>The agentic system organization</strong> is ASPL-specific. We choose Streaming Tensor Programs (STeP)<sup><a id="ref2-return" href="#ref2">2</a></sup> as the target ASPL for library generation. STeP is an emerging ASPL designed for next-generation reconfigurable dataflow architectures<sup><a id="ref3-return" href="#ref3">3</a></sup>, a family of DSAs for AI. As shown in Figure 1, we build an LLM system that can generate the STeP program that implements the PyTorch program on top.
 
@@ -68,7 +68,7 @@ As shown in Figure 5, we design two agents, a proposer, which generates a candid
     <strong>Figure 5:</strong> The agentic organization has three key components: agents, verifier, and structural IR. 
   </div>
 </div>
-
+<br>
 
 <div class="figure">
   <img src="/assets/img/ir_code.png" alt="Alt text describing the image">
