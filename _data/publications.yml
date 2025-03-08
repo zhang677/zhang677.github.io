@@ -7,7 +7,7 @@ agent2025:
   year: 2025
   month: May
   award: "ICLR 2025 DL4C Workshop Best Paper Award (2/63)"
-  url: "https://arxiv.org/pdf/2502.02534"
+  blog: "https://zhang677.github.io/blog_md/aspl.html"
   pdf: /publications/agent2025.pdf
   authors:
     - genghan

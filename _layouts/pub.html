@@ -28,6 +28,11 @@ tags: publication
     <p><a href="{{ pub.url }}">Article URL</a></p>
     {%- endif -%} 
 
+    {% if pub.blog %}
+    <h2>Article</h2>
+    <p><a href="{{ pub.blog }}">Article URL</a></p>
+    {%- endif -%} 
+
     {% if pub.pdf %}
     <h2>Article</h2>
     <p><a href="{{ pub.pdf }}"><img src="/assets/PDF_icon.svg" width=64 alt= "pdf"></a></p>
