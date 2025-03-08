@@ -19,6 +19,7 @@ ML libraries, such as cuDNN and MIOpen, provide high-performance implementation 
     <strong>Figure 1:</strong> STeP is an ASPL that abstracts the execution on a DSA called reconfigurable dataflow architecture. As an analogy, STeP for reconfigurable dataflow architecture is like CUDA for NVIDIA GPUs. As a task of ML library development, a simplified mixture-of-expert (MoE) module is implemented using STeP.
   </div>
 </div>
+<br>
 
 
 However, writing these high-performance ML libraries is challenging because it needs expert knowledge of ML algorithms and the ASPL. This process requires complex reasoning to compose high-level ML model components (“operators”) with low-level hardware primitives. Meanwhile, ASPLs are updated per generation of DSA, so there is limited data as shown in Figure 2.
@@ -98,22 +99,16 @@ Here we share three interesting findings:
 # Impact
 Our approach not only produces a self-improving agentic system to assist humans but also generates high-quality ML operators that can be leveraged by other systems. By enabling users without extensive ASPL expertise to construct efficient ML operators, this advancement could democratize access to ML development tools and reduce the technical barriers to entry. As stronger models emerge, such as DeepSeek-R1 and OpenAI o3-mini, our tasks can offer a good benchmark to test their complex reasoning with limited data.
 
-More details can be found in <a href="https://arxiv.org/abs/2502.02534">our paper</a>. The paper is selected as one of the Best Paper Awards at the <a href="https://openreview.net/group?id=ICLR.cc/2025/Workshop/DL4C#tab-accept-best-paper">DL4C Workshop @ ICLR 2025</a>. We open source the algorithm with the agentic system <a href=https://github.com/zhang677/PCL-lite>here</a>. 
+More details can be found in <a href="https://arxiv.org/abs/2502.02534">our paper</a>. The paper is selected as one of the Best Paper Awards at the <a href="https://openreview.net/group?id=ICLR.cc/2025/Workshop/DL4C#tab-accept-best-paper">DL4C Workshop @ ICLR 2025</a>. We open source the algorithm with the agentic system <a href="https://github.com/zhang677/PCL-lite">here</a>. 
 
 # References
 
 <ol>
   <li id="ref1">Bengio, Y., Louradour, J., Collobert, R. and Weston, J., 2009, June. Curriculum learning. In Proceedings of the 26th annual international conference on machine learning (pp. 41-48). <a href="#ref1-return">&uarr;</a></li>
-</ol>
 
-<ol>
   <li id="ref2">Sohn, G., Gyurgyik, C., Zhang, G., Velury, S., Mure, P., Zhang, N. and Olukotun, K., 2024. Streaming tensor programs: A programming abstraction for streaming dataflow accelerators. In ASPLOS Young Architect Workshop (YArch).<a href="#ref2-return">&uarr;</a></li>
-</ol>
 
-<ol>
   <li id="ref3">Prabhakar, R., Zhang, Y., Koeplinger, D., Feldman, M., Zhao, T., Hadjis, S., Pedram, A., Kozyrakis, C. and Olukotun, K., 2017, June. Plasticine: A Reconfigurable Architecture For Parallel Paterns. In Proceedings of the 44th Annual International Symposium on Computer Architecture (pp. 389-402).<a href="#ref3-return">&uarr;</a></li>
-</ol>
 
-<ol>
   <li id="ref4">Liu, A., Feng, B., Xue, B., Wang, B., Wu, B., Lu, C., Zhao, C., Deng, C., Zhang, C., Ruan, C. and Dai, D., 2024. Deepseek-v3 technical report. arXiv preprint arXiv:2412.19437.<a href="#ref4-return">&uarr;</a></li>
 </ol>
