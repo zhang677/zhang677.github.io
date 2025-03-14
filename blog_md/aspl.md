@@ -84,7 +84,7 @@ We benchmarked 8 groups of ML operators for a common LLM layer and collected 26 
 
 Here we share three interesting findings:
 1. Adaptive self-improvement learning can augment relatively weak base models to surpass a powerful general reasoning model. As shown in Figure 7(a), self-improved DeepSeek-V3 outperforms OpenAI-o1, successfully implementing 57.7% of operators compared to OpenAI-o1's 38.5%.
-2. Claude 3.5 Sonnet is surprisingly better than other models although they have similar scores on common coding benchmarks (e.g. on HumanEval-Mul all models achieve around 80% Pass@1 as in Figure 6 of DeepSeek-V3 technical report<sup><a id="ref4-return" href="#ref4">4</a></sup>). As shown in Figure 7(a), even single Claude 3.5 Sonnet is better than self-improved DeepSeek-V3.
+2. Claude 3.5 Sonnet is surprisingly better than other models although they have similar scores on common coding benchmarks (e.g. on HumanEval-Mul all models achieve around 80% Pass@1 as in Table 6 of DeepSeek-V3 technical report<sup><a id="ref4-return" href="#ref4">4</a></sup>). As shown in Figure 7(a), even single Claude 3.5 Sonnet is better than self-improved DeepSeek-V3.
 3. Experience stratification can improve data efficiency. As shown in Figure 7(b), a smaller number of input tokens can sometimes outperform a larger number due to the higher quality of experiences.
 
 <div class="figure">
@@ -97,7 +97,7 @@ Here we share three interesting findings:
 
 
 # Impact
-Our approach not only produces a self-improving agentic system to assist humans but also generates high-quality ML operators that can be leveraged by other systems. By enabling users without extensive ASPL expertise to construct efficient ML operators, this advancement could democratize access to ML development tools and reduce the technical barriers to entry. As stronger models emerge, such as DeepSeek-R1 and OpenAI o3-mini, our tasks can offer a good benchmark to test their complex reasoning with limited data.
+Our approach not only produces a self-improving agentic system to assist humans but also generates high-quality ML operators that can be leveraged by other systems. By enabling users without extensive ASPL expertise to construct efficient ML operators, this advancement could democratize access to ML development tools and reduce the technical barriers to entry. As stronger models emerge, such as <a href="https://api-docs.deepseek.com/news/news250120">DeepSeek-R1</a> and <a href="https://openai.com/index/openai-o3-mini/">OpenAI o3-mini</a>, our tasks can offer a good benchmark to test their complex reasoning with limited data.
 
 More details can be found in <a href="https://arxiv.org/abs/2502.02534">our paper</a>. The paper is selected as one of the Best Paper Awards at the <a href="https://openreview.net/group?id=ICLR.cc/2025/Workshop/DL4C#tab-accept-best-paper">DL4C Workshop @ ICLR 2025</a>. We open source the algorithm with the agentic system <a href="https://github.com/zhang677/PCL-lite">here</a>. 
 
