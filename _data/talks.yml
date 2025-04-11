@@ -3,3 +3,9 @@ psg2025:
   month: April
   venue: "Uber Programming Systems Group (PSG) Invited Talk Series"
   year: 2025
+
+swlunch2025:
+  title: "Compilation of Modular and General Sparse Workspaces"
+  month: April
+  venue: "Stanford Software Research Lunch"
+  year: 2025
