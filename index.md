@@ -11,7 +11,7 @@ layout: home
 PhD Student<br/>
 Department of Computer Science<br/>
 Stanford University<br/>
-Office: 464 Gates<br/>
+Office: 478 Gates<br/>
 <a href="mailto:zgh23@stanford.edu">zgh23 [at] stanford [dot] edu</a><br/>
 <a href="/assets/GenghanZhang_CV.pdf">Curriculum Vitae</a>
 <div id=siteUpdate> </div>
