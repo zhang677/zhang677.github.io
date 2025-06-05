@@ -1,7 +1,7 @@
-psg2025:
+seams2025:
   title: "Adaptive Self-improvement LLM Agentic System for ML Library Development"
-  month: April
-  venue: "Uber Programming Systems Group (PSG) Invited Talk Series"
+  month: June
+  venue: "Stanford SEAMS Retreat"
   year: 2025
 
 swlunch2025:
@@ -9,3 +9,10 @@ swlunch2025:
   month: April
   venue: "Stanford Software Research Lunch"
   year: 2025
+
+psg2025:
+  title: "Adaptive Self-improvement LLM Agentic System for ML Library Development"
+  month: April
+  venue: "Uber Programming Systems Group (PSG) Invited Talk Series"
+  year: 2025
+
