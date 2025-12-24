@@ -38,7 +38,7 @@ To tackle this challenging task, we propose AccelOpt, the first **self-improving
 </div>
 <br>
 
-# Real-world kernel challenge: NKIBench
+# Real-world Kernel Challenge: NKIBench
 We construct NKIBench, the first benchmark suite for NKI kernel optimization on Amazon Trainium, with all kernels derived from real-world LLM workloads. NKIBench measures kernel performance against theoretical peak hardware performance on Trainium, rather than relying solely on relative speedup metrics, which can be ambiguous due to different baseline choices. AccelOpt boosts the average percentage of peak throughput **from 49% to 61%** on Trainium 1 and **from 45% to 59%** on Trainium 2 for NKIBench kernels.
 
 <div class="figure">
@@ -50,7 +50,7 @@ We construct NKIBench, the first benchmark suite for NKI kernel optimization on 
 <br>
 
 # Optimization memory and beam search both improve the efficiency of test-time scaling 
-Beam search can discover better kernels by building upon the best kernels identified in previous iterations. Optimization memory concentrates the LLM agents on techniques that have been proved effective similar to how RLVR improves pass@1 but not pass@n. AccelOpt is highly cost-effective: using open-source models, it **matches the kernel improvements** of Claude Sonnet 4 while being **26× cheaper**.
+AccelOpt uses test-time scaling to incentive the capability of LLMs that are insufficiently trained. Beam search can discover better kernels by building upon the best kernels identified in previous iterations. This aligns with AutoComp's finding<sup><a id="ref1-return" href="#ref1">1</a></sup>. Optimization memory concentrates the LLM agents on techniques that have been proved effective similar to how RLVR improves pass@1 but not pass@n<sup><a id="ref2-return" href="#ref2">2</a></sup>. This is AccelOpt' new finding. AccelOpt is highly cost-effective: using open-source models, it **matches the kernel improvements** of Claude Sonnet 4 while being **26× cheaper**.
 
 <div class="figure">
   <img src="/assets/img/accelopt-cost.png" alt="AccelOpt-Cost">
@@ -70,7 +70,7 @@ As a CA for Stanford’s CS149 (Parallel Computing), I leveraged AccelOpt to des
 </div>
 <br>
 
-In collaboration with other CAs, we developed four extra-credit problems centered on this optimization technique. While the challenge was substantial, with approximately half of the class unable to complete it, 1/3 of the students successfully mastering this critical 'spatial thinking' concept, earning full extra credit. 
+In collaboration with other CAs, we developed four extra-credit problems centered on this optimization technique. While the challenge was substantial, with approximately half of the class unable to complete it, 1/3 of the students successfully acquired this critical 'spatial thinking' skill, earning full extra credit. 
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/conv2d_credits_count.png" alt="CS149" style="width: 60%; height: auto">
   <div class="caption">
@@ -81,7 +81,7 @@ In collaboration with other CAs, we developed four extra-credit problems centere
 This example underscores the generality of AccelOpt beyond NKIBench and highlights the educational impact of LLM-assisted kernel optimization.
 
 # What about GPU? Preliminary Results on FlashInfer-Bench
-AccelOpt is a hardware-agnostic framework. To demonstrate its efficacy, we evaluated its performance on the H100 SXM5 platform using nine categories of the [FlashInfer-Bench](https://bench.flashinfer.ai/) best Triton baselines (as of December 23, 2025). Utilizing the gpt-oss-120b model, AccelOpt discovered significant kernel enhancements, achieving up to a 3.49x speedup. We are currently collaborating with the FlashInfer-Bench team to integrate these optimized kernels into the public benchmark.
+AccelOpt is a hardware-agnostic framework. To demonstrate its efficacy, we evaluated its performance on the H100 SXM5 platform using nine categories of the [FlashInfer-Bench](https://bench.flashinfer.ai/) best Triton baselines (as of December 23, 2025). Utilizing the gpt-oss-120b model, AccelOpt discovered significant kernel enhancements, achieving up to a 3.49x speedup. [Here](https://github.com/zhang677/AccelOpt/tree/e445784df36af4c73ed5b77ecec97fe14f6d52eb/experiments/flb_full_complete_local/results/12-21-17-05) are all the generated kernels. We are currently collaborating with the FlashInfer-Bench team to integrate these optimized kernels into the public benchmark.
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/accelopt-fib.png" alt="Fib">
   <div class="caption">
@@ -89,6 +89,14 @@ AccelOpt is a hardware-agnostic framework. To demonstrate its efficacy, we evalu
   </div>
 </div>
 <br>
+
+# Let the Agent Flow: Beyond Human Guidance
+A notable finding of AccelOpt is that the base prompt does not need to include full syntax information for NKI—a relatively new architecture-specific programming language ([ASPL](https://zhang677.github.io/blog_md/aspl.html)) released in 2024. It is often assumed that LLMs must master the syntax of ASPLs before optimizing kernels<sup><a id="ref3-return" href="#ref3">3</a></sup>. However, as pointed out in [this blog](https://zhang677.github.io/blog_md/reason.html), many ASPLs' syntax have a structural similarity to one another. Therefore, syntax is not the primary consideration; the priority is building a workflow that enables continuous improvement. 
+
+Within this continuous improvement workflow, AccelOpt demonstrates that human-crafted optimization guidance is unnecessary. It was previously assumed that designers needed to provide specific instructions, such as optimization plans for the LLM to select from. Consequently, porting prompts from NKI to Triton simply involves replacing NKI-specific details with a few sentences about Triton. They can even share the same summarizer prompts. Interested readers can find the prompts for [NKI](https://github.com/zhang677/AccelOpt/tree/2e8ccd92c5d95844f68b0d53392e974084a05bf4/prompts) and [Triton](https://github.com/zhang677/AccelOpt/tree/2e8ccd92c5d95844f68b0d53392e974084a05bf4/prompts/flb) in the links.
+
+# Benchmarks as Environments for Self-Improvement
+Developed concurrently with FlashInfer-Bench, NKIBench utilizes a similar interface that features structured storage for problems and kernels along with a scalable profiling service. This represents an advancement over traditional kernel benchmarks, such as KernelBench<sup><a id="ref4-return" href="#ref4">4</a></sup>, which consist only of a list of problems. By providing more than just a fixed repository of tasks, this new approach creates a comprehensive environment for the development of self-improving LLM agents.
 
 # Acknowledgement
 This work was a collaborative effort across several teams. I would like to thank our collaborators from Stanford, AWS, and the University of Toronto: Shaowei Zhu, Anjiang Wei, Zhenyu Song, Allen Nie, Zhen Jia, Nandita Vijaykumar, Yida Wang, and Kunle Olukotun.
@@ -102,3 +110,14 @@ Special thanks to Stanford CS149 instructors Kayvon Fatahalian and Kunle Olukotu
 </div>
 <br>
 
+# References
+
+<ol>
+  <li id="ref1">Hong, C., Bhatia, S., Cheung, A. and Shao, S., 2025, May. Autocomp: Llm-driven code optimization for tensor accelerators. In Machine Learning for Computer Architecture and Systems 2025. <a href="#ref1-return">&uarr;</a></li>
+
+  <li id="ref2">Yue, Y., Chen, Z., Lu, R., Zhao, A., Wang, Z., Song, S. and Huang, G., 2025. Does reinforcement learning really incentivize reasoning capacity in llms beyond the base model? arXiv preprint arXiv:2504.13837. <a href="#ref2-return">&uarr;</a></li>
+
+  <li id="ref3">Agrawal, L.A., Tan, S., Soylu, D., Ziems, N., Khare, R., Opsahl-Ong, K., Singhvi, A., Shandilya, H., Ryan, M.J., Jiang, M. and Potts, C., 2025. Gepa: Reflective prompt evolution can outperform reinforcement learning. arXiv preprint arXiv:2507.19457. <a href="#ref3-return">&uarr;</a></li>
+
+  <li id="ref4">Ouyang, A., Guo, S., Arora, S., Zhang, A.L., Hu, W., Ré, C. and Mirhoseini, A., 2025. Kernelbench: Can llms write efficient gpu kernels?. arXiv preprint arXiv:2502.10517. <a href="#ref4-return">&uarr;</a></li>
+</ol>
