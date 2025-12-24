@@ -61,7 +61,7 @@ AccelOpt leverages test-time scaling to unlock the potential of LLMs that may be
 <br>
 
 # "Aha moment" and the Educational Impact
-As a CA for Stanford’s CS149 (Parallel Computing), I leveraged AccelOpt to design problems for [Assignment 4: Fused Conv+MaxPool on the Trainium2 Accelerator](https://github.com/stanford-cs149/asst4-trainium2). During the 13th iteration of the optimization process, AccelOpt achieved a breakthrough by transforming a temporally sequential execution pattern into simultaneous spatial execution. This transformation resulted in a **5x speedup** for last year's reference Conv2D kernel on small-scale inputs. 
+As a CA for Stanford’s CS149 (Parallel Computing), I leveraged AccelOpt to design problems for [Assignment 4: Fused Conv+MaxPool on the Trainium2 Accelerator](https://github.com/stanford-cs149/asst4-trainium2). During the 14th iteration of the optimization process, AccelOpt achieved a breakthrough by transforming a temporally sequential execution pattern into simultaneous spatial execution. This transformation resulted in a **5x speedup** for last year's reference Conv2D kernel on small-scale inputs. 
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/09292025_blog.png" alt="Aha">
   <div class="caption">
@@ -80,7 +80,7 @@ In collaboration with other CAs, we developed four extra-credit problems centere
 <br>
 This example underscores the generality of AccelOpt beyond NKIBench and highlights the educational impact of LLM-assisted kernel optimization.
 
-# What about GPU? Preliminary Results on FlashInfer-Bench
+# What about GPU?
 AccelOpt is a hardware-agnostic framework. To demonstrate its efficacy, we evaluated its performance on the H100 SXM5 platform using nine categories of the [FlashInfer-Bench](https://bench.flashinfer.ai/) best Triton baselines (as of December 23, 2025). Utilizing the gpt-oss-120b model, AccelOpt discovered significant kernel enhancements, achieving up to a 3.49x speedup. [Here](https://github.com/zhang677/AccelOpt/tree/e445784df36af4c73ed5b77ecec97fe14f6d52eb/experiments/flb_full_complete_local/results/12-21-17-05) are all the generated kernels. We are currently collaborating with the FlashInfer-Bench team to integrate these optimized kernels into the public benchmark.
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/accelopt-fib.png" alt="Fib">
