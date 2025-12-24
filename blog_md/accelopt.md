@@ -39,7 +39,7 @@ To tackle this challenging task, we propose AccelOpt, the first **self-improving
 <br>
 
 # Real-world Kernel Challenge: NKIBench
-We construct NKIBench, the first benchmark suite for NKI kernel optimization on Amazon Trainium, with all kernels derived from real-world LLM workloads. NKIBench measures kernel performance against theoretical peak hardware performance on Trainium, rather than relying solely on relative speedup metrics, which can be ambiguous due to different baseline choices. AccelOpt boosts the average percentage of peak throughput **from 49% to 61%** on Trainium 1 and **from 45% to 59%** on Trainium 2 for NKIBench kernels.
+We construct NKIBench, the first benchmark suite for NKI kernel optimization on Amazon Trainium, with all kernels derived from real-world LLM workloads. NKIBench measures kernel performance against **theoretical peak hardware performance** on Trainium, rather than relying solely on relative speedup metrics, which can be ambiguous due to different baseline choices. AccelOpt boosts the average percentage of peak throughput **from 49% to 61%** on Trainium 1 and **from 45% to 59%** on Trainium 2 for NKIBench kernels.
 
 <div class="figure">
   <img src="/assets/img/ratio_bars_trn1.png" alt="AccelOpt-NKIBench">
@@ -50,7 +50,7 @@ We construct NKIBench, the first benchmark suite for NKI kernel optimization on 
 <br>
 
 # Enhancing Test-Time Scaling via Beam Search and Optimization Memory 
-AccelOpt leverages test-time scaling to unlock the potential of LLMs that may be under-trained for specialized tasks.  It employs beam search to iteratively discover better kernels by building upon the best kernels of previous iterations. This aligns with AutoComp's finding<sup><a id="ref1-return" href="#ref1">1</a></sup>. A key new finding of AccelOpt is the utility of optimization memory, which directs agents toward successful strategies. Similar to how RLVR improves pass@1 but not pass@n<sup><a id="ref2-return" href="#ref2">2</a></sup>, optimization memory reduces the cost of test-time scaling while achieving the same average performance. AccelOpt is highly cost-effective: using open-source models, it **matches the kernel improvements** of Claude Sonnet 4 while being **26× cheaper**.
+AccelOpt leverages test-time scaling to unlock the potential of LLMs that may be under-trained for specialized tasks.  It employs beam search to iteratively discover better kernels by building upon the best kernels of previous iterations. This aligns with AutoComp's finding<sup><a id="ref1-return" href="#ref1">1</a></sup>. A key new finding of AccelOpt is the utility of optimization memory, which directs agents toward successful strategies. Similar to how RLVR improves pass@1 but not pass@n<sup><a id="ref2-return" href="#ref2">2</a></sup>, **optimization memory reduces the cost of test-time scaling** while achieving the same average performance. AccelOpt is highly cost-effective: using open-source models, it **matches the kernel improvements** of Claude Sonnet 4 while being **26× cheaper**.
 
 <div class="figure">
   <img src="/assets/img/accelopt-cost.png" alt="AccelOpt-Cost">
@@ -61,7 +61,7 @@ AccelOpt leverages test-time scaling to unlock the potential of LLMs that may be
 <br>
 
 # "Aha moment" and the Educational Impact
-As a CA for Stanford’s CS149 (Parallel Computing), I leveraged AccelOpt to design problems for [Assignment 4: Fused Conv+MaxPool on the Trainium2 Accelerator](https://github.com/stanford-cs149/asst4-trainium2). During the 14th iteration of the optimization process, AccelOpt achieved a breakthrough by transforming a temporally sequential execution pattern into simultaneous spatial execution. This transformation resulted in a **5x speedup** for last year's reference Conv2D kernel on small-scale inputs. 
+As a CA for Stanford’s CS149 (Parallel Computing), I leveraged AccelOpt to design problems for [Assignment 4: Fused Conv+MaxPool on the Trainium2 Accelerator](https://github.com/stanford-cs149/asst4-trainium2). During the 14th iteration of the optimization process, AccelOpt achieved a breakthrough by transforming a temporally sequential execution pattern into simultaneous spatial execution. This transformation resulted in a **5x speedup** of last year's reference Conv2D kernel on small-scale inputs. 
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/09292025_blog.png" alt="Aha">
   <div class="caption">
@@ -70,7 +70,7 @@ As a CA for Stanford’s CS149 (Parallel Computing), I leveraged AccelOpt to des
 </div>
 <br>
 
-In collaboration with other CAs, we developed four extra-credit problems centered on this optimization technique. While the challenge was substantial, with approximately half of the class unable to complete it, 1/3 of the students successfully acquired this critical 'spatial thinking' skill, earning full extra credit. 
+In collaboration with other CAs, we developed [four extra-credit problems](https://github.com/stanford-cs149/asst4-trainium?tab=readme-ov-file#extra-credit) centered on this optimization technique. While the challenge was substantial, with approximately half of the class unable to complete it, 1/3 of the students successfully acquired this critical 'spatial thinking' skill, earning full extra credit. 
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/conv2d_credits_count.png" alt="CS149" style="width: 60%; height: auto">
   <div class="caption">
@@ -91,16 +91,16 @@ AccelOpt is a hardware-agnostic framework. To demonstrate its efficacy, we evalu
 <br>
 
 # Let the Agent Flow: Beyond Human Guidance
-A notable finding of AccelOpt is that the base prompt does not need to include full syntax information for NKI—a relatively new architecture-specific programming language ([ASPL](https://zhang677.github.io/blog_md/aspl.html)) released in 2024. It is often assumed that LLMs must master the syntax of ASPLs before optimizing kernels<sup><a id="ref3-return" href="#ref3">3</a></sup>. However, as pointed out in [this blog](https://zhang677.github.io/blog_md/reason.html), many ASPLs' syntax have a structural similarity to one another. Therefore, syntax is not the primary consideration; the priority is building a workflow that enables continuous improvement. 
+A notable finding of AccelOpt is that the base prompt does not need to include full syntax information for NKI—a relatively new architecture-specific programming language ([ASPL](https://zhang677.github.io/blog_md/aspl.html)) released in 2024. It is often assumed that LLMs must master the syntax of ASPLs before optimizing kernels<sup><a id="ref3-return" href="#ref3">3</a></sup>. However, as pointed out in [this blog](https://zhang677.github.io/blog_md/reason.html), many ASPLs' syntax have a structural similarity to one another. Therefore, **syntax is not the primary consideration**; the priority is building a workflow that enables continuous improvement. 
 
-Within this continuous improvement workflow, AccelOpt demonstrates that human-crafted optimization guidance is unnecessary. It was previously assumed that designers needed to provide specific instructions, such as optimization plans for the LLM to select from. Consequently, porting prompts from NKI to Triton simply involves replacing NKI-specific details with a few sentences about Triton. They can even share the same summarizer prompts. Interested readers can find the prompts for [NKI](https://github.com/zhang677/AccelOpt/tree/2e8ccd92c5d95844f68b0d53392e974084a05bf4/prompts) and [Triton](https://github.com/zhang677/AccelOpt/tree/2e8ccd92c5d95844f68b0d53392e974084a05bf4/prompts/flb) in the links.
+Within this continuous improvement workflow, AccelOpt demonstrates that **human-crafted optimization guidance is unnecessary**. It was previously assumed that designers needed to provide specific instructions, such as optimization plans for the LLM to select from<sup><a id="ref1-return" href="#ref1">1</a></sup>. Consequently, porting prompts from NKI to Triton simply involves replacing NKI-specific details with a few sentences about Triton. They can even share the same summarizer prompts. Interested readers can read the prompts for [NKI](https://github.com/zhang677/AccelOpt/tree/2e8ccd92c5d95844f68b0d53392e974084a05bf4/prompts) and [Triton](https://github.com/zhang677/AccelOpt/tree/2e8ccd92c5d95844f68b0d53392e974084a05bf4/prompts/flb).
 
 # Benchmarks as Environments for Self-Improvement
 Developed concurrently with FlashInfer-Bench, NKIBench utilizes a similar interface that features structured storage for problems and kernels along with a scalable profiling service. This represents an advancement over traditional kernel benchmarks, such as KernelBench<sup><a id="ref4-return" href="#ref4">4</a></sup>, which consist only of a list of problems. By providing more than just a fixed repository of tasks, this new approach creates a comprehensive environment for the development of self-improving LLM agents.
 
 # Acknowledgement
-This work was a collaborative effort across several teams. I would like to thank our collaborators from Stanford, AWS, and the University of Toronto: Shaowei Zhu, Anjiang Wei, Zhenyu Song, Allen Nie, Zhen Jia, Nandita Vijaykumar, Yida Wang, and Kunle Olukotun.
-Special thanks to Stanford CS149 instructors Kayvon Fatahalian and Kunle Olukotun, as well as the CA team—particularly our "Assignment 4 gurus" Weixin Yu and Anthony Zhan—and the AWS support team for their essential role in the course. Finally, I’m grateful to Yixin Dong from the FlashInfer-Bench team for his insights and collaboration.
+This work was a collaborative effort across several teams. I would like to thank our collaborators from Stanford University, AWS Neuron Science Team, and the University of Toronto: Shaowei Zhu, Anjiang Wei, Zhenyu Song, Allen Nie, Zhen Jia, Nandita Vijaykumar, Yida Wang, and Kunle Olukotun.
+Special thanks to Stanford CS149 instructors Kayvon Fatahalian and Kunle Olukotun, as well as the amazing CA team—particularly our "Assignment 4 gurus" Weixin Yu and Anthony Zhan—and the AWS support team for their essential role in the course. Finally, I’m grateful to Yixin Dong from the FlashInfer-Bench team for his insights and collaboration.
 
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/accelopt-nano-banana.jpeg" alt="AccelOpt" style="width: 60%; height: auto">
