@@ -49,8 +49,8 @@ We construct NKIBench, the first benchmark suite for NKI kernel optimization on 
 </div>
 <br>
 
-# Optimization memory and beam search both improve the efficiency of test-time scaling 
-AccelOpt uses test-time scaling to incentive the capability of LLMs that are insufficiently trained. Beam search can discover better kernels by building upon the best kernels identified in previous iterations. This aligns with AutoComp's finding<sup><a id="ref1-return" href="#ref1">1</a></sup>. Optimization memory concentrates the LLM agents on techniques that have been proved effective similar to how RLVR improves pass@1 but not pass@n<sup><a id="ref2-return" href="#ref2">2</a></sup>. This is AccelOpt' new finding. AccelOpt is highly cost-effective: using open-source models, it **matches the kernel improvements** of Claude Sonnet 4 while being **26× cheaper**.
+# Enhancing Test-Time Scaling via Beam Search and Optimization Memory 
+AccelOpt leverages test-time scaling to unlock the potential of LLMs that may be under-trained for specialized tasks.  It employs beam search to iteratively discover better kernels by building upon the best kernels of previous iterations. This aligns with AutoComp's finding<sup><a id="ref1-return" href="#ref1">1</a></sup>. A key new finding of AccelOpt is the utility of optimization memory, which directs agents toward successful strategies. Similar to how RLVR improves pass@1 but not pass@n<sup><a id="ref2-return" href="#ref2">2</a></sup>, optimization memory reduces the cost of test-time scaling while achieving the same average performance. This is AccelOpt's new finding. AccelOpt is highly cost-effective: using open-source models, it **matches the kernel improvements** of Claude Sonnet 4 while being **26× cheaper**.
 
 <div class="figure">
   <img src="/assets/img/accelopt-cost.png" alt="AccelOpt-Cost">
