@@ -8,7 +8,7 @@ authors:
 The code for AccelOpt is open-source and available on GitHub: https://github.com/zhang677/AccelOpt
 # AI accelerator kernels are hard to optimize
 The unprecedented demand for compute power in the age of large models has prompted the rise of AI accelerators. However, their performance critically depends on the efficiency of kernels—the low-level implementations that determine how machine learning operators are mapped onto hardware resources. Suboptimal kernels can severely limit system performance and, when scaled to large deployments, result in substantial waste of compute and financial resources. Kernel optimization, however, is notoriously difficult and demanding, even for well-understood architectures like GPUs.
-<div class="figure">
+<div class="figure" style="text-align: center;">
   <img src="/assets/img/fa1-4.png" alt="FA1-4">
   <div class="caption">
     <strong>Figure 1</strong> FlashAttention lags behind the release of NVIDIA GPUs by ~1 year.
@@ -62,7 +62,7 @@ Beam search can discover better kernels by building upon the best kernels identi
 
 # "Aha moment" and the Educational Impact
 As a CA for Stanford’s CS149 (Parallel Computing), I leveraged AccelOpt to design problems for [Assignment 4: Fused Conv+MaxPool on the Trainium2 Accelerator](https://github.com/stanford-cs149/asst4-trainium2). During the 13th iteration of the optimization process, AccelOpt achieved a breakthrough by transforming a temporally sequential execution pattern into simultaneous spatial execution. This transformation resulted in a **5x speedup** for last year's reference Conv2D kernel on small-scale inputs. 
-<div class="figure">
+<div class="figure" style="text-align: center;">
   <img src="/assets/img/09292025_blog.png" alt="Aha">
   <div class="caption">
     <strong>Figure 6</strong> "Aha moment" of AccelOpt.
@@ -82,7 +82,7 @@ This example underscores the generality of AccelOpt beyond NKIBench and highligh
 
 # What about GPU? Preliminary Results on FlashInfer-Bench
 AccelOpt is a hardware-agnostic framework. To demonstrate its efficacy, we evaluated its performance on the H100 SXM5 platform using nine categories of the [FlashInfer-Bench](https://bench.flashinfer.ai/) Triton baselines (as of December 23, 2025). Utilizing the gpt-oss-120b model, AccelOpt discovered significant kernel enhancements, achieving up to a 3.49x speedup over the existing state-of-the-art Triton baselines. We are currently collaborating with the FlashInfer-Bench team to integrate these optimized kernels into the public benchmark.
-<div class="figure">
+<div class="figure" style="text-align: center;">
   <img src="/assets/img/accelopt-fib.png" alt="Fib">
   <div class="caption">
     <strong>Figure 8</strong> Applying AccelOpt to FlashInfer-Bench.
