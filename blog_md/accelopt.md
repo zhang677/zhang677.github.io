@@ -5,7 +5,7 @@ date: 2025-12-22
 authors:
   - genghan
 ---
-The code for AccelOpt is open-source and available on GitHub: [https://github.com/zhang677/AccelOpt](https://github.com/zhang677/AccelOpt). More details can be found in [our paper](https://arxiv.org/abs/2502.02534). Accelopt is a follow-up to [this work](https://zhang677.github.io/blog_md/aspl.html).
+The code for AccelOpt is open-source and available on GitHub: [https://github.com/zhang677/AccelOpt](https://github.com/zhang677/AccelOpt). More details can be found in [our paper](https://arxiv.org/pdf/2511.15915). Accelopt is a follow-up to [this work](https://zhang677.github.io/blog_md/aspl.html).
 # AI accelerator kernels are hard to optimize
 The unprecedented demand for compute power in the age of large models has prompted the rise of AI accelerators. However, their performance critically depends on the efficiency of kernels—the low-level implementations that determine how machine learning operators are mapped onto hardware resources. Suboptimal kernels can severely limit system performance and, when scaled to large deployments, result in substantial waste of compute and financial resources. Kernel optimization, however, is notoriously difficult and demanding, even for well-understood architectures like GPUs.
 <div class="figure" style="text-align: center;">
