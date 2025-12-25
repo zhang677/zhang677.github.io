@@ -28,7 +28,7 @@ There are two primary challenges. First, **LLM queries incur substantial computa
 <br>
 
 # Solution: AccelOpt
-To tackle this challenging task, we propose AccelOpt, the first **self-improving LLM agentic system** for kernel optimization on emerging AI accelerators that **combines search with memory accumulation**. Among the open-source systems we are aware of, AccelOpt is the first system that does not require expert-provided, hardware-specific optimization knowledge or predefined optimization recipes on emerging AI accelerators.
+To tackle this challenging task, we propose AccelOpt, a **self-improving LLM agentic system** for kernel optimization on emerging AI accelerators that **combines search with memory accumulation**. Among the open-source systems we are aware of, AccelOpt is the first system that does not require expert-provided, hardware-specific optimization knowledge or predefined optimization recipes on emerging AI accelerators.
 
 <div class="figure">
   <img src="/assets/img/accelopt-example.png" alt="AccelOpt-Example">
@@ -44,7 +44,7 @@ We construct NKIBench, the first benchmark suite for NKI kernel optimization on 
 <div class="figure">
   <img src="/assets/img/ratio_bars_trn1.png" alt="AccelOpt-NKIBench">
   <div class="caption">
-    <strong>Figure 4</strong> Per-task kernel improvement of NKIBench achieved using Claude Sonnet 4 and AccelOpt (gpt-oss-120b + Qwen3-Coder-480B) on Trainium 1.
+    <strong>Figure 4</strong> Per-task kernel improvement of NKIBench achieved using Claude Sonnet 4 and AccelOpt (gpt-oss-120b + Qwen3-Coder-480B) on Trainium 1. The y-axis represents percentage of peak throughput, where a higher score signifies better efficiency.
   </div>
 </div>
 <br>
@@ -85,7 +85,7 @@ AccelOpt is a hardware-agnostic framework. To demonstrate its efficacy, we evalu
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/accelopt-fib.png" alt="Fib">
   <div class="caption">
-    <strong>Figure 8</strong> Applying AccelOpt to FlashInfer-Bench.
+    <strong>Figure 8</strong> Performance evaluation of AccelOpt on selected FlashInfer-Bench problems. The y-axis represents latency, where a lower score signifies better efficiency.
   </div>
 </div>
 <br>
