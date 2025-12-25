@@ -6,6 +6,7 @@ accelopt2025:
   venue: "Preprint"
   year: 2025
   month: November
+  blog: "https://zhang677.github.io/blog_md/accelopt.html"
   pdf: /publications/accelopt2025.pdf
   authors:
     - genghan
@@ -50,6 +51,7 @@ ttt2025:
   venue: "ICML 2025 Spotlight (acceptance rate 2.59%)"
   year: 2025
   month: July
+  pdf: /publications/ttt2025.pdf
   authors:
     - yusun
     - xinhao
