@@ -104,6 +104,7 @@ Our dataset consists of ~18k "slow-fast" pairs derived from 16 iterations of Acc
 Reinforcement Learning (RL) was then applied using [GRPO](https://arxiv.org/pdf/2402.03300) via [verl](https://github.com/volcengine/verl/tree/main), trained on the 1k NKI kernel dataset. The reward function was designed to penalize empty outputs, compilation errors, and performance regressions, while incentivizing functional correctness and execution speedup. We evaluated four distinct recipes using a Best-of-5 sampling strategy. Metrics include the number of correct cases, the count of cases achieving a speedup ≥ 1, and the average speedup among those cases with speedup ≥ 1.
 
 **Qwen2.5-Coder-7B-Instruct**
+
 | Recipe | Correct Cases | Cases with Speedup ≥ 1 | Avg. Speedup |
 | -------- | -------- | -------- | -------- |
 | Base model | 126 / 150 | 39 / 150 | 1.022 |
@@ -113,6 +114,7 @@ Reinforcement Learning (RL) was then applied using [GRPO](https://arxiv.org/pdf/
 | SFT-Numpy-NKI-RL | 132 / 150 | 52 / 150 | 1.018 |
 
 **DeepSeek-Coder-33B-Base-Instruct**
+
 | Recipe | Correct Cases | Cases with Speedup ≥ 1 | Avg. Speedup |
 | -------- | -------- | -------- | -------- |
 | Base model | 105 / 150 | 26 / 150 | 1.025 |
