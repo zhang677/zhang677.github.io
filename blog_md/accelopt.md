@@ -44,7 +44,7 @@ We construct NKIBench, the first benchmark suite for NKI kernel optimization on 
 <div class="figure">
   <img src="/assets/img/ratio_bars_trn1.png" alt="AccelOpt-NKIBench">
   <div class="caption">
-    <strong>Figure 4</strong> Per-task kernel improvement of NKIBench achieved using Claude Sonnet 4 and AccelOpt (gpt-oss-120b + Qwen3-Coder-480B) on Trainium 1. The y-axis represents percentage of peak throughput, where a higher score signifies better efficiency.
+    <strong>Figure 4</strong> Per-task kernel improvement of NKIBench achieved using Claude Sonnet 4 and AccelOpt (gpt-oss-120b + Qwen3-Coder-480B) on Trainium 1. The y-axis represents percentage of peak throughput, where a higher score signifies better kernels.
   </div>
 </div>
 <br>
@@ -82,10 +82,10 @@ This example underscores the generality of AccelOpt beyond NKIBench and highligh
 
 # What about GPU?
 AccelOpt is a hardware-agnostic framework. To demonstrate its efficacy, we evaluated its performance on the H100 SXM5 platform using nine categories of the [FlashInfer-Bench](https://bench.flashinfer.ai/) best Triton baselines (as of December 23, 2025). Utilizing the gpt-oss-120b model, AccelOpt discovered significant kernel enhancements, achieving up to a 3.49x speedup. [Here](https://github.com/zhang677/AccelOpt/tree/e445784df36af4c73ed5b77ecec97fe14f6d52eb/experiments/flb_full_complete_local/results/12-21-17-05) are all the generated kernels. We are currently collaborating with the FlashInfer-Bench team to integrate these optimized kernels into the public benchmark.
-<div class="figure" style="text-align: center;">
+<div class="figure">
   <img src="/assets/img/accelopt-fib.png" alt="Fib">
   <div class="caption">
-    <strong>Figure 8</strong> Performance evaluation of AccelOpt on selected FlashInfer-Bench problems. The y-axis represents latency, where a lower score signifies better efficiency.
+    <strong>Figure 8</strong> Performance evaluation of AccelOpt on selected FlashInfer-Bench problems. The y-axis represents latency, where a lower score signifies better kernels.
   </div>
 </div>
 <br>
