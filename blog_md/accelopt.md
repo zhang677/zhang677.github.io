@@ -101,27 +101,27 @@ Developed concurrently with FlashInfer-Bench, NKIBench utilizes a similar interf
 # What about RL?
 **TL;DR**: An effective training recipe has not yet been identified.
 Our dataset consists of ~18k "slow-fast" pairs derived from 16 iterations of AccelOpt across 14 distinct problems. Additionally, we leveraged an in-house NKI program generator to produce 1k kernels for training and 150 for evaluation. Supervised Fine-Tuning (SFT) was conducted using two distinct tasks: (1) slow-to-fast NKI kernel transformation and (2) Numpy-to-NKI program translation.
-Reinforcement Learning (RL) was then applied using [GRPO](https://arxiv.org/pdf/2402.03300) via [verl](https://github.com/volcengine/verl/tree/main), trained on the 1k NKI kernel dataset. The reward function was designed to penalize empty outputs, compilation errors, and performance regressions, while incentivizing functional correctness and execution speedup. We evaluated four distinct recipes using a Best-of-5 sampling strategy. Metrics include the number of correct cases, the count of cases achieving a speedup ≥ 1, and the average speedup among those cases with speedup ≥ 1.
+Reinforcement Learning (RL) was then applied using [GRPO](https://arxiv.org/pdf/2402.03300) via [verl](https://github.com/volcengine/verl/tree/main), trained on the 1k NKI kernel dataset. The reward function was designed to penalize empty outputs, compilation errors, and performance regressions, while incentivizing functional correctness and execution speedup. We evaluated four distinct recipes using a Best-of-5 sampling strategy. Metrics include functional correctness, the count of cases achieving a speedup ≥ 1 and the average speedup of them, and maximum speedup across the 150 evaluated problems.
 
 **Qwen2.5-Coder-7B-Instruct**
 
-| Recipe | Correct Cases | Cases with Speedup ≥ 1 | Avg. Speedup |
-| -------- | -------- | -------- | -------- |
-| Base model | 126 / 150 | 39 / 150 | 1.022 |
-| SFT-Slow-Fast | 127 / 150 | 31 / 150 | 1.034 |
-| SFT-Slow-Fast-RL | 131 / 150 | 53 / 150 | 1.024 |
-| SFT-Numpy-NKI | 125 / 150 | 75 / 150 | 1.029 |
-| SFT-Numpy-NKI-RL | 132 / 150 | 52 / 150 | 1.018 |
+| Recipe | Correct Cases | Cases with Speedup ≥ 1 | Avg. Speedup | Max Speedup |
+| -------- | -------- | -------- | -------- | -------- |
+| Base model | 126 / 150 | 39 / 150 | 1.022 | 1.194 |
+| SFT-Slow-Fast | 127 / 150 | 31 / 150 | 1.034 | 1.179 |
+| SFT-Slow-Fast-RL | 131 / 150 | 53 / 150 | 1.024 | 1.161 |
+| SFT-Numpy-NKI | 125 / 150 | 75 / 150 | 1.029 | 1.135 |
+| SFT-Numpy-NKI-RL | 132 / 150 | 52 / 150 | 1.018 | 1.149 |
 
 **DeepSeek-Coder-33B-Base-Instruct**
 
-| Recipe | Correct Cases | Cases with Speedup ≥ 1 | Avg. Speedup |
-| -------- | -------- | -------- | -------- |
-| Base model | 105 / 150 | 26 / 150 | 1.025 |
-| SFT-Slow-Fast | 70 / 150 | 66 / 150 | 1.040 |
-| SFT-Slow-Fast-RL | 104 / 150 | 57 / 150 | 1.029 |
-| SFT-Numpy-NKI | 105 / 150 | 49 / 150 | 1.032 |
-| SFT-Numpy-NKI-RL | 108 / 150 | 67 / 150 | 1.025 |
+| Recipe | Correct Cases | Cases with Speedup ≥ 1 | Avg. Speedup | Max Speedup |
+| -------- | -------- | -------- | -------- | -------- |
+| Base model | 105 / 150 | 26 / 150 | 1.025 | 1.095 |
+| SFT-Slow-Fast | 70 / 150 | 66 / 150 | 1.040 | 1.172 |
+| SFT-Slow-Fast-RL | 104 / 150 | 57 / 150 | 1.029 | 1.103 |
+| SFT-Numpy-NKI | 105 / 150 | 49 / 150 | 1.032 | 1.210 |
+| SFT-Numpy-NKI-RL | 108 / 150 | 67 / 150 | 1.025 | 1.152 |
 
 
 # Acknowledgement
