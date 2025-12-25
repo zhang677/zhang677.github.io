@@ -42,6 +42,28 @@ agent2025:
     <br> year={2025}
     <br> }"
 
+ttt2025:
+  title: "Learning to (Learn at Test Time): RNNs with Expressive Hidden States"
+  abstract: "<p>
+  Self-attention performs well in long context but has quadratic complexity. Existing RNN layers have linear complexity, but their performance in long context is limited by the expressive power of their hidden states. We present a practical framework for instantiating sequence modeling layers with linear complexity and expressive hidden states. The key idea is to make the hidden state a machine learning model itself, and the update rule a step of self-supervised learning. Since the hidden state is updated by training even on test sequences, our layers are called Test-Time Training (TTT) layers. We consider two instantiations: TTT-Linear and TTT-MLP, whose hidden state is a linear model and a two-layer MLP respectively. We evaluate our instantiations at the scale of 125M to 1.3B parameters, comparing with a strong Transformer and Mamba, a modern RNN. Similar to Transformer, TTT-Linear and TTT-MLP can keep reducing perplexity by conditioning on more tokens, while Mamba cannot after 16k context. TTT-MLP still faces challenges in memory I/O, but shows larger potential in long context, pointing to a promising direction for future research.
+  </p>"
+  venue: "ICML 2025 Spotlight (acceptance rate 2.59%)"
+  year: 2025
+  month: July
+  authors:
+    - yusun
+    - xinhao
+    - karan
+    - jiarui
+    - arjun
+    - genghan
+    - yann
+    - xinlei
+    - xiaolong
+    - sanmi
+    - tatsu
+    - carlos
+
 pldi2024:
   title: "Compilation of Modular and General Sparse Workspaces"
   abstract: "<p>
@@ -96,36 +118,6 @@ pldi2024:
   movie: https://www.youtube.com/watch?v=bkovjLkg8yI&ab_channel=ACMSIGPLAN
   embeddedmovie: <iframe width="560" height="315" src="https://www.youtube.com/embed/bkovjLkg8yI?si=zvYw1s6otCidWiqU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-sgap2023:
-  title: "Sgap: Towards Efficient Sparse Tensor Algebra Compilation for GPU"
-  abstract: "<p>
-    Sparse compiler is a promising solution for sparse tensor algebra optimization. In compiler implementation, reduction in sparse-dense hybrid algebra plays a key role in performance. Though GPU provides various reduction semantics that can better utilize the parallel computing and memory bandwidth capacity, the central question is: how to elevate the flexible reduction semantics to sparse compilation theory that assumes serial execution. Specifically, we have to tackle two main challenges: (1) there are wasted parallelism by adopting static synchronization granularity (2) static reduction strategy limits optimization space exploration. We propose Sgap: segment group and atomic parallelism to solve these problems. Atomic parallelism captures the flexible reduction semantics to systematically analyze the optimization space of sparse-dense hybrid algebra on GPU. It is a new optimization technique beyond current compiler-based and open-source runtime libraries. Segment group elevates the flexible reduction semantics to suitable levels of abstraction in the sparse compilation theory. It adopts changeable group size and user-defined reduction strategy to solve challenge (1) and (2), respectively. Finally, we use GPU sparse matrix-matrix multiplication (SpMM) on the TACO compiler as a use case to demonstrate the effectiveness of segment group in reduction semantics elevation. We achieve up to 1.2x speedup over the original TACO's SpMM kernels. We also apply new optimization techniques found by atomic parallelism to an open-source state-of-the-art SpMM library dgSPARSE. We achieve 1.6x~2.3x speedup on the algorithm tuned with atomic parallelism.
-    </p>"
-  venue: "CCF Transactions on High Performance Computing"
-  year: 2023
-  pdf: /publications/sgap2023.pdf
-  authors:
-    - genghan
-    - yuetong
-    - yanting
-    - zhongming
-    - guohao
-    - sitao
-    - yuan
-    - pavlos
-    - yu
-  bibtex: 
-    " @article{zhang2023sgap,
-    <br> title={Sgap: towards efficient sparse tensor algebra compilation for GPU},
-    <br> author={Zhang, Genghan and Zhao, Yuetong and Tao, Yanting and Yu, Zhongming and Dai, Guohao and Huang, Sitao and Wen, Yuan and Petoumenos, Pavlos and Wang, Yu},
-    <br> journal={CCF Transactions on High Performance Computing},
-    <br> volume={5},
-    <br> number={2},
-    <br> pages={210--227},
-    <br> year={2023},
-    <br> publisher={Springer}
-    <br> }"
-
 cats2024:
   title: "CATS: Context-Aware Thresholding for Sparsity in Large Language Models"
   abstract: "<p>
@@ -157,4 +149,34 @@ cats2024:
     <br> author={Lee, Donghyun and Lee, Jaeyong and Zhang, Genghan and Tiwari, Mo and Mirhoseini, Azalia},
     <br> booktitle={First Conference on Language Modeling},
     <br> year={2024}
+    <br> }"
+
+sgap2023:
+  title: "Sgap: Towards Efficient Sparse Tensor Algebra Compilation for GPU"
+  abstract: "<p>
+    Sparse compiler is a promising solution for sparse tensor algebra optimization. In compiler implementation, reduction in sparse-dense hybrid algebra plays a key role in performance. Though GPU provides various reduction semantics that can better utilize the parallel computing and memory bandwidth capacity, the central question is: how to elevate the flexible reduction semantics to sparse compilation theory that assumes serial execution. Specifically, we have to tackle two main challenges: (1) there are wasted parallelism by adopting static synchronization granularity (2) static reduction strategy limits optimization space exploration. We propose Sgap: segment group and atomic parallelism to solve these problems. Atomic parallelism captures the flexible reduction semantics to systematically analyze the optimization space of sparse-dense hybrid algebra on GPU. It is a new optimization technique beyond current compiler-based and open-source runtime libraries. Segment group elevates the flexible reduction semantics to suitable levels of abstraction in the sparse compilation theory. It adopts changeable group size and user-defined reduction strategy to solve challenge (1) and (2), respectively. Finally, we use GPU sparse matrix-matrix multiplication (SpMM) on the TACO compiler as a use case to demonstrate the effectiveness of segment group in reduction semantics elevation. We achieve up to 1.2x speedup over the original TACO's SpMM kernels. We also apply new optimization techniques found by atomic parallelism to an open-source state-of-the-art SpMM library dgSPARSE. We achieve 1.6x~2.3x speedup on the algorithm tuned with atomic parallelism.
+    </p>"
+  venue: "CCF Transactions on High Performance Computing"
+  year: 2023
+  pdf: /publications/sgap2023.pdf
+  authors:
+    - genghan
+    - yuetong
+    - yanting
+    - zhongming
+    - guohao
+    - sitao
+    - yuan
+    - pavlos
+    - yu
+  bibtex: 
+    " @article{zhang2023sgap,
+    <br> title={Sgap: towards efficient sparse tensor algebra compilation for GPU},
+    <br> author={Zhang, Genghan and Zhao, Yuetong and Tao, Yanting and Yu, Zhongming and Dai, Guohao and Huang, Sitao and Wen, Yuan and Petoumenos, Pavlos and Wang, Yu},
+    <br> journal={CCF Transactions on High Performance Computing},
+    <br> volume={5},
+    <br> number={2},
+    <br> pages={210--227},
+    <br> year={2023},
+    <br> publisher={Springer}
     <br> }"
