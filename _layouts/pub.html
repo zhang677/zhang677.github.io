@@ -20,6 +20,28 @@ tags: publication
   <br/>
 
   <div class="post-content">
+    <h2>Authors</h2>
+    <p>
+      {%- for author in pub.authors -%}
+        {%- if forloop.last == true and forloop.length > 1 -%}
+          and
+        {%- endif -%}
+        {%- if author == "genghan" -%}
+          <b><font color="#000000">{{ site.data.authors[author].name }}</font></b>
+          {%- if pub.co_first_authors and pub.co_first_authors contains author -%}<sup>†</sup>{%- endif -%}
+        {%- else -%}
+          <a href="{{- site.data.authors[author].site -}}" style="color: #464646">{{ site.data.authors[author].name }}</a>
+          {%- if pub.co_first_authors and pub.co_first_authors contains author -%}<sup>†</sup>{%- endif -%}
+        {%- endif -%}
+        {%- if forloop.last == false and forloop.length > 2 -%}
+          ,
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if pub.co_first_authors -%}
+        <br/><span style="font-size: 0.9em; color: #666">† co-first author</span>
+      {%- endif -%}
+    </p>
+
     <h2>Abstract</h2>
     <p>{{ pub.abstract }}</p>
 

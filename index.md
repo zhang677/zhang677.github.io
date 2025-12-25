@@ -64,13 +64,18 @@ I graduated from Tsinghua University in 2023 with a bachelor degree in Eletronic
           {%- endif %}
           {%- if author == "genghan" %}
             <b><font color="#000000">{{ site.data.authors[author].name }}</font></b>
+            {%- if pub.co_first_authors and pub.co_first_authors contains author -%}<sup>†</sup>{%- endif -%}
           {%- else %}
             <a href="{{- site.data.authors[author].site -}}" style="color: #464646">{{ site.data.authors[author].name }}</a>
+            {%- if pub.co_first_authors and pub.co_first_authors contains author -%}<sup>†</sup>{%- endif -%}
           {%- endif -%}
           {%- if forloop.last == false and forloop.length > 2 -%}
             ,
           {%- endif %}
         {%- endfor -%}<br/>
+        {%- if pub.co_first_authors -%}
+        <span style="font-size: 0.9em; color: #666">† co-first author</span><br/>
+        {%- endif -%}
         <i>{{ pub.venue }}
         {%- if pub.venuenote %}
         ({{ pub.venuenote }})

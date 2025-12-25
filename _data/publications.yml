@@ -25,6 +25,8 @@ agent2025:
     ML libraries, often written in architecture-specific programming languages (ASPLs) that target domain-specific architectures, are key to efficient ML systems. However, writing these high-performance ML libraries is challenging because it requires expert knowledge of ML algorithms and the ASPL. Large language models (LLMs), on the other hand, have shown general coding capabilities. However, challenges remain when using LLMs for generating ML libraries using ASPLs because 1) this task is complicated even for experienced human programmers and 2) there are limited code examples because of the esoteric and evolving nature of ASPLs. Therefore, LLMs need complex reasoning with limited data in order to complete this task. To address these challenges, we introduce an adaptive self-improvement agentic system. In order to evaluate the effectiveness of our system, we construct a benchmark of a typical ML library and generate ASPL code with both open and closed-source LLMs on this benchmark. Our results show improvements of up to 3.9x over a baseline single LLM.
     </p>"
   venue: "ICML 2025 Poster (acceptance rate: 26.9%); ICML 2025 ES-FoMo Workshop"
+  year: 2025
+  month: July
   award: "ICLR 2025 DL4C Workshop Best Paper Award (2/63)"
   blog: "https://zhang677.github.io/blog_md/aspl.html"
   pdf: /publications/agent2025.pdf
@@ -47,6 +49,8 @@ ttt2025:
   Self-attention performs well in long context but has quadratic complexity. Existing RNN layers have linear complexity, but their performance in long context is limited by the expressive power of their hidden states. We present a practical framework for instantiating sequence modeling layers with linear complexity and expressive hidden states. The key idea is to make the hidden state a machine learning model itself, and the update rule a step of self-supervised learning. Since the hidden state is updated by training even on test sequences, our layers are called Test-Time Training (TTT) layers. We consider two instantiations: TTT-Linear and TTT-MLP, whose hidden state is a linear model and a two-layer MLP respectively. We evaluate our instantiations at the scale of 125M to 1.3B parameters, comparing with a strong Transformer and Mamba, a modern RNN. Similar to Transformer, TTT-Linear and TTT-MLP can keep reducing perplexity by conditioning on more tokens, while Mamba cannot after 16k context. TTT-MLP still faces challenges in memory I/O, but shows larger potential in long context, pointing to a promising direction for future research.
   </p>"
   venue: "ICML 2025 Spotlight (acceptance rate 2.59%)"
+  year: 2025
+  month: July
   pdf: /publications/ttt2025.pdf
   authors:
     - yusun
@@ -88,6 +92,8 @@ pldi2024:
     enabling tensor computations on data that would otherwise run out of memory.
     </p>"
   venue: "PLDI 2024 (acceptance rate 27.64%)" 
+  year: 2024
+  month: June
   pdf: /publications/pldi2024.pdf
   authors:
     - genghan
@@ -129,6 +135,8 @@ cats2024:
     generation. We release our code, experiments, and datasets at https://github.com/ScalingIntelligence/CATS.
     </p>"
   venue: "COLM 2024 (acceptance rate 28.86%)"
+  year: 2024
+  month: October
   blog: https://scalingintelligence.stanford.edu/blogs/cats/
   pdf: /publications/cats2024.pdf
   authors:
@@ -137,6 +145,9 @@ cats2024:
     - genghan
     - mo
     - azalia
+  co_first_authors:
+    - donghyun
+    - jeyong
   bibtex: 
     " @inproceedings{leecats,
     <br> title={CATS: Context-Aware Thresholding for Sparsity in Large Language Models},
