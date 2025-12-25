@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: "AccelOpt: A Self-Improving LLM Agentic System for AI Accelerator Kernel Optimization"
+title: "One Agent, Any Chip: Expert-free, Self-Improving Kernel Optimization"
 date: 2025-12-22
 authors:
   - genghan
