@@ -137,7 +137,10 @@ Reinforcement Learning (RL) was then applied using [GRPO](https://arxiv.org/pdf/
 | SFT-Numpy-NKI | 105 / 150 | 49 / 150 | 1.032 | 1.210 |
 | SFT-Numpy-NKI-RL | 108 / 150 | 67 / 150 | 1.025 | 1.152 |
 
-RL infrastructure was initiated by Anjiang Wei, who also collected the first 1k+150 kernels, and implemented the Numpy-NKI recipes. Genghan Zhang later optimized the RL infrastructure, collected the 18k "slow-fast" kernel pairs, and implemented the Slow-Fast recipes.
+RL infrastructure was initiated by Anjiang Wei, who also collected the first 1k+150 kernels, and implemented the Numpy-NKI recipes. Genghan Zhang later optimized the RL infrastructure, collected the 18k 'slow-fast' kernel pairs, and implemented the Slow-Fast recipes.
+
+# Fast-weight Engieering
+Context engineering can be viewed as "fast-weight engineering" because the context persists in the KV-cache, where it is referenced by every generated token much like static model weights. Workflows such as AccelOpt demonstrate that this is not merely ad-hoc manual prompting, but a systematic approach to fast-weight optimization. In a broader sense, just as back-propagation was designed to optimize weights, we are now seeking the most effective design for context. We are currently in an era reminiscent of the early days of neural networks, experimenting with diverse "weight engineering" recipes to find what sticks.
 
 # Acknowledgement
 This work was a collaborative effort across several teams. I would like to thank our collaborators from Stanford University, AWS Neuron Science Team, and the University of Toronto: Shaowei Zhu, Anjiang Wei, Zhenyu Song, Allen Nie, Zhen Jia, Nandita Vijaykumar, Yida Wang, and Kunle Olukotun.
