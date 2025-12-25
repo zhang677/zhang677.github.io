@@ -100,7 +100,7 @@ Developed concurrently with FlashInfer-Bench, NKIBench utilizes a similar interf
 
 # What about RL?
 **TL;DR**: An effective training recipe has not yet been identified.
-Our dataset consists of ~18k "slow-fast" pairs derived from 16 iterations of AccelOpt across 14 distinct problems. Additionally, we leveraged an in-house NKI program generator to produce 1k kernels for training and 150 for evaluation. Supervised Fine-Tuning (SFT) was conducted using two distinct tasks: (1) slow-to-fast NKI kernel optimization and (2) Numpy-to-NKI translation.
+Our dataset consists of ~18k "slow-fast" pairs derived from 16 iterations of AccelOpt across 14 distinct problems. Additionally, we leveraged an in-house NKI program generator to produce 1k kernels for training and 150 for evaluation. Supervised Fine-Tuning (SFT) was conducted using two distinct tasks: (1) slow-to-fast NKI kernel transformation and (2) Numpy-to-NKI program translation.
 Reinforcement Learning (RL) was then applied using [GRPO](https://arxiv.org/pdf/2402.03300) via [verl](https://github.com/volcengine/verl/tree/main), trained on the 1k NKI kernel dataset. The reward function was designed to penalize empty outputs, compilation errors, and performance regressions, while incentivizing functional correctness and execution speedup. We evaluated four distinct recipes using a Best-of-5 sampling strategy. Metrics include the number of correct cases, the count of cases achieving a speedup ≥ 1, and the average speedup among those cases with speedup ≥ 1.
 
 **Qwen2.5-Coder-7B-Instruct**
