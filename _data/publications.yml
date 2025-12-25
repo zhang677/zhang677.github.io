@@ -91,7 +91,7 @@ pldi2024:
     compress away zeros. This compression can asymptotically decrease memory usage,
     enabling tensor computations on data that would otherwise run out of memory.
     </p>"
-  venue: "Conference on Programming Language Design and Implementation (PLDI)" 
+  venue: "PLDI 2024 (acceptance rate 27.64%)" 
   year: 2024
   month: June
   pdf: /publications/pldi2024.pdf
@@ -134,7 +134,7 @@ cats2024:
     Our custom kernel implementation of CATS results in a ~15% improvement in wall-clock inference latency of token
     generation. We release our code, experiments, and datasets at https://github.com/ScalingIntelligence/CATS.
     </p>"
-  venue: "First Conference on Language Modeling"
+  venue: "COLM 2024 (acceptance rate 28.86%)"
   year: 2024
   month: October
   blog: https://scalingintelligence.stanford.edu/blogs/cats/
