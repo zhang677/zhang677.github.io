@@ -65,6 +65,10 @@ ttt2025:
     - sanmi
     - tatsu
     - carlos
+  co_first_authors:
+    - yusun
+    - xinhao
+    - karan
 
 pldi2024:
   title: "Compilation of Modular and General Sparse Workspaces"
