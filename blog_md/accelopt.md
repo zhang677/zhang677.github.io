@@ -113,7 +113,7 @@ These properties indicate that kernel ~~benchmarks~~ environments must be **scal
 <br>
 
 # Can Self-Repairing Boost Self-Improvement?
-**Self-repairing extends the limits of self-improvement** by fixing syntactic bugs in potentially fast kernels. Our implementation adds a "fixer" agent after the executor; for every sampled kernel, the fixer takes the failed code and the error log to generate a corrected version. The fixer repeats this process until the kernel is functional or the allocated budget is reached. Self-repairing is useful because the LLM can make mistakes even when specific behaviors are restricted in the prompt, often due to outdated syntactic knowledge.
+**Self-repairing extends the limits of self-improvement** by fixing syntactic bugs in potentially fast kernels. Our implementation adds a "fixer" agent after the executor; for every sampled kernel, the fixer takes the failed code and the error log to generate a fixed version. The fixer repeats this process until the fixed kernel is correct or the allocated budget is reached. Self-repairing is useful because LLMs often commit syntactic errors despite explicit prompt constraints. Common failures include the frequent use of slice indexing on local accumulators and attempts to manually manage shared memory. Both behaviors are unsupported in Triton and often occur even when the prompt explicitly prohibits them.
 <div class="figure">
   <img src="/assets/img/speedup_comparison.png" alt="Fib">
   <div class="caption">
