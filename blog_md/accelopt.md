@@ -80,16 +80,6 @@ In collaboration with other CAs, we developed [four extra-credit problems](https
 <br>
 This example underscores the generality of AccelOpt beyond NKIBench and highlights the educational impact of LLM-assisted kernel optimization.
 
-# What about GPU?
-AccelOpt is a hardware-agnostic framework. To demonstrate its efficacy, we evaluated its performance on the H100 SXM5 platform using nine categories of the [FlashInfer-Bench](https://bench.flashinfer.ai/) best Triton baselines (as of December 23, 2025). Utilizing the gpt-oss-120b model, AccelOpt discovered significant kernel enhancements, achieving up to a 3.49x speedup. [Here](https://github.com/zhang677/AccelOpt/tree/e445784df36af4c73ed5b77ecec97fe14f6d52eb/experiments/flb_full_complete_local/results/12-21-17-05) are all the generated kernels. We are currently collaborating with the FlashInfer-Bench team to integrate these optimized kernels into the public benchmark.
-<div class="figure">
-  <img src="/assets/img/accelopt-fib.png" alt="Fib">
-  <div class="caption">
-    <strong>Figure 8</strong> Performance evaluation of AccelOpt on selected FlashInfer-Bench problems. The y-axis represents latency, where a lower score signifies better kernels.
-  </div>
-</div>
-<br>
-
 # Let the Agent Flow: Beyond Human Guidance
 A notable finding of AccelOpt is that the base prompt does not need to include full syntax information for NKI—a relatively new architecture-specific programming language ([ASPL](https://zhang677.github.io/blog_md/aspl.html)) released in 2024. It is often assumed that LLMs must master the syntax of ASPLs before optimizing kernels<sup><a id="ref3-return" href="#ref3">3</a></sup>. However, as pointed out in [this blog](https://zhang677.github.io/blog_md/reason.html), many ASPLs' syntax have a structural similarity to one another. Therefore, **syntax is not the primary consideration**; the priority is building a workflow that enables continuous improvement. 
 
@@ -110,7 +100,36 @@ Kernel benchmarks have three distinct properties that distinguish them from trad
 2. **Hardware-Dependent Evaluation**: Evaluating kernels requires directly running them on real hardware. With LLM inference and fine-tuning becoming standardized and optimized, the entire self-improvement process is often bottlenecked by kernel profiling.
 3. **Production Readiness**: The surrounding ML frameworks are mature, meaning optimized kernels can be deployed directly into production.
 
-These properties indicate that kernel ~~benchmarks~~ environments must be **scalable** for new problems, **parallelized** to evaluate heavy sampling, and **modular** for "day-zero" integration. Developed concurrently with FlashInfer-Bench, NKIBench utilizes a similar interface that features structured storage for problems and kernels along with a distributed profiling service. This represents an advancement over traditional kernel benchmarks, such as KernelBench<sup><a id="ref4-return" href="#ref4">4</a></sup>, which consist only of a list of problems. By providing more than just a fixed repository of tasks, this new approach creates a comprehensive environment for the development of self-improving LLM agents.
+These properties indicate that kernel ~~benchmarks~~ environments must be **scalable** for new problems, **parallelized** to evaluate heavy sampling, and **modular** for "day-zero" integration. Developed concurrently with [FlashInfer-Bench](https://bench.flashinfer.ai/), NKIBench utilizes a similar interface that features structured storage for problems and kernels along with a distributed profiling service. This represents an advancement over traditional kernel benchmarks, such as KernelBench<sup><a id="ref4-return" href="#ref4">4</a></sup>, which consist only of a list of problems. By providing more than just a fixed repository of tasks, this new approach creates a comprehensive environment for the development of self-improving LLM agents.
+
+# What about GPU?
+**AccelOpt is a hardware-agnostic framework.** To demonstrate its efficacy, we evaluated its performance on the H100 SXM5 platform using 25 of the FlashInfer-Bench best Triton baselines (as of December 23, 2025). Utilizing the gpt-oss-120b model, AccelOpt discovered significant kernel enhancements, achieving up to a 6.78x speedup. [Here](https://github.com/zhang677/AccelOpt/tree/e445784df36af4c73ed5b77ecec97fe14f6d52eb/experiments/flb_full_complete_local/results/12-21-17-05) are some of the generated kernels. We are currently collaborating with the FlashInfer-Bench team to integrate these optimized kernels into the public benchmark.
+<div class="figure">
+  <img src="/assets/img/accelopt-fib.png" alt="Fib">
+  <div class="caption">
+    <strong>Figure 8</strong> Performance evaluation of AccelOpt on selected FlashInfer-Bench problems. The y-axis represents latency, where a lower score signifies better kernels.
+  </div>
+</div>
+<br>
+
+# Can Self-Repairing Boost Self-Improvement?
+**Self-repairing extends the limits of self-improvement** by fixing syntactic bugs in potentially fast kernels. Our implementation adds a "fixer" agent after the executor; for every sampled kernel, the fixer takes the failed code and the error log to generate a corrected version. The fixer repeats this process until the kernel is functional or the allocated budget is reached. Self-repairing is useful because the LLM can make mistakes even when specific behaviors are restricted in the prompt, often due to outdated syntactic knowledge.
+<div class="figure">
+  <img src="/assets/img/speedup_comparison.png" alt="Fib">
+  <div class="caption">
+    <strong>Figure 9</strong> Speedup comparison between AccelOpt and AccelOpt + Self-reparing (Fixer).
+  </div>
+</div>
+<br>
+
+Self-repairing is particularly effective for complex kernels like GQA and MLA, which are more prone to errors due to their code density. Self-repariing delivers another 32.8% speedup for only $23.70. To be noted, with AcceclOpt **kernel optimization can be really cheap: no more than $5 per kernel**.
+<div class="figure">
+  <img src="/assets/img/cost_comparison.png" alt="Fib">
+  <div class="caption">
+    <strong>Figure 10</strong> Cost comparison between AccelOpt and AccelOpt + Self-reparing (Fixer)..
+  </div>
+</div>
+<br>
 
 # What about RL?
 **TL;DR**: An effective training recipe has not yet been identified. We believe the potential of **AccelOpt for data synthesis** remains underexplored.
