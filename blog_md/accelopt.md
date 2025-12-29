@@ -112,21 +112,21 @@ These properties indicate that kernel ~~benchmarks~~ environments must be **scal
 </div>
 <br>
 
-# Can Self-Repairing Boost Self-Improvement?
-**Self-repairing extends the limits of self-improvement** by fixing syntactic bugs in potentially fast kernels. Our implementation adds a "fixer" agent after the executor; for every sampled kernel, the fixer takes the failed code and the error log to generate a fixed version. The fixer repeats this process until the fixed kernel is correct or the allocated budget is reached. Self-repairing is useful because LLMs often commit syntactic errors despite explicit prompt constraints. Typical errors involve unsupported behaviors like slice indexing on local accumulators and manual shared memory management. These mistakes might stem from the LLM conflating Triton's syntax with that of similar languages.
+# Can Iterative Refinement Boost Self-Improvement?
+**Iterative refinement extends the limits of self-improvement** by fixing syntactic bugs in potentially fast kernels. Our implementation adds a "fixer" agent after the executor; for every sampled kernel, the fixer takes the failed code and the error log to generate a fixed version. The fixer repeats this process until the fixed kernel is correct or the allocated budget is reached. Iterative refinement is useful because LLMs often commit syntactic errors despite explicit prompt constraints. Typical errors involve unsupported behaviors like slice indexing on local accumulators and manual shared memory management. These mistakes might stem from the LLM conflating Triton's syntax with that of similar languages.
 <div class="figure">
   <img src="/assets/img/speedup_comparison.png" alt="Fib">
   <div class="caption">
-    <strong>Figure 9</strong> Speedup comparison between AccelOpt and AccelOpt + Self-reparing (Fixer).
+    <strong>Figure 9</strong> Speedup comparison between AccelOpt and AccelOpt + Iterative refinement (Fixer).
   </div>
 </div>
 <br>
 
-Self-repairing is particularly effective for complex kernels like GQA and MLA, which are more prone to errors due to their code density. Self-repariing delivers another 32.8% speedup for only $23.70. To be noted, with AcceclOpt **kernel optimization can be really cheap: no more than $5 per kernel**.
+Iterative refinement is particularly effective for complex kernels like GQA and MLA, which are more prone to errors due to their code density. Built on top of AccelOpt, iterative refinement achieves another 32.8% speedup at a total cost of only $23.70. It is worth noting that **with AccelOpt, kernel optimization can be incredibly affordable**, delivering over a 5x speedup for less than $5.
 <div class="figure">
   <img src="/assets/img/cost_comparison.png" alt="Fib">
   <div class="caption">
-    <strong>Figure 10</strong> Cost comparison between AccelOpt and AccelOpt + Self-reparing (Fixer)..
+    <strong>Figure 10</strong> Cost comparison between AccelOpt and AccelOpt + Iterative refinement (Fixer).
   </div>
 </div>
 <br>
