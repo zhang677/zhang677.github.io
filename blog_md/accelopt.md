@@ -105,7 +105,7 @@ These properties indicate that kernel ~~benchmarks~~ environments must be **scal
 # What about GPU?
 **AccelOpt is a hardware-agnostic framework.** To demonstrate its efficacy, we evaluated its performance on the H100 SXM5 platform using 25 of the FlashInfer-Bench best Triton baselines (as of December 23, 2025). Utilizing the gpt-oss-120b model, AccelOpt discovered significant kernel enhancements, achieving up to a 6.78x speedup. [Here](https://github.com/zhang677/AccelOpt/tree/e445784df36af4c73ed5b77ecec97fe14f6d52eb/experiments/flb_full_complete_local/results/12-21-17-05) are some of the generated kernels. We are currently collaborating with the FlashInfer-Bench team to integrate these optimized kernels into the public benchmark.
 <div class="figure">
-  <img src="/assets/img/accelopt-fib.png" alt="Fib">
+  <img src="/assets/img/accelopt-fib-25.png" alt="Fib">
   <div class="caption">
     <strong>Figure 8</strong> Performance evaluation of AccelOpt on selected FlashInfer-Bench problems. The y-axis represents latency, where a lower score signifies better kernels.
   </div>
