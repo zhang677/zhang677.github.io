@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: "One Agent, Any Chip: Expert-free, Self-Improving Kernel Optimization"
+title: "AccelOpt: Democratizing AI Accelerator Programming with Self-Improving LLM Agents"
 date: 2025-12-22
 authors:
   - genghan
