@@ -147,7 +147,7 @@ Iterative refinement is particularly effective for complex kernels like GQA and 
 </div>
 <br>
 
-These results demonstrate that AccelOpt **can exceed expert-level performance in NKI and Triton**. This stems from AccelOpt's scalability: human experts optimize a handful of kernels sequentially, while AccelOpt can explore many in parallel. We uploaded all the kernels mentioned above to https://github.com/zhang677/AccelOpt/tree/master/samples.
+These results demonstrate that AccelOpt **can exceed expert-level performance in NKI and Triton**. This stems from AccelOpt's scalability: human experts optimize a handful of kernels sequentially, while AccelOpt can explore many in parallel. We uploaded all the kernels mentioned above [here](https://github.com/zhang677/AccelOpt/tree/master/samples).
 
 # What about RL?
 **TL;DR**: An effective training recipe has not yet been identified. We believe the potential of **AccelOpt for data synthesis** remains underexplored.
