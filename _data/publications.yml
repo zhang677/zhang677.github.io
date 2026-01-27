@@ -18,6 +18,14 @@ accelopt2025:
     - nandita
     - yida
     - kunle
+  bibtex: 
+    " @article{zhang2026accelopt,
+    <br> title={AccelOpt: A Self-Improving LLM Agentic System for AI Accelerator Kernel Optimization},
+    <br> author={Zhang, Genghan and Zhu, Shaowei and Wei, Anjiang and Song, Zhenyu and Nie, Allen and Jia, Zhen and Vijaykumar, Nandita and Wang, Yida and Olukotun, Kunle},
+    <br> journal={Proceedings of Machine Learning and Systems},
+    <br> volume={9},
+    <br> year={2026}
+    <br> }"
 
 agent2025:
   title: "Adaptive Self-improvement LLM Agentic System for ML Library Development"
@@ -39,7 +47,7 @@ agent2025:
     " @article{zhang2025adaptive,
     <br> title={Adaptive Self-improvement LLM Agentic System for ML Library Development},
     <br> author={Zhang, Genghan and Liang, Weixin and Hsu, Olivia and Olukotun, Kunle},
-    <br> journal={arXiv preprint arXiv:2502.02534},
+    <br> journal={Proceedings of the 42nd International Conference on Machine Learning},
     <br> year={2025}
     <br> }"
 
@@ -61,6 +69,13 @@ step2025:
     - nathanz
     - olivia
     - kunle
+  bibtex: 
+    " @article{sohn2026streaming,
+    <br> title={Streaming Tensor Program: A streaming abstraction for dynamic parallelism},
+    <br> author={Sohn, Gina and Zhang, Genghan and Hossfeld, Konstantin and Kim, Jungwoo and Sobotka, Nathan and Zhang, Nathan and Hsu, Olivia and Olukotun, Kunle},
+    <br> journal={Proceedings of the 31st ACM International Conference on Architectural Support for Programming Languages and Operating Systems},
+    <br> year={2026}
+    <br> }"
 
 ttt2025:
   title: "Learning to (Learn at Test Time): RNNs with Expressive Hidden States"
