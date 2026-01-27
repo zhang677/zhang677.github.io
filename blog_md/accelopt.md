@@ -20,7 +20,7 @@ The unprecedented demand for compute power in the age of large models has prompt
 There are two primary challenges. First, **LLM queries incur substantial computational costs**, this exploration must be conducted strategically to balance comprehensive search space coverage with cost efficiency. Second, we aim to enable the LLM-based system to **autonomously accumulate optimization insights during such explorations**, allowing the system to progressively improve its capabilities over time without requiring manual intervention.
 
 <div class="figure">
-  <img src="/assets/img/accelopt-main-method.png" alt="AccelOpt-Method">
+  <img src="/assets/img/accelopt-main-method-with-fixer.png" alt="AccelOpt-Method">
   <div class="caption">
     <strong>Figure 2</strong> At each iteration of AccelOpt, the agentic workflow shown on the right optimizes the candidate kernels with the latest optimization memory, and generates new candidate kernels, updating optimization memory with newly collected experiences.
   </div>
@@ -105,14 +105,14 @@ These properties indicate that kernel ~~benchmarks~~ environments must be **scal
 # What about GPU?
 **AccelOpt is a hardware-agnostic framework.** To demonstrate its efficacy, we evaluated its performance on the H100 SXM5 platform using 24 of the FlashInfer-Bench best Triton baselines (as of December 23, 2025). Utilizing the gpt-oss-120b model, AccelOpt discovered significant kernel enhancements, achieving up to a 6.78x speedup. [Here](https://github.com/zhang677/AccelOpt/tree/e445784df36af4c73ed5b77ecec97fe14f6d52eb/experiments/flb_full_complete_local/results/12-21-17-05) are some of the generated kernels. We are currently collaborating with the FlashInfer-Bench team to integrate these optimized kernels into the public benchmark.
 <div class="figure">
-  <img src="/assets/img/accelopt-fib-25.png" alt="Fib">
+  <img src="/assets/img/accelopt-fib-24.png" alt="Fib">
   <div class="caption">
     <strong>Figure 8</strong> Performance evaluation of AccelOpt on selected FlashInfer-Bench problems. The y-axis represents latency, where a lower score signifies better kernels.
   </div>
 </div>
 <br>
 
-# Can Iterative Refinement Boost Self-Improvement?
+# Can Iterative Refinement (Fixer) Boost Self-Improvement?
 **Iterative refinement extends the limits of self-improvement** by fixing syntactic bugs in potentially fast kernels. Our implementation adds a "fixer" agent after the executor; for every sampled kernel, the fixer takes the failed code and the error log to generate a fixed version. The fixer repeats this process until the fixed kernel is correct or the allocated budget is reached. Iterative refinement is useful because LLMs often commit syntactic errors despite explicit prompt constraints. Typical errors involve unsupported behaviors like slice indexing on local accumulators and manual shared memory management. These mistakes might stem from the LLM conflating Triton's syntax with that of similar languages.
 <div class="figure">
   <img src="/assets/img/speedup_comparison.png" alt="Fib">
@@ -130,6 +130,24 @@ Iterative refinement is particularly effective for complex kernels like GQA and 
   </div>
 </div>
 <br>
+
+# How far is AccelOpt from Human Experts?
+
+*NKI Mamba* [NKI tutorial](https://github.com/aws-neuron/nki-samples/blob/main/src/nki_samples/tutorials/fused_mamba/mamba_nki_kernels.py) provides three progressively faster human versions, reaching 28.4%, 30.1%, and 52.7% of peak throughput. Starting from the same baseline (28.4% of peak), AccelOpt autonomously improved the kernel to 54.6% of peak, which is **1.04x** the best expert result (52.7%). Moreover, the generated kernel used a different loop order than the best human.
+
+*NKI RoPE* The initial RoPE kernel was adopted from [nki-samples](https://github.com/aws-neuron/nki-samples/blob/main/src/nki_samples/tutorials/rotary/rotary_nki_kernels.py). NKI samples provide one version of RoPE (21.1% of peak). Starting from this version, AccelOpt improved performance to 29.6% of peak, a **1.4×** speedup over the human reference. 
+
+*Triton Attention* We compared AccelOpt (B=2, N=4, K=2, F=5) on H100 SXM5 against FlashInfer across 8 attention workloads of FlashInfer-Bench. The best AccelOpt configuration achieved **an average of 0.59x** the performance of FlashInfer and **1.5x at best** on GQA_Paged_Decode. We also observed that better base models (from gpt-oss-120b to gemini-3-flash) can yield a 1.61x speedup and doubling the number of iterations can lead to an additional 1.18x speedup. 
+
+<div class="figure">
+  <img src="/assets/img/compare_bars_with_flashinfer.png" alt="Fib">
+  <div class="caption">
+    <strong>Figure 11</strong> Performance comparison between AccelOpt with Fixer and FlashInfer.
+  </div>
+</div>
+<br>
+
+These results demonstrate that AccelOpt **can exceed expert-level performance in NKI and Triton**. This stems from AccelOpt's scalability: human experts optimize a handful of kernels sequentially, while AccelOpt can explore many in parallel. We uploaded all the kernels mentioned above to https://github.com/zhang677/AccelOpt/tree/master/samples.
 
 # What about RL?
 **TL;DR**: An effective training recipe has not yet been identified. We believe the potential of **AccelOpt for data synthesis** remains underexplored.
