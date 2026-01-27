@@ -44,11 +44,19 @@ agent2025:
     - olivia
     - kunle
   bibtex: 
-    " @article{zhang2025adaptive,
+    " @InProceedings{zhang2025adaptive,
     <br> title={Adaptive Self-improvement LLM Agentic System for ML Library Development},
     <br> author={Zhang, Genghan and Liang, Weixin and Hsu, Olivia and Olukotun, Kunle},
-    <br> journal={Proceedings of the 42nd International Conference on Machine Learning},
-    <br> year={2025}
+    <br> booktitle={Proceedings of the 42nd International Conference on Machine Learning},
+    <br> pages={75427--75452},
+    <br> year={2025},
+    <br> editor={Singh, Aarti and Fazel, Maryam and Hsu, Daniel and Lacoste-Julien, Simon and Berkenkamp, Felix and Maharaj, Tegan and Wagstaff, Kiri and Zhu, Jerry},
+    <br> volume = 	 {267},
+    <br> series = 	 {Proceedings of Machine Learning Research},
+    <br> month = 	 {13--19 Jul},
+    <br> publisher =    {PMLR},
+    <br> pdf = 	 {https://raw.githubusercontent.com/mlresearch/v267/main/assets/zhang25at/zhang25at.pdf},
+    <br> url = 	 {https://proceedings.mlr.press/v267/zhang25at.html},
     <br> }"
 
 step2025:
@@ -103,6 +111,21 @@ ttt2025:
     - yusun
     - xinhao
     - karan
+  bibtex: 
+    " @InProceedings{yu2025learning,
+    <br> title = 	 {Learning to ({L}earn at Test Time): {RNN}s with Expressive Hidden States},
+    <br> author =       {Sun, Yu and Li, Xinhao and Dalal, Karan and Xu, Jiarui and Vikram, Arjun and Zhang, Genghan and Dubois, Yann and Chen, Xinlei and Wang, Xiaolong and Koyejo, Sanmi and Hashimoto, Tatsunori and Guestrin, Carlos},
+    <br> booktitle = 	 {Proceedings of the 42nd International Conference on Machine Learning},
+    <br> pages = 	 {57503--57522},
+    <br> year = 	 {2025},
+    <br> editor = 	 {Singh, Aarti and Fazel, Maryam and Hsu, Daniel and Lacoste-Julien, Simon and Berkenkamp, Felix and Maharaj, Tegan and Wagstaff, Kiri and Zhu, Jerry},
+    <br> volume = 	 {267},
+    <br> series = 	 {Proceedings of Machine Learning Research},
+    <br> month = 	 {13--19 Jul},
+    <br> publisher =    {PMLR},
+    <br> pdf = 	 {https://raw.githubusercontent.com/mlresearch/v267/main/assets/sun25h/sun25h.pdf},
+    <br> url = 	 {https://proceedings.mlr.press/v267/sun25h.html}
+    <br> }"
 
 pldi2024:
   title: "Compilation of Modular and General Sparse Workspaces"
