@@ -143,7 +143,7 @@ Context engineering can be viewed as 'fast-weight engineering' because the conte
 
 # Acknowledgement
 This work was a collaborative effort across several teams. I would like to thank our collaborators from Stanford University, AWS Neuron Science Team, and the University of Toronto: Shaowei Zhu, Anjiang Wei, Zhenyu Song, Allen Nie, Zhen Jia, Nandita Vijaykumar, Yida Wang, and Kunle Olukotun.
-Special thanks to Stanford CS149 instructors Kayvon Fatahalian and Kunle Olukotun, as well as the amazing CA team—particularly our "Assignment 4 gurus" Weixin Yu and Anthony Zhan—and the AWS support team for their essential role in the course. Finally, I’m grateful to Yixin Dong from the FlashInfer-Bench team for his insights and collaboration.
+Special thanks to Stanford CS149 instructors Kayvon Fatahalian and Kunle Olukotun, as well as the amazing CA team—particularly our "Assignment 4 gurus" Weixin Yu and Anthony Zhan—and the AWS support team for their essential role in the course.
 
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/accelopt-nano-banana.jpeg" alt="AccelOpt-Moon" style="width: 40%; height: auto">
