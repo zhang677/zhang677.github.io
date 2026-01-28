@@ -9,6 +9,8 @@ authors:
   - kunle
 ---
 
+More details can be found in <a href="https://proceedings.mlr.press/v267/zhang25at.html">our ICML 2025 paper</a>.  We open source the algorithm with the agentic system <a href="https://github.com/zhang677/PCL-lite">here</a>. 
+
 # ML library development using ASPLs
 
 ML libraries, such as cuDNN and MIOpen, provide high-performance implementation of the operators in ML frameworks such as PyTorch and Jax. They are key to efficient ML systems. ML libraries are often written in architecture-specific programming languages (ASPLs) that target domain-specific architectures (DSAs). Figure 1 shows an example of ML library development.
@@ -99,7 +101,7 @@ Here we share three interesting findings:
 # Impact
 Our approach not only produces a self-improving agentic system to assist humans but also generates high-quality ML operators that can be leveraged by other systems. By enabling users without extensive ASPL expertise to construct efficient ML operators, this advancement could democratize access to ML development tools and reduce the technical barriers to entry. As stronger models emerge, such as <a href="https://api-docs.deepseek.com/news/news250120">DeepSeek-R1</a> and <a href="https://openai.com/index/openai-o3-mini/">OpenAI o3-mini</a>, our tasks can offer a good benchmark to test their complex reasoning with limited data.
 
-More details can be found in <a href="https://arxiv.org/abs/2502.02534">our paper</a>. The paper is selected as one of the Best Paper Awards at the <a href="https://openreview.net/group?id=ICLR.cc/2025/Workshop/DL4C#tab-accept-best-paper">DL4C Workshop @ ICLR 2025</a>. The paper is also accepted as posters for ICLR 2025 Workshop on Reasoning and Planning for Large Language Models and 2025 MLSys Young Professionals Symposium. We open source the algorithm with the agentic system <a href="https://github.com/zhang677/PCL-lite">here</a>. 
+The paper is selected as one of the Best Paper Awards at the <a href="https://openreview.net/group?id=ICLR.cc/2025/Workshop/DL4C#tab-accept-best-paper">DL4C Workshop @ ICLR 2025</a>. The paper is also accepted as posters for ICLR 2025 Workshop on Reasoning and Planning for Large Language Models and 2025 MLSys Young Professionals Symposium.
 
 # References
 
