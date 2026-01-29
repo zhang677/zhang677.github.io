@@ -5,13 +5,54 @@ date: 2026-01-28
 authors:
   - genghan
 ---
+Devils are in the details.
 
-1. Robust measurement: lock the clock frequency, retry on high latency variance, use multiple random seeds and high variance inputs
+**Robust measurement**
 
-2. Extensible parallel profiling infra: cache the reference results and input tensors (avoid repetitive heavy CPU computation; balance with the modularity of the profiling serivce), compatible with Python async, proper timeout, fault tolerance (especially when the driver or network are not 100% reliable)
+(1) lock GPU clock frequency; 
 
-3. Logging: checkpoint and push-button restore, use local instead of cloud trace monitoring tools (network bandwidth), design comprehensive and flattened schema to store intermediate states, gitignore large logs
+(2) retry when latency variance is high; 
 
-4. Versioning: seperate key logics and experiments (e.g. AccelOpt and AccelOpt-exps), make each experiment self-contained (don't spread the associated scripts across folders), record a precise description of every experiment, seperate reusable python scripts and per-case bash scripts + json configuration, version the prompts in different folders (otherwise the bug will be really hard to notice)
+(3) use multiple random seeds and high-variance inputs (as in FlashAttention-3); 
 
-5. Retry logics: remember the network is not 100% reliable and massive concurrent sampling can trigger edge cases
+(4) inspect “suspiciously fast” kernels (LLMs can cheat; treat >1.5× speedup as an alert);
+
+(5) use a roofline sanity check (if FLOPs are hard to count, approximate compute intensity with `total_traffic / HBM_bandwidth`);
+
+(6) set tolerance per problem, and keep it empirically strict enough.
+
+**Extensible parallel profiling infrastructure**
+
+(1) cache reference outputs and input tensors to avoid repeating expensive profiling (while keeping the profiling service modular);
+
+(2) make it compatible with Python-async; add proper timeouts;
+
+(3) build in fault tolerance (drivers and networks are rarely 100% reliable).
+
+**Logging**
+
+(1) support checkpointing and push-button restore;
+
+(2) prefer local tracing/monitoring over cloud tools when bandwidth is a bottleneck;
+
+(3) store intermediate states in a comprehensive, flat schema;
+
+(4) .gitignore large logs by default.
+
+**Versioning**
+
+(1) separate core logic from experiments (e.g., AccelOpt vs. AccelOpt-exps);
+
+(2) keep each experiment self-contained (don’t scatter scripts across folders);
+
+(3) record an exact description for every run;
+
+(4) split reusable Python utilities from per-case bash scripts + JSON configs;
+
+(5) version prompts explicitly (otherwise hard to notice the bug).
+
+**Retry logic**
+
+(1) assume the network isn’t fully reliable;
+
+(2) handle retries, backoff, and partial failures as first-class behavior (massive concurrent sampling will trigger edge cases).
