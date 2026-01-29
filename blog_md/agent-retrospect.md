@@ -25,9 +25,11 @@ Devils are in the details.
 
 (1) cache reference outputs and input tensors to avoid repeating expensive profiling (while keeping the profiling service modular);
 
-(2) make it compatible with Python-async; add proper timeouts;
+(2) make it compatible with Python-async;
 
-(3) build in fault tolerance (drivers and networks are rarely 100% reliable).
+(3) add proper timeouts (especially for compilation);
+
+(4) build in fault tolerance (drivers and networks are not 100% reliable).
 
 **Logging**
 
@@ -37,15 +39,15 @@ Devils are in the details.
 
 (3) store intermediate states in a comprehensive, flat schema;
 
-(4) .gitignore large logs by default.
+(4) .gitignore large logs by default and add pre-commit to check >10MB files.
 
 **Versioning**
 
-(1) separate core logic from experiments (e.g., AccelOpt vs. AccelOpt-exps);
+(1) separate core logic (labeled by behaviors) from experiments (labeled by timestamps);
 
 (2) keep each experiment self-contained (don’t scatter scripts across folders);
 
-(3) record an exact description for every run;
+(3) record a concise description for every run;
 
 (4) split reusable Python utilities from per-case bash scripts + JSON configs;
 
@@ -53,6 +55,6 @@ Devils are in the details.
 
 **Retry logic**
 
-(1) assume the network isn’t fully reliable;
+(1) remember the network isn’t 100% reliable;
 
 (2) handle retries, backoff, and partial failures as first-class behavior (massive concurrent sampling will trigger edge cases).
