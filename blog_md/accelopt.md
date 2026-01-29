@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "AccelOpt: Democratizing AI Accelerator Programming with Self-Improving LLM Agents"
-date: 2025-01-17
+date: 2026-01-17
 authors:
   - genghan
 ---

@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: "AccelOpt+Fixer for Triton on H100"
-date: 2025-01-26
+date: 2026-01-26
 authors:
   - genghan
 ---
