@@ -46,7 +46,7 @@ xhttp.send();
 
 I am a computer science PhD student at Stanford University advised by Professor [Kunle Olukotun](https://engineering.stanford.edu/people/oyekunle-olukotun). I also worked with Professor [Fredrik Kjolstad](https://fredrikbk.com/) on sparse tensor algebra compilation and Professor [Azalia Mirhoseini](http://azaliamirhoseini.com/index.html) on efficient sparse large language models. 
 
-**Research**: My research interests lie in better programming models and systems for domain-specific architectures. This work includes the [Sparse Workspace](https://dl.acm.org/doi/10.1145/3656426) for sparse tensor algebra and the [AccelOpt](https://ppl.stanford.edu/accelopt.html) self-improving agents. He is also interested in optimizing GPU kernels. This work includes inference kernels for [TTT-KVB](https://arxiv.org/pdf/2407.04620) and [CATS](https://scalingintelligence.stanford.edu/blogs/cats/).
+**Research**: My research interests lie in better programming models and systems for domain-specific architectures. This work includes the [Sparse Workspace](https://dl.acm.org/doi/10.1145/3656426) for sparse tensor algebra and the [AccelOpt](https://ppl.stanford.edu/accelopt.html) self-improving agents. I am also interested in optimizing GPU kernels. This work includes inference kernels for [TTT-KVB](https://arxiv.org/pdf/2407.04620) and [CATS](https://scalingintelligence.stanford.edu/blogs/cats/).
 
 I graduated from Tsinghua University in 2023 with a bachelor degree in Eletronic Engineering. At Tsinghua, I did research at [NICS-EFC Lab](https://nicsefc.ee.tsinghua.edu.cn/) on effcient sparse tensor algebra for GPU and [IDEAL Lab](https://github.com/tsinghua-ideal) on kernel architecture search.
 
