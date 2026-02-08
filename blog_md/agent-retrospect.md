@@ -1,11 +1,11 @@
 ---
 layout: blog
-title: Notes on Building Kernel Agents 
+title: Notes on Infrastructure for Kernel Agents 
 date: 2026-01-28
 authors:
   - genghan
 ---
-Devils are in the details.
+Devils are in the details. Environment engineering is a commitment to turning ambitious research ideas into reality, so it deserves careful consideration.
 
 **Robust measurement**
 
