@@ -29,3 +29,5 @@ We’ve already seen this cycle repeat: an AI system reproduces what experts can
 
 # 2026/02/13
 Human society runs on finite energy. Time isn’t shareable. When something new rises, something else often fades. It can begin quietly: thirty minutes spent with AI instead of reading a compiler paper. Over time, fewer newcomers enter a field. Eventually, a subarea can vanish—not because it was solved, but because no one chose to continue it.
+
+Trust does not stem from the code generator—whether human or agent—but from the reviewers who approve the code on behalf of the organization. The real issue, therefore, is not the end user’s trust in the software, but the level of confidence reviewers have in the generated code before it is endorsed and integrated.
