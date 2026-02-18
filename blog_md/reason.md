@@ -36,4 +36,4 @@ Trust does not stem from the code generator—whether human or agent—but from 
 The question is not "it's all about software". Instead, it's abot the gap between system integration and isolated tests. Mappings from real workload parallelization strategies to hardware primitives often exist only in architects’ mental models. Those assumptions can easily drift from actual behavior in the full system.
 
 # 2026/02/17
-Are we preparing for "intelligence outage" caused by outage of any physical resource in the future? 
+Are we preparing for "intelligence outage" caused by outage of any physical resource in the future? Community leaders’ opinions can also influence the adoption of AI agents in a field.
