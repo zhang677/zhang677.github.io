@@ -1,7 +1,7 @@
 ---
 layout: blog
-title: Thoughts on Compiler Construction in the era of AI Coding
-date: 2026-02-20
+title: Why "LLM for Compiler" Is a Reasonable Research Question
+date: 2025-05-27
 authors:
   - genghan
 ---
