@@ -1,10 +1,11 @@
 ---
 layout: blog
-title: Why "LLM for Compiler" Is a Reasonable Research Question
-date: 2025-05-27
+title: Thoughts on Compiler Construction in the era of AI Coding
+date: 2026-02-20
 authors:
   - genghan
 ---
+This document captures Genghan’s personal ideas on compiler construction in an era shaped by rapidly advancing AI agents. The ideas are clearly rooted in the community Genghan is part of. It may also stand as a small historical record—should future readers ever look back at these ancient programmers—to understand their ambitions, their unease, and their determination. It preserves the tension between anxiety and excitement, confidence and confusion, hope and doubt. And perhaps, with hindsight, it may reveal their pathetic naivety that contributed to whatever future followed.
 
 # 2025/05/28
 Large Language Models (LLMs) are statistical systems trained to compress and reconstruct knowledge drawn from vast corpora of human-created data. In that sense, they implicitly store and recombine known information. Programming languages—whether general-purpose, domain-specific (DSLs), or architecture-specific (ASPLs)—are often carefully crafted abstractions that build upon decades of existing language design. Their syntax and semantics tend to evolve incrementally, shaped by the cognitive constraints of human users: a language too difficult to learn simply won’t gain traction.
@@ -37,3 +38,8 @@ The question is not "it's all about software". Instead, it's abot the gap betwee
 
 # 2026/02/17
 Are we preparing for "intelligence outage" caused by outage of any physical resource in the future? Community leaders’ opinions can also influence the adoption of AI agents in a field.
+
+# 2026/02/21
+Chris Latter makes a good point for the unique values of compiler construction in ["What are Compilers? Why do they matter as an AI Benchmark?"](https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software). It is clear that compiler engineers will design systems and coding agents will be in charge of implementation. Will there be a "language" that compiler engineers will use to describle the recipes for compiler consturction? It can be a norm (like the general principles people follow to write essays). 
+
+There can be different levels of compiler construction. L0: code completion as other software engineering; L1: improve programs compiled by existing compilers (kernel optimization; phase order optimization; etc.); L2: implement documented new concepts to achieve the human-defined goal (new intermediate representations, new optimization models, new ways of structuring programs and hardware interaction); L3: invent and implement new concepts to achieve the human-defined goal
