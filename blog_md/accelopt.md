@@ -23,7 +23,7 @@ There are two primary challenges. First, **LLM queries incur substantial computa
 <div class="figure">
   <img src="/assets/img/accelopt-main-method.png" alt="AccelOpt-Method">
   <div class="caption">
-    <strong>Figure 2</strong> At each iteration of AccelOpt, the agentic workflow shown on the right optimizes the candidate kernels with the latest optimization memory, and generates new candidate kernels, updating optimization memory with newly collected experiences. The three-stage agentic workflow alleviates the context anxiety by context resets similar to [Anthropic's practice](https://www.anthropic.com/engineering/harness-design-long-running-apps).
+    <strong>Figure 2</strong> At each iteration of AccelOpt, the agentic workflow shown on the right optimizes the candidate kernels with the latest optimization memory, and generates new candidate kernels, updating optimization memory with newly collected experiences. The three-stage agentic workflow alleviates the context anxiety by context resets similar to <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps">Anthropic's practice</a>.
   </div>
 </div>
 <br>
