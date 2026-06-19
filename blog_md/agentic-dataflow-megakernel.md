@@ -6,7 +6,7 @@ authors:
   - patrick
   - genghan
 ---
-This blog is a follow-up to [ASPL Agent V1](https://zhang677.github.io/blog_md/aspl.html). That post introduced how LLM agents can automate ML library construction for architecture-specific programming languages (ASPLs), using STeP as the target language. Here, we move from **operator-level library construction** to **agentic dataflow megakernel construction and optimization**: using LLM agents to construct and optimize large STeP kernels and megakernels for dynamic ML workloads, starting from PyTorch reference code and ending with verified dataflow megakernels.
+[ASPL Agent V1](https://zhang677.github.io/blog_md/aspl.html) introduced how LLM agents can automate ML library construction for architecture-specific programming languages (ASPLs), using STeP as the target language. Here, we move from **operator-level library construction** to **agentic dataflow megakernel construction and optimization**: using LLM agents to construct and optimize large STeP kernels and megakernels for dynamic ML workloads, starting from PyTorch reference code and ending with verified dataflow megakernels.
 
 The short version is that STeP gives the agent a composable dataflow abstraction. In STeP, off-chip and on-chip memory accesses use the same streaming abstractions. Therefore, each individual STeP kernel can be optimized separately first. The LLM can dynamically choose which granularity of a PyTorch computation graph to lower into STeP. After that, the LLM can cross the boundaries of these STeP kernels and compose them into a STeP megakernel. Once the megakernel is correct, the same graph structure becomes another optimization substrate for the LLM to iterate.
 
@@ -27,7 +27,7 @@ This is exactly the kind of search space where a single monolithic LLM prompt is
 
 # STeP as the Agent's Target Language
 
-Streaming Tensor Programs (STeP) are a programming abstraction and IR for dense tensors with dynamic shapes and data-dependent control flow on dataflow accelerators. STeP combines streams and asynchronous dataflow with data-parallel and memory primitives, while formalizing symbolic shape semantics for streams.
+Streaming Tensor Programs [(STeP)](https://dl.acm.org/doi/pdf/10.1145/3779212.3790229) are a programming abstraction and IR for dense tensors with dynamic shapes and data-dependent control flow on dataflow accelerators. STeP combines streams and asynchronous dataflow with data-parallel and memory primitives, while formalizing symbolic shape semantics for streams.
 
 This matters for LLM agents because STeP sits at the right level:
 
@@ -41,7 +41,7 @@ In [ASPL Agent V1](https://zhang677.github.io/blog_md/aspl.html), our adaptive s
 <div class="figure">
   <img src="/assets/img/step-intro-big-example.png" alt="Example STeP graph for an MoE layer">
   <div class="caption">
-    <strong>Figure 1</strong> A STeP example adopted from [the ASPLOS paper](https://dl.acm.org/doi/pdf/10.1145/3779212.3790229): an MoE layer expressed as a streaming tensor program with explicit stream shapes, tile shapes, memory hierarchy, and primitives.
+    <strong>Figure 1</strong> A STeP example adopted from the paper: an MoE layer expressed as a streaming tensor program with explicit stream shapes, tile shapes, memory hierarchy, and primitives.
   </div>
 </div>
 <br>
@@ -114,21 +114,19 @@ For a Mixtral-style MoE block, a naive dataflow plan can fire an expert body onc
 </div>
 <br>
 
-For attention, the agent applied parallelization in multiple parts of the graph, including Q/K/V projection and output projection. It also swept projection parallelism and found that more parallelism is not always better: PROJ_PAR=16 beat both smaller settings and an over-parallelized PROJ_PAR=64 setting.
-
-For an end-to-end transformer layer, decomposition is the key story. A monolithic search reaches **1.9x**, while the decomposed compositional autotuning flow reaches **7.7x**. The remaining gap to the expert implementation is also instructive: the LLM did not automatically implement FlashAttention.
+For an end-to-end transformer layer, decomposition is the key story. A monolithic search reaches **1.9x**, while the decomposed compositional autotuning flow reaches **7.7x**.  It remains worse than expert because the LLM didn't automatically implement FlashAttention.
 
 <div class="figure">
-  <img src="/assets/img/agentic-megakernel-transformer-result.svg" alt="Transformer megakernel result">
+  <img src="/assets/img/agentic-megakernel-transformer-pareto.png" alt="Transformer megakernel Pareto result">
   <div class="caption">
-    <strong>Figure 6</strong> Generated transformer-layer megakernel result figure: decomposed compositional autotuning reaches 7.7x versus 1.9x for monolithic optimization.
+    <strong>Figure 6</strong> Transformer-layer performance optimization result: decomposed compositional autotuning discovers a better Pareto front than monolithic search.
   </div>
 </div>
 <br>
 
 # Why Agents Help Here
 
-Dataflow megakernel optimization has a useful property: many local choices can be evaluated, but the best global design often requires changing the computation graph structure.
+Dataflow megakernel optimization in STeP is compositional: local kernel choices can be evaluated independently, and the best end-to-end design can emerge after changing how subgraphs are structured and connected.
 
 Traditional autotuners are excellent when the space is mostly numeric: tile size, unroll factor, block size, vector width. But dynamic dataflow megakernels also have semantic transformations:
 
