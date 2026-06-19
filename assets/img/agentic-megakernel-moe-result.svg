@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-labelledby="title desc">
+  <title id="title">MoE megakernel result: 17.9x cycle reduction</title>
+  <desc id="desc">A generated chart showing baseline, expert STeP, and LLM-generated STeP cycle counts for an MoE block.</desc>
+  <rect width="960" height="560" fill="#fbfcfe"/>
+  <text x="64" y="70" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#102a43">MoE MegaKernel: Better Than Expert Through Tiling</text>
+  <text x="64" y="105" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#52616b">Lower cycles are better</text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="64" y="166" font-size="18" font-weight="700" fill="#243b53">Baseline</text>
+    <rect x="270" y="139" width="530" height="48" rx="6" fill="#7b8794"/>
+    <text x="815" y="170" font-size="22" font-weight="700" fill="#102a43">1.70M cycles</text>
+
+    <text x="64" y="254" font-size="18" font-weight="700" fill="#243b53">Expert STeP</text>
+    <rect x="270" y="227" width="46" height="48" rx="6" fill="#5b8db8"/>
+    <text x="338" y="258" font-size="22" font-weight="700" fill="#102a43">148K cycles</text>
+
+    <text x="64" y="342" font-size="18" font-weight="700" fill="#243b53">Generated STeP</text>
+    <rect x="270" y="315" width="30" height="48" rx="6" fill="#2f9e8f"/>
+    <text x="322" y="346" font-size="22" font-weight="700" fill="#102a43">95K cycles</text>
+  </g>
+
+  <g transform="translate(44 410)">
+    <rect x="0" y="0" width="420" height="92" rx="10" fill="#e6f4f1" stroke="#b7ded8"/>
+    <text x="24" y="41" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#087f73">17.9x</text>
+    <text x="124" y="34" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#102a43">cycle reduction over baseline</text>
+    <text x="124" y="60" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#52616b">dynamic stream batching</text>
+    <text x="124" y="78" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#52616b">plus retile choices</text>
+  </g>
+
+  <g transform="translate(496 410)">
+    <rect x="0" y="0" width="420" height="92" rx="10" fill="#fff4df" stroke="#f7d79a"/>
+    <text x="24" y="41" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#b7791f">95K</text>
+    <text x="110" y="34" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#102a43">generated cycles vs. 148K expert</text>
+    <text x="110" y="60" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#52616b">better-than-expert point</text>
+    <text x="110" y="78" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#52616b">in the explored Pareto set</text>
+  </g>
+</svg>

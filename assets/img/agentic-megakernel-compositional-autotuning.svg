@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Compositional autotuning over a hierarchical planning tree</title>
+  <desc id="desc">A generated high-resolution method diagram showing leaf tuning, upward candidate passing, parent tuning with child options, selected result propagation, and iteration at each node.</desc>
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.6" markerHeight="4.6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2463a6"/>
+    </marker>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.8" markerHeight="4.8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#6b7280"/>
+    </marker>
+    <style>
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 34px; font-weight: 700; fill: #102a43; }
+      .subtitle { font-family: Arial, Helvetica, sans-serif; font-size: 16px; fill: #52616b; }
+      .step-title { font-family: Arial, Helvetica, sans-serif; font-size: 15px; font-weight: 700; fill: #0b3d91; }
+      .step-copy { font-family: Arial, Helvetica, sans-serif; font-size: 16px; fill: #52616b; }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 14px; fill: #102a43; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #52616b; }
+      .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 9.4px; fill: #52616b; }
+      .edge-label { font-family: Arial, Helvetica, sans-serif; font-size: 13px; fill: #52616b; }
+      .flow-label { font-family: Arial, Helvetica, sans-serif; font-size: 13px; fill: #0b5cab; }
+      .legend { font-family: Arial, Helvetica, sans-serif; font-size: 16px; fill: #52616b; }
+      .tri { fill: #f1f7ff; stroke: #0b5cab; stroke-width: 2; }
+      .cand { fill: #fff; stroke: #0b5cab; stroke-width: 1.4; }
+      .candbox { fill: #eef6ff; stroke: #8aa6c1; stroke-width: 1.2; stroke-dasharray: 4 4; }
+      .up { stroke: #2463a6; stroke-width: 1.9; fill: none; marker-end: url(#arrowBlue); }
+      .selected { stroke: #6b7280; stroke-width: 2; fill: none; marker-end: url(#arrowGray); }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#fbfcfe"/>
+  <text x="54" y="56" class="title">Compositional Autotuning over a Hierarchical Planning Tree</text>
+  <text x="54" y="86" class="subtitle">Tune leaves, pass candidate implementations upward, and tune parents using child options.</text>
+
+  <g transform="translate(54 132)" font-family="Arial, Helvetica, sans-serif">
+    <circle cx="20" cy="20" r="15" fill="#0b3d91"/>
+    <text x="20" y="26" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">3</text>
+    <text x="50" y="15" class="step-title">Tune parent</text>
+    <text x="50" y="35" class="step-title">using child options</text>
+    <text x="50" y="67" class="step-copy">Evaluate candidates from</text>
+    <text x="50" y="90" class="step-copy">children, explore combinations,</text>
+    <text x="50" y="113" class="step-copy">then select or generate a</text>
+    <text x="50" y="136" class="step-copy">better implementation.</text>
+    <line x1="0" y1="154" x2="214" y2="154" stroke="#d6e2ee" stroke-dasharray="5 5"/>
+
+    <circle cx="20" cy="195" r="15" fill="#0b3d91"/>
+    <text x="20" y="201" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">2</text>
+    <text x="50" y="191" class="step-title">Pass candidate</text>
+    <text x="50" y="211" class="step-title">implementations upward</text>
+    <text x="50" y="242" class="step-copy">Children provide multiple</text>
+    <text x="50" y="265" class="step-copy">implementation options for</text>
+    <text x="50" y="288" class="step-copy">the parent to choose from.</text>
+    <line x1="0" y1="313" x2="214" y2="313" stroke="#d6e2ee" stroke-dasharray="5 5"/>
+
+    <circle cx="20" cy="354" r="15" fill="#0b3d91"/>
+    <text x="20" y="360" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">1</text>
+    <text x="50" y="350" class="step-title">Tune leaves</text>
+    <text x="50" y="382" class="step-copy">Start at leaf kernels.</text>
+    <text x="50" y="405" class="step-copy">The LLM iterates locally and</text>
+    <text x="50" y="428" class="step-copy">produces candidate variants.</text>
+  </g>
+
+  <g transform="translate(336 102)">
+    <path class="tri" d="M360 18 L278 126 H442 Z"/>
+    <text x="360" y="73" text-anchor="middle" class="label" font-weight="700">STeP</text>
+    <text x="360" y="94" text-anchor="middle" class="label">Transformer</text>
+
+    <g transform="translate(286 138)">
+      <rect class="candbox" x="0" y="0" width="148" height="43" rx="7"/>
+      <path class="cand" d="M31 12 L18 34 H44 Z"/>
+      <path class="cand" d="M74 12 L61 34 H87 Z"/>
+      <path class="cand" d="M117 12 L104 34 H130 Z"/>
+      <text x="74" y="60" text-anchor="middle" class="edge-label">candidate variants</text>
+    </g>
+
+    <path class="tri" d="M205 232 L140 320 H270 Z"/>
+    <text x="205" y="275" text-anchor="middle" class="label" font-weight="700">STeP</text>
+    <text x="205" y="296" text-anchor="middle" class="label">Attention</text>
+    <path class="tri" d="M515 232 L450 320 H580 Z"/>
+    <text x="515" y="275" text-anchor="middle" class="label" font-weight="700">STeP</text>
+    <text x="515" y="296" text-anchor="middle" class="label">MoE</text>
+
+    <g transform="translate(131 334)">
+      <rect class="candbox" x="0" y="0" width="148" height="43" rx="7"/>
+      <path class="cand" d="M31 12 L18 34 H44 Z"/>
+      <path class="cand" d="M74 12 L61 34 H87 Z"/>
+      <path class="cand" d="M117 12 L104 34 H130 Z"/>
+      <text x="74" y="60" text-anchor="middle" class="edge-label">candidate variants</text>
+    </g>
+    <g transform="translate(441 334)">
+      <rect class="candbox" x="0" y="0" width="148" height="43" rx="7"/>
+      <path class="cand" d="M31 12 L18 34 H44 Z"/>
+      <path class="cand" d="M74 12 L61 34 H87 Z"/>
+      <path class="cand" d="M117 12 L104 34 H130 Z"/>
+      <text x="74" y="60" text-anchor="middle" class="edge-label">candidate variants</text>
+    </g>
+
+    <path class="tri" d="M124 420 L78 492 H170 Z"/>
+    <text x="124" y="448" text-anchor="middle" class="tiny" font-weight="700">STeP</text>
+    <text x="124" y="467" text-anchor="middle" class="tiny" font-weight="700">Norm +</text>
+    <text x="124" y="484" text-anchor="middle" class="tiny" font-weight="700">proj + rope</text>
+    <path class="tri" d="M292 420 L246 492 H338 Z"/>
+    <text x="292" y="452" text-anchor="middle" class="tiny" font-weight="700">STeP</text>
+    <text x="292" y="471" text-anchor="middle" class="tiny" font-weight="700">Core</text>
+    <text x="292" y="486" text-anchor="middle" class="tiny" font-weight="700">attention</text>
+
+    <g transform="translate(58 504)">
+      <rect class="candbox" x="0" y="0" width="132" height="34" rx="6"/>
+      <path class="cand" d="M28 9 L18 27 H38 Z"/>
+      <path class="cand" d="M66 9 L56 27 H76 Z"/>
+      <path class="cand" d="M104 9 L94 27 H114 Z"/>
+    </g>
+    <g transform="translate(226 504)">
+      <rect class="candbox" x="0" y="0" width="132" height="34" rx="6"/>
+      <path class="cand" d="M28 9 L18 27 H38 Z"/>
+      <path class="cand" d="M66 9 L56 27 H76 Z"/>
+      <path class="cand" d="M104 9 L94 27 H114 Z"/>
+    </g>
+
+    <path class="selected" d="M318 118 C282 170,236 205,210 232"/>
+    <path class="selected" d="M402 118 C438 170,488 205,512 232"/>
+    <path class="selected" d="M181 314 C158 358,136 393,126 420"/>
+    <path class="selected" d="M229 314 C254 358,282 393,290 420"/>
+    <path class="up" d="M360 138 L360 126"/>
+    <path class="up" d="M205 334 L205 320"/>
+    <path class="up" d="M515 334 L515 320"/>
+    <path class="up" d="M124 504 L124 492"/>
+    <path class="up" d="M292 504 L292 492"/>
+    <path d="M56 486 C24 466,28 434,68 419" stroke="#2f80ed" stroke-width="2.6" fill="none" marker-end="url(#arrowBlue)"/>
+    <path d="M360 486 C392 466,388 434,348 419" stroke="#2f80ed" stroke-width="2.6" fill="none" marker-end="url(#arrowBlue)"/>
+    <text x="30" y="413" class="flow-label">iterate</text>
+    <text x="360" y="413" class="flow-label">iterate</text>
+
+    <g transform="translate(286 138)">
+      <rect class="candbox" x="0" y="0" width="148" height="43" rx="7"/>
+      <path class="cand" d="M31 12 L18 34 H44 Z"/>
+      <path class="cand" d="M74 12 L61 34 H87 Z"/>
+      <path class="cand" d="M117 12 L104 34 H130 Z"/>
+    </g>
+    <g transform="translate(131 334)">
+      <rect class="candbox" x="0" y="0" width="148" height="43" rx="7"/>
+      <path class="cand" d="M31 12 L18 34 H44 Z"/>
+      <path class="cand" d="M74 12 L61 34 H87 Z"/>
+      <path class="cand" d="M117 12 L104 34 H130 Z"/>
+    </g>
+    <g transform="translate(441 334)">
+      <rect class="candbox" x="0" y="0" width="148" height="43" rx="7"/>
+      <path class="cand" d="M31 12 L18 34 H44 Z"/>
+      <path class="cand" d="M74 12 L61 34 H87 Z"/>
+      <path class="cand" d="M117 12 L104 34 H130 Z"/>
+    </g>
+    <g transform="translate(58 504)">
+      <rect class="candbox" x="0" y="0" width="132" height="34" rx="6"/>
+      <path class="cand" d="M28 9 L18 27 H38 Z"/>
+      <path class="cand" d="M66 9 L56 27 H76 Z"/>
+      <path class="cand" d="M104 9 L94 27 H114 Z"/>
+    </g>
+    <g transform="translate(226 504)">
+      <rect class="candbox" x="0" y="0" width="132" height="34" rx="6"/>
+      <path class="cand" d="M28 9 L18 27 H38 Z"/>
+      <path class="cand" d="M66 9 L56 27 H76 Z"/>
+      <path class="cand" d="M104 9 L94 27 H114 Z"/>
+    </g>
+  </g>
+
+  <g transform="translate(1008 286)">
+    <path d="M18 196 L18 124" stroke="#9ec5fe" stroke-width="7" marker-end="url(#arrowBlue)" opacity="0.75"/>
+    <text x="54" y="94" class="step-title">Results propagate upward;</text>
+    <text x="54" y="118" class="step-title">candidate I/O shapes and</text>
+    <text x="54" y="142" class="step-title">implementations may change.</text>
+  </g>
+
+  <g transform="translate(62 664)" font-family="Arial, Helvetica, sans-serif">
+    <rect x="0" y="0" width="1184" height="42" rx="9" fill="#ffffff" stroke="#d6e2ee"/>
+    <path class="tri" d="M25 10 L10 34 H40 Z"/>
+    <text x="55" y="26" class="legend">STeP node</text>
+    <rect class="candbox" x="178" y="8" width="88" height="28" rx="5"/>
+    <path class="cand" d="M200 14 L192 30 H208 Z"/>
+    <path class="cand" d="M224 14 L216 30 H232 Z"/>
+    <path class="cand" d="M248 14 L240 30 H256 Z"/>
+    <text x="286" y="26" class="legend">candidate implementations</text>
+    <path class="up" d="M530 34 L530 10"/>
+    <text x="548" y="26" class="legend">candidates passed upward</text>
+    <path class="selected" d="M782 34 L782 10"/>
+    <text x="800" y="26" class="legend">selected / refined result</text>
+    <path d="M994 34 C1029 27,1029 15,994 9" stroke="#2f80ed" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)"/>
+    <text x="1047" y="26" class="legend">LLM iterates</text>
+  </g>
+</svg>

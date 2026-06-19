@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Adaptive decomposition over a hierarchical planning tree</title>
+  <desc id="desc">A generated high-resolution method diagram showing recursive translation from PyTorch leaves into STeP nodes with bidirectional parent-child shape contracts.</desc>
+  <defs>
+    <marker id="stageArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2463a6"/>
+    </marker>
+    <marker id="edgeArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.8" markerHeight="4.8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#64748b"/>
+    </marker>
+    <style>
+      .title { font-family: Arial, Helvetica, sans-serif; font-size: 32px; font-weight: 700; fill: #102a43; }
+      .subtitle { font-family: Arial, Helvetica, sans-serif; font-size: 16px; fill: #52616b; }
+      .panel-title { font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: 700; fill: #0b3d91; }
+      .label { font-family: Arial, Helvetica, sans-serif; font-size: 15.5px; fill: #102a43; }
+      .small { font-family: Arial, Helvetica, sans-serif; font-size: 12.5px; fill: #52616b; }
+      .tiny { font-family: Arial, Helvetica, sans-serif; font-size: 11px; fill: #52616b; }
+      .tri-step { fill: #eef6ff; stroke: #0b5cab; stroke-width: 2.2; }
+      .leaf-py { fill: #ffffff; stroke: #111827; stroke-width: 1.8; }
+      .edge { stroke: #64748b; stroke-width: 1.9; fill: none; marker-start: url(#edgeArrow); marker-end: url(#edgeArrow); }
+      .stage { stroke: #2463a6; stroke-width: 3.6; fill: none; marker-end: url(#stageArrow); }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#fbfcfe"/>
+  <text x="54" y="56" class="title">Adaptive Decomposition over a Hierarchical Planning Tree</text>
+  <text x="54" y="86" class="subtitle">Translate what is easy, recursively decompose what is hard, and preserve bidirectional shape contracts.</text>
+
+  <g transform="translate(48 120)">
+    <rect width="350" height="500" rx="12" fill="#f7fafd" stroke="#d9e2ec"/>
+    <circle cx="28" cy="29" r="15" fill="#0b3d91"/>
+    <text x="28" y="35" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#fff">1</text>
+    <text x="58" y="35" class="panel-title">Root translated to STeP</text>
+
+    <path class="tri-step" d="M175 72 L106 168 H244 Z"/>
+    <text x="175" y="120" text-anchor="middle" class="label" font-weight="700">STeP</text>
+    <text x="175" y="141" text-anchor="middle" class="label">Transformer</text>
+
+    <circle class="leaf-py" cx="92" cy="260" r="45"/>
+    <text x="92" y="253" text-anchor="middle" class="label" font-weight="700">PyTorch</text>
+    <text x="92" y="276" text-anchor="middle" class="label">Attention</text>
+    <circle class="leaf-py" cx="258" cy="260" r="45"/>
+    <text x="258" y="253" text-anchor="middle" class="label" font-weight="700">PyTorch</text>
+    <text x="258" y="276" text-anchor="middle" class="label">MoE</text>
+    <circle class="leaf-py" cx="74" cy="410" r="43"/>
+    <text x="74" y="388" text-anchor="middle" class="small" font-weight="700">PyTorch</text>
+    <text x="74" y="406" text-anchor="middle" class="small" font-weight="700">Norm +</text>
+    <text x="74" y="423" text-anchor="middle" class="small" font-weight="700">projection</text>
+    <text x="74" y="440" text-anchor="middle" class="small" font-weight="700">+ rope</text>
+    <circle class="leaf-py" cx="190" cy="410" r="43"/>
+    <text x="190" y="394" text-anchor="middle" class="small" font-weight="700">PyTorch</text>
+    <text x="190" y="413" text-anchor="middle" class="small" font-weight="700">Core</text>
+    <text x="190" y="431" text-anchor="middle" class="small" font-weight="700">attention</text>
+
+    <line class="edge" x1="140" y1="168" x2="115" y2="222"/>
+    <line class="edge" x1="210" y1="168" x2="236" y2="222"/>
+    <line class="edge" x1="87" y1="305" x2="79" y2="367"/>
+    <line class="edge" x1="117" y1="298" x2="167" y2="374"/>
+  </g>
+
+  <path class="stage" d="M416 370 L450 370"/>
+
+  <g transform="translate(466 120)">
+    <rect width="350" height="500" rx="12" fill="#f7fafd" stroke="#d9e2ec"/>
+    <circle cx="28" cy="29" r="15" fill="#0b3d91"/>
+    <text x="28" y="35" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#fff">2</text>
+    <text x="58" y="35" class="panel-title">First-level children translated</text>
+
+    <path class="tri-step" d="M175 72 L106 168 H244 Z"/>
+    <text x="175" y="120" text-anchor="middle" class="label" font-weight="700">STeP</text>
+    <text x="175" y="141" text-anchor="middle" class="label">Transformer</text>
+    <path class="tri-step" d="M96 230 L40 312 H152 Z"/>
+    <text x="96" y="270" text-anchor="middle" class="label" font-weight="700">STeP</text>
+    <text x="96" y="292" text-anchor="middle" class="label">Attention</text>
+    <path class="tri-step" d="M254 230 L198 312 H310 Z"/>
+    <text x="254" y="270" text-anchor="middle" class="label" font-weight="700">STeP</text>
+    <text x="254" y="292" text-anchor="middle" class="label">MoE</text>
+    <circle class="leaf-py" cx="74" cy="412" r="43"/>
+    <text x="74" y="390" text-anchor="middle" class="small" font-weight="700">PyTorch</text>
+    <text x="74" y="408" text-anchor="middle" class="small" font-weight="700">Norm +</text>
+    <text x="74" y="425" text-anchor="middle" class="small" font-weight="700">projection</text>
+    <text x="74" y="442" text-anchor="middle" class="small" font-weight="700">+ rope</text>
+    <circle class="leaf-py" cx="190" cy="412" r="43"/>
+    <text x="190" y="396" text-anchor="middle" class="small" font-weight="700">PyTorch</text>
+    <text x="190" y="415" text-anchor="middle" class="small" font-weight="700">Core</text>
+    <text x="190" y="433" text-anchor="middle" class="small" font-weight="700">attention</text>
+
+    <line class="edge" x1="145" y1="168" x2="96" y2="230"/>
+    <line class="edge" x1="205" y1="168" x2="254" y2="230"/>
+    <line class="edge" x1="76" y1="312" x2="74" y2="369"/>
+    <line class="edge" x1="118" y1="312" x2="165" y2="377"/>
+  </g>
+
+  <path class="stage" d="M834 370 L868 370"/>
+
+  <g transform="translate(884 120)">
+    <rect width="350" height="500" rx="12" fill="#f7fafd" stroke="#d9e2ec"/>
+    <circle cx="28" cy="29" r="15" fill="#0b3d91"/>
+    <text x="28" y="35" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#fff">3</text>
+    <text x="58" y="35" class="panel-title">Fully translated hierarchy</text>
+
+    <path class="tri-step" d="M175 72 L106 168 H244 Z"/>
+    <text x="175" y="120" text-anchor="middle" class="label" font-weight="700">STeP</text>
+    <text x="175" y="141" text-anchor="middle" class="label">Transformer</text>
+    <path class="tri-step" d="M96 230 L40 312 H152 Z"/>
+    <text x="96" y="270" text-anchor="middle" class="label" font-weight="700">STeP</text>
+    <text x="96" y="292" text-anchor="middle" class="label">Attention</text>
+    <path class="tri-step" d="M254 230 L198 312 H310 Z"/>
+    <text x="254" y="270" text-anchor="middle" class="label" font-weight="700">STeP</text>
+    <text x="254" y="292" text-anchor="middle" class="label">MoE</text>
+    <path class="tri-step" d="M74 376 L26 454 H122 Z"/>
+    <text x="74" y="404" text-anchor="middle" class="small" font-weight="700">STeP</text>
+    <text x="74" y="423" text-anchor="middle" class="small" font-weight="700">Norm +</text>
+    <text x="74" y="440" text-anchor="middle" class="small" font-weight="700">proj + rope</text>
+    <path class="tri-step" d="M190 376 L142 454 H238 Z"/>
+    <text x="190" y="406" text-anchor="middle" class="small" font-weight="700">STeP</text>
+    <text x="190" y="425" text-anchor="middle" class="small" font-weight="700">Core</text>
+    <text x="190" y="442" text-anchor="middle" class="small" font-weight="700">attention</text>
+
+    <line class="edge" x1="145" y1="168" x2="96" y2="230"/>
+    <line class="edge" x1="205" y1="168" x2="254" y2="230"/>
+    <line class="edge" x1="76" y1="312" x2="74" y2="376"/>
+    <line class="edge" x1="118" y1="312" x2="190" y2="376"/>
+  </g>
+
+  <g transform="translate(58 662)" font-family="Arial, Helvetica, sans-serif">
+    <line class="edge" x1="0" y1="0" x2="46" y2="0"/>
+    <text x="62" y="5" class="small">bidirectional parent-child contract</text>
+    <text x="340" y="5" class="small">Circles = PyTorch leaves; triangles = STeP nodes.</text>
+  </g>
+</svg>

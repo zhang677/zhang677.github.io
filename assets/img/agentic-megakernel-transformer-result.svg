@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Transformer megakernel result: decomposed optimization reaches 7.7x</title>
+  <desc id="desc">A generated comparison between monolithic and decomposed compositional autotuning for an end-to-end transformer layer.</desc>
+  <rect width="960" height="540" fill="#fbfcfe"/>
+  <text x="64" y="64" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700" fill="#102a43">Transformer MegaKernel</text>
+  <text x="64" y="99" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" fill="#102a43">Decomposition Unlocks Search</text>
+  <text x="64" y="130" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#52616b">Higher speedup is better</text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <line x1="160" y1="390" x2="810" y2="390" stroke="#d8e0e8" stroke-width="2"/>
+    <g fill="#66788a" font-size="14">
+      <text x="160" y="417" text-anchor="middle">0x</text>
+      <text x="322" y="417" text-anchor="middle">2x</text>
+      <text x="484" y="417" text-anchor="middle">4x</text>
+      <text x="646" y="417" text-anchor="middle">6x</text>
+      <text x="808" y="417" text-anchor="middle">8x</text>
+    </g>
+    <g stroke="#e6ecf2" stroke-width="1">
+      <line x1="160" y1="170" x2="160" y2="390"/>
+      <line x1="322" y1="170" x2="322" y2="390"/>
+      <line x1="484" y1="170" x2="484" y2="390"/>
+      <line x1="646" y1="170" x2="646" y2="390"/>
+      <line x1="808" y1="170" x2="808" y2="390"/>
+    </g>
+
+    <text x="64" y="216" font-size="19" font-weight="700" fill="#243b53">Monolithic search</text>
+    <rect x="160" y="184" width="154" height="56" rx="8" fill="#7b8794"/>
+    <text x="334" y="219" font-size="26" font-weight="700" fill="#102a43">1.9x</text>
+
+    <text x="64" y="328" font-size="19" font-weight="700" fill="#243b53">Decomp.</text>
+    <rect x="160" y="296" width="624" height="56" rx="8" fill="#2f9e8f"/>
+    <text x="804" y="331" font-size="26" font-weight="700" fill="#102a43">7.7x</text>
+  </g>
+
+  <g transform="translate(64 454)" font-family="Arial, Helvetica, sans-serif">
+    <rect x="0" y="0" width="832" height="1" fill="#d8e0e8"/>
+    <text x="0" y="32" font-size="16" fill="#52616b">Main result: composing verified sub-kernel Pareto choices beats a single monolithic search by about 4.1x.</text>
+    <text x="0" y="58" font-size="16" fill="#52616b">Remaining gap to expert: the agent did not automatically implement FlashAttention.</text>
+  </g>
+</svg>

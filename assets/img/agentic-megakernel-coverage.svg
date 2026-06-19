@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">STeP megakernel coverage improves from 6 out of 14 to 14 out of 14 benchmarks</title>
+  <desc id="desc">A generated bar chart comparing ASPL Agent V1 with gpt-oss-120b, ASPL Agent V2 with gpt-oss-120b, and ASPL Agent V2 with Claude Sonnet 4.6 on the updated 14 benchmark suite.</desc>
+  <rect width="960" height="520" fill="#fbfcfe"/>
+  <text x="64" y="70" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#102a43">Implementation Coverage on the Updated STeP Suite</text>
+  <text x="64" y="105" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#52616b">14 benchmarks spanning transformer building blocks, full architectures, and end-to-end LLM serving</text>
+
+  <line x1="300" y1="390" x2="840" y2="390" stroke="#d8e0e8" stroke-width="2"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#66788a">
+    <text x="300" y="417" text-anchor="middle">0</text>
+    <text x="416" y="417" text-anchor="middle">3</text>
+    <text x="531" y="417" text-anchor="middle">6</text>
+    <text x="647" y="417" text-anchor="middle">9</text>
+    <text x="763" y="417" text-anchor="middle">12</text>
+    <text x="840" y="417" text-anchor="middle">14</text>
+  </g>
+  <g stroke="#e6ecf2" stroke-width="1">
+    <line x1="300" y1="150" x2="300" y2="390"/>
+    <line x1="416" y1="150" x2="416" y2="390"/>
+    <line x1="531" y1="150" x2="531" y2="390"/>
+    <line x1="647" y1="150" x2="647" y2="390"/>
+    <line x1="763" y1="150" x2="763" y2="390"/>
+    <line x1="840" y1="150" x2="840" y2="390"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="64" y="185" font-size="18" font-weight="700" fill="#243b53">ASPL Agent V1</text>
+    <text x="64" y="209" font-size="14" fill="#627d98">gpt-oss-120b</text>
+    <rect x="300" y="158" width="231" height="52" rx="7" fill="#5b8db8"/>
+    <text x="550" y="191" font-size="24" font-weight="700" fill="#102a43">6 / 14</text>
+
+    <text x="64" y="278" font-size="18" font-weight="700" fill="#243b53">ASPL Agent V2</text>
+    <text x="64" y="302" font-size="14" fill="#627d98">gpt-oss-120b</text>
+    <rect x="300" y="251" width="501" height="52" rx="7" fill="#2f9e8f"/>
+    <text x="820" y="284" font-size="24" font-weight="700" fill="#102a43">13 / 14</text>
+
+    <text x="64" y="371" font-size="18" font-weight="700" fill="#243b53">ASPL Agent V2</text>
+    <text x="64" y="395" font-size="14" fill="#627d98">Claude Sonnet 4.6</text>
+    <rect x="300" y="344" width="540" height="52" rx="7" fill="#f2a541"/>
+    <text x="858" y="377" font-size="24" font-weight="700" fill="#102a43">14 / 14</text>
+  </g>
+
+  <rect x="64" y="452" width="832" height="1" fill="#d8e0e8"/>
+  <text x="64" y="482" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#52616b">Main result: hierarchical planning plus adaptive decomposition saturates the expanded suite, including end-to-end serving.</text>
+</svg>
