@@ -6,9 +6,9 @@ authors:
   - patrick
   - genghan
 ---
-[ASPL Agent V1](https://zhang677.github.io/blog_md/aspl.html) introduced how LLM agents can automate ML library construction for architecture-specific programming languages (ASPLs), using STeP as the target language. Here, we move from **operator-level library construction** to **agentic dataflow megakernel construction and optimization**: using LLM agents to construct and optimize large STeP kernels and megakernels for dynamic ML workloads, starting from PyTorch reference code and ending with verified dataflow megakernels.
+[ASPL Agent V1](https://zhang677.github.io/blog_md/aspl.html) designed LLM agents automate ML library construction for architecture-specific programming languages (ASPLs), using STeP as the target language. Here, we move from **operator-level library construction** to **agentic dataflow megakernel construction and optimization**: using LLM agents to construct and optimize large STeP kernels dynamic ML workloads, starting from PyTorch reference code and ending with verified dataflow megakernels.
 
-The short version is that STeP gives the agent a composable dataflow abstraction. In STeP, off-chip and on-chip memory accesses use the same streaming abstractions. Therefore, each individual STeP kernel can be optimized separately first. The LLM can dynamically choose which granularity of a PyTorch computation graph to lower into STeP. After that, the LLM can cross the boundaries of these STeP kernels and compose them into a STeP megakernel. Once the megakernel is correct, the same graph structure becomes another optimization substrate for the LLM to iterate.
+STeP gives the agent a composable dataflow abstraction. In STeP, off-chip and on-chip memory accesses use the same streaming abstractions. Therefore, each individual STeP kernel can be optimized separately first. The LLM can dynamically choose which granularity of a PyTorch computation graph to lower into STeP. After that, the LLM can cross the boundaries of these STeP kernels and compose them into a STeP megakernel. Once the megakernel is correct, the same graph structure becomes another optimization substrate for the LLM to iterate.
 
 # Why Dataflow MegaKernels?
 
