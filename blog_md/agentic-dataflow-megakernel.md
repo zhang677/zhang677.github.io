@@ -5,6 +5,7 @@ date: 2026-06-17
 authors:
   - patrick
   - genghan
+  - kunle
 ---
 [ASPL Agent V1](https://zhang677.github.io/blog_md/aspl.html) designed LLM agents that automate ML library construction for architecture-specific programming languages (ASPLs), using STeP as the target language. Here, we move from **operator-level library construction** to **agentic dataflow megakernel construction and optimization**: using LLM agents to construct and optimize large STeP kernels for dynamic ML workloads, starting from PyTorch reference code and ending with verified dataflow megakernels.
 
