@@ -135,6 +135,4 @@ Agentic dataflow megakernel construction is still early. There are clear gaps: a
 
 STeP gives agents a target language where inter-operator fusion is first-class. Hierarchical planning trees let them build computation graphs that are too large for one-shot generation. Pareto-based compositional optimization lets local alternatives survive long enough to matter globally. Simulation management gives the system a way to spend expensive evaluation budget intelligently.
 
-The result is a new style of ML systems work: dataflow makes kernels composable, so agents can optimize local STeP kernels first and then assemble those choices into larger verified megakernels.
-
-That is the core idea behind Agentic Dataflow MegaKernel Construction and Optimization.
+Dataflow makes kernels composable, so agents can optimize local STeP kernels first and then assemble those choices into larger verified megakernels. This is the core idea behind Agentic Dataflow MegaKernel Construction and Optimization.
