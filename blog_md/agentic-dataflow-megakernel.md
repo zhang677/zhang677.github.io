@@ -27,7 +27,7 @@ This is exactly the kind of search space where a single monolithic LLM prompt is
 
 # STeP as the Agent's Target Language
 
-Streaming Tensor Programs [(STeP)](https://dl.acm.org/doi/pdf/10.1145/3779212.3790229) are a programming abstraction and IR for dense tensors with dynamic shapes and data-dependent control flow on dataflow accelerators. STeP combines streams and asynchronous dataflow with data-parallel and memory primitives, while formalizing symbolic shape semantics for streams.
+Streaming Tensor Program [(STeP)](https://dl.acm.org/doi/pdf/10.1145/3779212.3790229) is a programming abstraction and IR for dense tensors with dynamic shapes and data-dependent control flow on dataflow accelerators. STeP combines streams and asynchronous dataflow with data-parallel and memory primitives, while formalizing symbolic shape semantics for streams.
 
 This matters for LLM agents because STeP sits at the right level:
 

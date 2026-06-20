@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Adaptive Self-improvement LLM Agentic System for ML Library Development
+title: "ASPL Agent V1: Adaptive Self-improvement Learning for ML Library Development"
 date: 2025-03-01
 authors:
   - genghan
