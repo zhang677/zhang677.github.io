@@ -6,15 +6,15 @@ authors:
   - patrick
   - genghan
 ---
-[ASPL Agent V1](https://zhang677.github.io/blog_md/aspl.html) designed LLM agents automate ML library construction for architecture-specific programming languages (ASPLs), using STeP as the target language. Here, we move from **operator-level library construction** to **agentic dataflow megakernel construction and optimization**: using LLM agents to construct and optimize large STeP kernels dynamic ML workloads, starting from PyTorch reference code and ending with verified dataflow megakernels.
+[ASPL Agent V1](https://zhang677.github.io/blog_md/aspl.html) designed LLM agents that automate ML library construction for architecture-specific programming languages (ASPLs), using STeP as the target language. Here, we move from **operator-level library construction** to **agentic dataflow megakernel construction and optimization**: using LLM agents to construct and optimize large STeP kernels for dynamic ML workloads, starting from PyTorch reference code and ending with verified dataflow megakernels.
 
-STeP gives the agent a composable dataflow abstraction. Because STeP is a declarative programming language that uses streams of tiles as the core abstraction, kernels can be individually optimized and later combined without sacrificing key optimizations like loop fusion. The LLM can dynamically choose which granularity of a PyTorch computation graph to lower into STeP. After that, the LLM can cross the boundaries of these STeP kernels and compose them into a STeP megakernel. Once the megakernel is correct, the same graph structure becomes another optimization substrate for the LLM to iterate.
+STeP gives LLM agents a composable dataflow abstraction. Because STeP is a declarative programming language that uses streams of tiles as the core abstraction, kernels can be individually optimized and later combined without sacrificing key optimizations like loop fusion. The LLM can dynamically choose which granularity of a PyTorch computation graph to lower into STeP. After that, the LLM can cross the boundaries of these STeP kernels and compose them into a STeP megakernel. Once the megakernel is correct, the same graph structure becomes another optimization substrate for the LLM to iterate.
 
 # Why Dataflow MegaKernels?
 
 Modern ML systems often break an ML model's forward pass into ~100 separate small kernels, each implementing one or a few tensor operations. This comes with two key costs: Kernel setup and tear-down overheads and forced roundtrips to memory in-between kernels. The latter is especially costly as model inference is almost always memory-bound.
 
-This is where megakernels become attractive. A megakernel, which implements a larger operation or even an entire forward pass, lets the programmer avoid round trips to memory and exposes cross-operator scheduling choices. But it also makes the programming problem harder. The programmer must reason about:
+This is where megakernels become attractive. A megakernel, which implements a larger operation or even an entire forward pass, avoids round trips to memory and exposes cross-operator scheduling choices. But it also makes the construction and optimization harder. The programmer must reason about:
 
 1. on-chip memory pressure,
 2. compute bandwdith allocations across operations,
@@ -25,7 +25,7 @@ LLMs, which have varying abilities to reason about different kernel programming 
 
 # STeP as the Agent's Target Language
 
-Streaming Tensor Program [(STeP)](https://dl.acm.org/doi/pdf/10.1145/3779212.3790229) is a programming abstraction and IR for dense tensors with dynamic shapes and data-dependent control flow on dataflow accelerators. STeP combines streams and asynchronous dataflow with data-parallel and memory primitives, while formalizing symbolic shape semantics for streams.
+Streaming Tensor Program [(STeP)](https://dl.acm.org/doi/pdf/10.1145/3779212.3790229) is a programming abstraction and IR for dense tensors with dynamic shapes and data-dependent control flow on dataflow AI accelerators. STeP combines streams and asynchronous dataflow with data-parallel and memory primitives, while formalizing symbolic shape semantics for streams.
 
 This matters for LLM agents because STeP sits at the right level:
 
@@ -52,7 +52,7 @@ The updated STeP suite is designed to test whether an agent can build dataflow m
 
 The first phase turns a PyTorch reference implementation into a **hierarchical planning tree**. The hierarchical planning tree is composed of hybrid nodes representing PyTorch subgraphs to be lowered and materialized STeP kernels.
 
-The first algorithm is adaptive decomposition over the hierarchical planning tree. For small operators, an LLM can often write the full STeP kernel directly. For larger computation graphs, especially full model blocks, the LLM decomposes the task into a tree of verified sub-kernels. Each child is constructed, checked, and then composed into its parent. This prevents one context window from carrying every local detail of the entire megakernel. While decomposition has been explored in previous works, it often prevents cross operator fusion opportunities which require producer and consumer loop nests to be actively combined. STeP graphs are "fused by default," enabling decomposition without sacrificing performance.
+The first algorithm is adaptive decomposition over the hierarchical planning tree. For small operators, an LLM can often write the full STeP kernel directly. For larger computation graphs, especially full model blocks, the LLM decomposes the task into a tree of verified sub-kernels. Each child is constructed, checked, and then composed into its parent. This prevents one context window from carrying every local detail of the entire megakernel. While decomposition has been explored in previous works, it often prevents cross-operator fusion opportunities which require producer and consumer loop nests to be actively combined. STeP graphs are "fused by default," enabling decomposition without sacrificing performance.
 
 <div class="figure">
   <img src="/assets/img/agentic-megakernel-adaptive-decomposition.svg" alt="Adaptive decomposition over a hierarchical planning tree">
@@ -126,7 +126,7 @@ For an end-to-end transformer layer, decomposition is the key story. A monolithi
 
 Dataflow megakernel optimization in STeP is compositional: local kernel choices can be evaluated independently, and the best end-to-end design can emerge after changing how subgraphs are structured and connected.
 
-Traditional autotuners do best when the space is mostly numeric: tile size, unroll factor, block size, vector width. However, as a compiler for STeP does not yet exist, such a parametrized mapping space is not yet available. Therefore, to get performance, LLM Agents can perform more involved, manual structural transformations to the program graph.
+Traditional autotuners do best when the space is mostly discrete: tile size, unroll factor, block size, vector width. However, as a compiler for STeP does not yet exist, such a parametrized mapping space is not yet available. Therefore, to get performance, LLM Agents can perform more involved, manual structural transformations to the program graph.
 
 # Looking Forward
 
