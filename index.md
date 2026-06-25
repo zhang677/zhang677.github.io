@@ -48,7 +48,7 @@ I am a computer science PhD student at Stanford University advised by Professor 
 
 **Research**: My research interests lie in automatic construction of high-performance libraries for domain-specific architectures. This work includes the [Sparse Workspace](https://dl.acm.org/doi/10.1145/3656426) for sparse tensor algebra, [Adaptive Self-improvement Learning](https://zhang677.github.io/blog_md/aspl.html) and [AccelOpt](https://ppl.stanford.edu/accelopt.html) self-improving agents designed for kernel library construction on AI accelerators. I am also interested in optimizing GPU kernels. This work includes inference kernels for [TTT-KVB](https://arxiv.org/pdf/2407.04620) and [CATS](https://scalingintelligence.stanford.edu/blogs/cats/).
 
-I graduated from Tsinghua University in 2023 with a bachelor degree in Electronic Engineering. At Tsinghua, I did research at [NICS-EFC Lab](https://nicsefc.ee.tsinghua.edu.cn/) on effcient sparse tensor algebra for GPU and [IDEAL Lab](https://github.com/tsinghua-ideal) on kernel architecture search.
+I graduated from Tsinghua University in 2023 with a bachelor degree in Electronic Engineering. At Tsinghua, I did research at [NICS-EFC Lab](https://nicsefc.ee.tsinghua.edu.cn/) on efficient sparse tensor algebra for GPU and [IDEAL Lab](https://github.com/tsinghua-ideal) on kernel architecture search.
 
 <h2 class="tableheading">Selected Publications</h2>
 
