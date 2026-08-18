@@ -26,7 +26,7 @@ Frontier LLMs are beginning to make architecture-specific PTX work, but capabili
   <img src="/assets/img/ptxbench-hopper-fast-at-p-prompt-range.png" alt="Correct kernels meeting each speedup threshold on Hopper" style="display: block;">
   <img src="/assets/img/ptxbench-hopper-target-ptx-fast-at-p-prompt-range.png" alt="Correct kernels meeting each speedup threshold with verified target PTX instructions on Hopper" style="display: block;">
   <div class="caption">
-    <strong>Figure 1</strong> Correct kernels meeting each speedup threshold (Fast_p) on Blackwell (top two panels) and Hopper (bottom two panels), before and after requiring selected target instructions to execute at runtime. GEMM is much further along than attention, particularly backward attention.
+    <strong>Figure 1</strong> Correct kernels meeting each speedup threshold (Fast<sub>p</sub>) on Blackwell (top two panels) and Hopper (bottom two panels), before and after requiring selected target instructions to execute at runtime. GEMM is much further along than attention, particularly backward attention.
   </div>
 </div>
 <br>
