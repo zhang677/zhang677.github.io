@@ -69,7 +69,7 @@ Higher-level abstractions still provide a major robustness advantage. When Gemin
 
 # Takeaway 4: Testing will become the bottleneck
 
-Finding kernels that are both correct and safe requires repeatedly running expensive performance measurements. PTXBench reduces this cost by leveraging the temporary locality of kernel evaluation requests for parallel agent loops. Specifically, PTXBench spawns a seperate host proccess to cache workload state such as input tensors, reference outputs, and reference latencies in the GPU memory. Reusing that state improves kernel evaluation throughput by 2.24x, as Figure 5 shows. Even with reuse, however, evaluation takes 2.72x as long as kernels themselves, leaving substantial checker overhead to address.
+Finding kernels that are both correct and safe requires repeatedly running expensive performance measurements. PTXBench reduces this cost by leveraging the temporary locality of kernel evaluation requests for parallel agent loops. Specifically, PTXBench spawns a seperate host proccess to cache workload state such as input tensors, reference outputs, and reference latencies in the GPU memory. Reusing that state improves kernel evaluation throughput by 2.24x, as Figure 5 shows. Even with reuse, however, evaluation still leaves a headroom 2.72x to address in the future.
 
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/baseline_cache_cumulative_runtime_large_font.png" alt="Cumulative profiling runtime with and without cached workload state" style="width: 50%; height: auto;">
