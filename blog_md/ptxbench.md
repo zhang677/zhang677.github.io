@@ -18,12 +18,15 @@ PTXBench asks how well current LLMs can reason about architecture-specific PTX o
 
 # Takeaway 1: GEMM is close; attention is not
 
-Frontier models are beginning to make architecture-specific PTX work, but capability falls sharply as the workload becomes more complex. GEMM is closest to being solved: Claude Opus 4.8 reaches 1.012x cuBLAS performance on Blackwell, while Gemini 3.1 Pro reaches 0.892x. Attention remains substantially harder, especially on Blackwell, and backward attention is harder still. PTXBench measures performance against frontier libraries: cuBLAS 13.1 for GEMM, cuDNN 9.20.0 for the primary attention workloads, and FlashInfer 0.6.14 for GQA. Speedup is the reference-library latency divided by the generated kernel's latency, so 1.0x means matching the corresponding performance baseline and values above 1.0x mean surpassing it.
+Frontier LLMs are beginning to make architecture-specific PTX work, but capability falls sharply as the workload becomes more complex. GEMM is closest to being solved: Claude Opus 4.8 reaches 1.012x cuBLAS performance on Blackwell, while Gemini 3.1 Pro reaches 0.892x. Attention remains substantially harder, especially on Blackwell, and backward attention is harder still. PTXBench measures performance against frontier libraries: cuBLAS 13.1 for GEMM, cuDNN 9.20.0 for the primary attention workloads, and FlashInfer 0.6.14 for GQA. Speedup is the reference-library latency divided by the generated kernel's latency, so 1.0x means matching the corresponding performance baseline and values above 1.0x mean surpassing it.
 
 <div class="figure">
-  <img src="/assets/img/target_ptx_fast_at_p_h100_b200.png" alt="Fast at p with verified target PTX instructions on H100 and B200">
+  <img src="/assets/img/ptxbench-blackwell-fast-at-p-prompt-range.png" alt="Correct kernels meeting each speedup threshold on Blackwell" style="display: block;">
+  <img src="/assets/img/ptxbench-blackwell-target-ptx-fast-at-p-prompt-range.png" alt="Correct kernels meeting each speedup threshold with verified target PTX instructions on Blackwell" style="display: block;">
+  <img src="/assets/img/ptxbench-hopper-fast-at-p-prompt-range.png" alt="Correct kernels meeting each speedup threshold on Hopper" style="display: block;">
+  <img src="/assets/img/ptxbench-hopper-target-ptx-fast-at-p-prompt-range.png" alt="Correct kernels meeting each speedup threshold with verified target PTX instructions on Hopper" style="display: block;">
   <div class="caption">
-    <strong>Figure 1</strong> Correct, fast kernels are more common than correct, fast kernels whose selected target instructions execute at runtime; GEMM is much further along than attention, particularly backward attention.
+    <strong>Figure 1</strong> Correct kernels meeting each speedup threshold (Fast_p) on Blackwell (top two panels) and Hopper (bottom two panels), before and after requiring selected target instructions to execute at runtime. GEMM is much further along than attention, particularly backward attention.
   </div>
 </div>
 <br>
