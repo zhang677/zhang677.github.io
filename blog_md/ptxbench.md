@@ -8,7 +8,7 @@ authors:
 
 The code for PTXBench is available [here](https://github.com/zhang677/PTXBench).
 
-# Why generate CUDA-PTX directly?
+# Why not directly generate CUDA-PTX?
 
 PTX is the lowest-level GPU interface that CUDA programmers can explicitly control, so generating CUDA with inline, architecture-specific PTX offers the shortest path from a new hardware feature to a working kernel. This approach has traditionally looked unattractive: PTX is difficult to program and validate, while abstractions such as Triton and CUTLASS provide productivity and portability. Yet those abstractions must continually absorb new instructions, layouts, and synchronization mechanisms through compiler engineering. As GPU architectures evolve faster and LLMs become better at code generation and iterative repair, directly generating CUDA-PTX becomes appealing as a way to use new hardware capabilities before the higher-level software stack fully catches up.
 
