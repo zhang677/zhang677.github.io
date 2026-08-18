@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: "PTXBench: what about just CUDA-PTX?"
+title: "PTXBench: What about just CUDA-PTX?"
 date: 2026-08-17
 authors:
   - genghan
