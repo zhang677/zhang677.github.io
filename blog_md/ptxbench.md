@@ -6,6 +6,8 @@ authors:
   - genghan
 ---
 
+The code for PTXBench is open-source and available on GitHub: [https://github.com/zhang677/PTXBench](https://github.com/zhang677/PTXBench).
+
 # Why generate CUDA-PTX directly?
 
 PTX is the lowest-level GPU interface that CUDA programmers can explicitly control, so generating CUDA with inline, architecture-specific PTX offers the shortest path from a new hardware feature to a working kernel. This approach has traditionally looked unattractive: PTX is difficult to program and validate, while abstractions such as Triton and CUTLASS provide productivity and portability. Yet those abstractions must continually absorb new instructions, layouts, and synchronization mechanisms through compiler engineering. As GPU architectures evolve faster and LLMs become better at code generation and iterative repair, directly generating CUDA-PTX becomes appealing as a way to use new hardware capabilities before the higher-level software stack fully catches up.
@@ -67,3 +69,7 @@ Finding kernels that are both correct and safe requires repeatedly running expen
 In the future, two priorities follow. First, optimize the checkers. NVIDIA Compute Sanitizer's `racecheck`, for example, can take more than 1000x as long as native execution, while LLM serving has benefited from far greater investment. Faster incremental checks, cache-aware sanitization, and better overlap between generation and profiling would let agents learn from more execution feedback in the same time. Second, robustify the checkers. Output comparison alone cannot catch memory-safety bugs, races, asynchronous-lifetime violations, or every runtime failure.[^cuda-free-async] Future checkers must make these properties, runtime error tracing, and an explicit unknown state first-class signals. As kernel agents explore increasingly adversarial corners of CUDA semantics, checker speed will determine how quickly they improve, and checker robustness will determine whether their apparent wins are real.
 
 [^cuda-free-async]: Undefined behavior is an important caveat. One numerically correct PTXBench kernel called `cudaFreeAsync` on temporary storage and then enqueued another consumer of that storage on the same stream. This stream-ordered use-after-free is [undefined under the CUDA runtime](https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/stream-ordered-memory-allocation.html): it may crash, silently corrupt results, or appear to work. In this case, the correctness checks passed, but Nsight Compute profiling failed. We therefore retained the functional-correctness result while marking runtime SASS usage as unknown rather than positive or negative.
+
+# Acknowledgments
+
+PTXBench is a collaborative effort by Genghan Zhang, Yixin Dong, Chengze Fan, Zhichen Zeng, Yueming Yuan, Shaowei Zhu, and Kunle Olukotun. We are grateful to members of RadixArk, the SGLang community, and the Stanford Pervasive Parallelism Lab for their technical support, insightful discussions, and help. The project received generous support from the Gemini Academic Program and the Tinker Research Grant.
