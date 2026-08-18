@@ -21,10 +21,7 @@ PTXBench asks how well current LLMs can reason about architecture-specific PTX o
 Frontier LLMs are beginning to make architecture-specific PTX work, but capability falls sharply as the workload becomes more complex. GEMM is closest to being solved: Claude Opus 4.8 reaches 1.012x cuBLAS performance on Blackwell, while Gemini 3.1 Pro reaches 0.892x. Attention remains substantially harder, especially on Blackwell, and backward attention is harder still. PTXBench measures performance against frontier libraries: cuBLAS 13.1 for GEMM, cuDNN 9.20.0 for the primary attention workloads, and FlashInfer 0.6.14 for GQA. Speedup is the reference-library latency divided by the generated kernel's latency, so 1.0x means matching the corresponding performance baseline and values above 1.0x mean surpassing it.
 
 <div class="figure">
-  <img src="/assets/img/ptxbench-blackwell-fast-at-p-prompt-range.png" alt="Correct kernels meeting each speedup threshold on Blackwell" style="display: block;">
-  <img src="/assets/img/ptxbench-blackwell-target-ptx-fast-at-p-prompt-range.png" alt="Correct kernels meeting each speedup threshold with verified target PTX instructions on Blackwell" style="display: block;">
-  <img src="/assets/img/ptxbench-hopper-fast-at-p-prompt-range.png" alt="Correct kernels meeting each speedup threshold on Hopper" style="display: block;">
-  <img src="/assets/img/ptxbench-hopper-target-ptx-fast-at-p-prompt-range.png" alt="Correct kernels meeting each speedup threshold with verified target PTX instructions on Hopper" style="display: block;">
+  <img src="/assets/img/ptxbench-blackwell-hopper-fast-at-p-prompt-ranges-vertical.png" alt="Correct kernels meeting each speedup threshold on Blackwell and Hopper, before and after requiring selected target instructions to execute at runtime" style="display: block;">
   <div class="caption">
     <strong>Figure 1</strong> Correct kernels meeting each speedup threshold (Fast<sub>p</sub>) on Blackwell (top two panels) and Hopper (bottom two panels), before and after requiring selected target instructions to execute at runtime. GEMM is much further along than attention, particularly backward attention.
   </div>
@@ -43,6 +40,16 @@ Specializing a model for CUDA-PTX may not require an enormous corpus. PTXBench a
 </div>
 <br>
 
+Cross-language transfer is more mixed (Figure 3). On the same five Hopper workloads, using the same checkpoint to generate Triton lowers turn-level correctness relative to the base model on every workload, yet raises the best correct speedup on the causal variants from 0.238x to 0.632x for MHA-Fwd-Causal and from 0.043x to 0.331x for MHA-Bwd-Causal. The SFT recipe can therefore improve peak performance substantially even while making correct Triton kernels less likely.
+
+<div class="figure">
+  <img src="/assets/img/qwen36_ptx_sft_base_triton_fast_at_p_prompt_range.png" alt="Triton transfer comparison between the PTX-SFT and base Qwen3.6-27B checkpoints on five Hopper workloads">
+  <div class="caption">
+    <strong>Figure 3</strong> PTX SFT reduces turn-level correctness under Triton transfer, but substantially improves the best correct speedup on both causal attention workloads.
+  </div>
+</div>
+<br>
+
 # Takeaway 3: Abstractions still matter, but cracks are appearing
 
 Higher-level abstractions still provide a major robustness advantage. When Gemini 3.1 Pro generates Triton and CUDA-PTX for the same tasks, the two are relatively close on Hopper: CUDA-PTX nearly matches Triton on GEMM and slightly exceeds its peak on causal MHA forward, 0.768x versus 0.759x the frontier-library baseline. On Blackwell attention, however, the gap widens dramatically; Triton reaches 0.484x and 0.436x on the two backward workloads, compared with only 0.133x and 0.015x for CUDA-PTX. Compilers therefore remain essential, especially on newer architectures, but the selective Hopper wins are the first cracks in the assumption that an LLM must always work through a higher-level kernel language.
@@ -50,19 +57,19 @@ Higher-level abstractions still provide a major robustness advantage. When Gemin
 <div class="figure">
   <img src="/assets/img/gemini31_triton_cuda_h100_b200_fast_at_p.png" alt="Gemini 3.1 Pro comparison between Triton and CUDA-PTX">
   <div class="caption">
-    <strong>Figure 3</strong> Triton remains more robust overall, while direct CUDA-PTX is already competitive on selected Hopper workloads.
+    <strong>Figure 4</strong> Triton remains more robust overall, while direct CUDA-PTX is already competitive on selected Hopper workloads.
   </div>
 </div>
 <br>
 
 # Takeaway 4: Testing will become the bottleneck
 
-Finding kernels that are both correct and safe requires repeatedly running expensive correctness, sanitization, and performance checks. PTXBench first reduces this cost by caching kernel-independent workload state such as input tensors, reference outputs, and reference latencies while still compiling and executing every changing kernel. Reusing that state improves kernel evaluation throughput by 2.24x, as Figure 4 shows. Even with reuse, however, evaluation takes 2.72x as long as kernels themselves, leaving substantial checker overhead to address.
+Finding kernels that are both correct and safe requires repeatedly running expensive correctness, sanitization, and performance checks. PTXBench first reduces this cost by caching kernel-independent workload state such as input tensors, reference outputs, and reference latencies while still compiling and executing every changing kernel. Reusing that state improves kernel evaluation throughput by 2.24x, as Figure 5 shows. Even with reuse, however, evaluation takes 2.72x as long as kernels themselves, leaving substantial checker overhead to address.
 
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/baseline_cache_cumulative_runtime_large_font.png" alt="Cumulative profiling runtime with and without cached workload state" style="width: 50%; height: auto;">
   <div class="caption">
-    <strong>Figure 4</strong> Reusing stable workload state makes evaluation 2.24x faster, but the cached path still takes 2.72x as long as kernel execution alone.
+    <strong>Figure 5</strong> Reusing stable workload state makes evaluation 2.24x faster, but the cached path still takes 2.72x as long as kernel execution alone.
   </div>
 </div>
 <br>
