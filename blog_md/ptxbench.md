@@ -6,7 +6,7 @@ authors:
   - genghan
 ---
 
-The code for PTXBench is open-source and available on GitHub: [https://github.com/zhang677/PTXBench](https://github.com/zhang677/PTXBench).
+The code for PTXBench is available [here](https://github.com/zhang677/PTXBench).
 
 # Why generate CUDA-PTX directly?
 
