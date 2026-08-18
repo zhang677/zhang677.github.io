@@ -10,11 +10,16 @@ The code for PTXBench is available [here](https://github.com/zhang677/PTXBench).
 
 # Why not directly generate CUDA-PTX?
 
-PTX is the lowest-level GPU interface that CUDA programmers can explicitly control, so generating CUDA with inline, architecture-specific PTX offers the shortest path from a new hardware feature to a working kernel. This approach has traditionally looked unattractive: PTX is difficult to program and validate, while abstractions such as Triton and CUTLASS provide productivity and portability. Yet those abstractions must continually absorb new instructions, layouts, and synchronization mechanisms through compiler engineering. As GPU architectures evolve faster and LLMs become better at code generation and iterative repair, directly generating CUDA-PTX becomes appealing as a way to use new hardware capabilities before the higher-level software stack fully catches up.
+PTX is the lowest-level GPU interface that CUDA programmers can explicitly control, so generating CUDA with inline, architecture-specific PTX offers the shortest path from a new hardware feature to a working kernel. This approach has traditionally looked unattractive: PTX is difficult to program and validate, while abstractions such as Triton and CuTeDSL provide productivity and portability. Yet those abstractions must continually absorb new instructions, layouts, and synchronization mechanisms through compiler engineering. As GPU architectures evolve faster and LLMs become better at code generation and iterative repair, directly generating CUDA-PTX becomes appealing as a way to use new hardware capabilities before the higher-level software stack fully catches up.
 
 # What does PTXBench ask?
 
 PTXBench asks how well current LLMs can reason about architecture-specific PTX on H100 and B200 GPUs, not merely whether they can emit a fast CUDA kernel. A model receives an architecture-specific knowledge pack, writes CUDA-PTX, and revises it over multiple turns using compilation, sanitization, correctness, and performance feedback. The benchmark separately checks whether the kernel is functionally correct, whether the requested instruction family actually executes at runtime, and whether the kernel is competitive with frontier libraries. This separation also points to the techniques that will matter next: execution-grounded repair, targeted post-training, runtime instruction verification, and much stronger testing infrastructure.
+
+<div class="figure">
+  <img src="/assets/img/ptxbench-v2.drawio.png" alt="PTXBench workflow from benchmark setup through iterative CUDA-PTX generation, measurement, and repair-conditioned adaptation">
+</div>
+<br>
 
 # Takeaway 1: GEMM is close; attention is not
 
@@ -64,7 +69,7 @@ Higher-level abstractions still provide a major robustness advantage. When Gemin
 
 # Takeaway 4: Testing will become the bottleneck
 
-Finding kernels that are both correct and safe requires repeatedly running expensive correctness, sanitization, and performance checks. PTXBench first reduces this cost by caching kernel-independent workload state such as input tensors, reference outputs, and reference latencies while still compiling and executing every changing kernel. Reusing that state improves kernel evaluation throughput by 2.24x, as Figure 5 shows. Even with reuse, however, evaluation takes 2.72x as long as kernels themselves, leaving substantial checker overhead to address.
+Finding kernels that are both correct and safe requires repeatedly running expensive performance measurements. PTXBench reduces this cost by leveraging the temporary locality of kernel evaluation requests for parallel agent loops. Specifically, PTXBench spawns a seperate host proccess to cache workload state such as input tensors, reference outputs, and reference latencies in the GPU memory. Reusing that state improves kernel evaluation throughput by 2.24x, as Figure 5 shows. Even with reuse, however, evaluation takes 2.72x as long as kernels themselves, leaving substantial checker overhead to address.
 
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/baseline_cache_cumulative_runtime_large_font.png" alt="Cumulative profiling runtime with and without cached workload state" style="width: 50%; height: auto;">
