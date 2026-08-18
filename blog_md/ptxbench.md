@@ -35,7 +35,7 @@ Specializing a model for CUDA-PTX may not require an enormous corpus. PTXBench a
 <div class="figure">
   <img src="/assets/img/fixitv2_generalization_heatmap.png" alt="Generalization of a repair-conditioned PTX model across held-out workloads">
   <div class="caption">
-    <strong>Figure 2</strong> Qwen3.6-27B-s1 generalizes beyond its four training tasks, but transfer remains uneven across head dimensions and attention variants.
+    <strong>Figure 2</strong> Qwen3.6-27B-PTX-SFT generalizes beyond its four training tasks, but transfer remains uneven across head dimensions and attention variants.
   </div>
 </div>
 <br>
