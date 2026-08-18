@@ -54,12 +54,12 @@ Higher-level abstractions still provide a major robustness advantage. When Gemin
 
 # Takeaway 4: Testing will become the bottleneck
 
-Finding kernels that are both correct and safe requires repeatedly running expensive correctness, sanitization, and performance checks. PTXBench first reduces this cost by caching candidate-independent workload state such as input tensors, reference outputs, and reference latencies while still compiling and executing every changing kernel. Reusing that state improves `/evaluate` throughput by 2.24x, as Figure 4 shows. Even with reuse, however, evaluation takes 2.72x as long as the candidate kernels themselves, leaving substantial checker overhead to address.
+Finding kernels that are both correct and safe requires repeatedly running expensive correctness, sanitization, and performance checks. PTXBench first reduces this cost by caching kernel-independent workload state such as input tensors, reference outputs, and reference latencies while still compiling and executing every changing kernel. Reusing that state improves kernel evaluation throughput by 2.24x, as Figure 4 shows. Even with reuse, however, evaluation takes 2.72x as long as kernels themselves, leaving substantial checker overhead to address.
 
 <div class="figure">
   <img src="/assets/img/baseline_cache_cumulative_runtime_large_font.png" alt="Cumulative profiling runtime with and without cached workload state" style="width: 50%; height: auto;">
   <div class="caption">
-    <strong>Figure 4</strong> Reusing stable workload state makes evaluation 2.24x faster, but the cached path still takes 2.72x as long as candidate-kernel execution alone.
+    <strong>Figure 4</strong> Reusing stable workload state makes evaluation 2.24x faster, but the cached path still takes 2.72x as long as kernel execution alone.
   </div>
 </div>
 <br>
