@@ -25,7 +25,7 @@ PTXBench asks how well current LLMs can reason about architecture-specific PTX o
 
 Frontier LLMs are beginning to make architecture-specific PTX work, but capability falls sharply as the workload becomes more complex. GEMM is closest to being solved: Claude Opus 4.8 reaches 1.012x cuBLAS performance on Blackwell, while Gemini 3.1 Pro reaches 0.892x. Attention remains substantially harder, especially on Blackwell, and backward attention is harder still. PTXBench measures performance against frontier libraries: cuBLAS 13.1 for GEMM, cuDNN 9.20.0 for the primary attention workloads, and FlashInfer 0.6.14 for GQA. Speedup is the reference-library latency divided by the generated kernel's latency, so 1.0x means matching the corresponding performance baseline and values above 1.0x mean surpassing it.
 
-Figure 1 uses two different kinds of ratios. The x-axis \(p\) is a speedup threshold relative to the library baseline; the y-axis, Fast<sub>p</sub>, is the metric proposed by KernelBench<sup><a id="ref1-return" href="#ref1">1</a></sup>: the percentage of evaluated turns that produced a correct kernel with speedup greater than \(p\). For example, Fast<sub>0.8</sub> = 40% means that 40% of turns produced a correct kernel exceeding 0.8x baseline performance. The “Target inst.” rows additionally require the kernel to execute a selected target instruction at runtime.
+Figure 1 uses two different kinds of ratios. The x-axis \(p\) is a speedup threshold relative to the library baseline; the y-axis, Fast<sub>p</sub>, is the metric proposed by [KernelBench](https://github.com/ScalingIntelligence/KernelBench): the percentage of evaluated turns that produced a correct kernel with speedup greater than \(p\). For example, Fast<sub>0.8</sub> = 40% means that 40% of turns produced a correct kernel exceeding 0.8x baseline performance. The “Target inst.” rows additionally require the kernel to execute a selected target instruction at runtime.
 
 <div class="figure">
   <img src="/assets/img/ptxbench-blackwell-hopper-fast-at-p-prompt-ranges-vertical.png" alt="Correct kernels meeting each speedup threshold on Blackwell and Hopper, before and after requiring selected target instructions to execute at runtime" style="display: block;">
@@ -90,9 +90,3 @@ In the future, two priorities follow. First, optimize the checkers. NVIDIA Compu
 # Acknowledgments
 
 PTXBench is a collaborative effort by Genghan Zhang, Yixin Dong, Chengze Fan, Zhichen Zeng, Yueming Yuan, Shaowei Zhu, and Kunle Olukotun. We are grateful to members of RadixArk, the SGLang community, and the Stanford Pervasive Parallelism Lab for their technical support, insightful discussions, and help. The project received generous support from the Gemini Academic Program and the Tinker Research Grant.
-
-# References
-
-<ol>
-  <li id="ref1">Anne Ouyang, Simon Guo, Simran Arora, Alex L. Zhang, William Hu, Christopher Ré, and Azalia Mirhoseini. “<a href="https://proceedings.mlr.press/v267/ouyang25a.html">KernelBench: Can LLMs Write Efficient GPU Kernels?</a>” Proceedings of the 42nd International Conference on Machine Learning (ICML), PMLR 267:47356–47415, 2025. <a href="#ref1-return">&uarr;</a></li>
-</ol>
