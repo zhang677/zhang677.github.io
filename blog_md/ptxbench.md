@@ -25,6 +25,8 @@ PTXBench asks how well current LLMs can reason about architecture-specific PTX o
 
 Frontier LLMs are beginning to make architecture-specific PTX work, but capability falls sharply as the workload becomes more complex. GEMM is closest to being solved: Claude Opus 4.8 reaches 1.012x cuBLAS performance on Blackwell, while Gemini 3.1 Pro reaches 0.892x. Attention remains substantially harder, especially on Blackwell, and backward attention is harder still. PTXBench measures performance against frontier libraries: cuBLAS 13.1 for GEMM, cuDNN 9.20.0 for the primary attention workloads, and FlashInfer 0.6.14 for GQA. Speedup is the reference-library latency divided by the generated kernel's latency, so 1.0x means matching the corresponding performance baseline and values above 1.0x mean surpassing it.
 
+Figure 1 uses two different kinds of ratios. The x-axis, \(p\), is a speedup threshold relative to the library baseline; the y-axis, Fast<sub>p</sub>, is the percentage of evaluated turns that produced a correct kernel with speedup greater than \(p\). For example, Fast<sub>0.8</sub> = 40% means that 40% of turns produced a correct kernel exceeding 0.8x baseline performance. The “Target inst.” rows additionally require the kernel to execute a selected target instruction at runtime.
+
 <div class="figure">
   <img src="/assets/img/ptxbench-blackwell-hopper-fast-at-p-prompt-ranges-vertical.png" alt="Correct kernels meeting each speedup threshold on Blackwell and Hopper, before and after requiring selected target instructions to execute at runtime" style="display: block;">
   <div class="caption">
