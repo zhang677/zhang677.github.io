@@ -59,12 +59,12 @@ Cross-language transfer is more mixed (Figure 3). On the same five Hopper worklo
 
 # Takeaway 3: Abstractions still matter, but cracks are appearing
 
-Higher-level abstractions still provide a major robustness advantage. When Gemini 3.1 Pro generates Triton and CUDA-PTX for the same tasks, the two are closest on Hopper GEMM and causal MHA forward: Triton reaches 0.991x versus 0.962x for CUDA-PTX on GEMM, and 0.789x versus 0.768x on causal MHA forward. On Blackwell attention, however, the gap widens dramatically; Triton reaches 0.514x and 0.437x on the two backward workloads, compared with only 0.133x and 0.015x for CUDA-PTX. Compilers therefore remain essential, especially on newer architectures, but the narrow Hopper gaps on selected workloads show that direct CUDA-PTX generation is becoming competitive.
+Higher-level abstractions still provide a major advantage, especially on newer hardware, but that advantage is no longer universal. Under the same eight-turn refinement protocol with execution feedback, Triton reaches a higher best correct speedup than CUDA-PTX in 19 of 20 model–architecture–workload comparisons across Gemini 3.1 Pro and GPT-5.6 Sol. The sole exception is GPT-5.6 Sol on H100 causal MHA forward, where CUDA-PTX reaches 0.865x and Triton reaches 0.852x. The largest gaps appear in Blackwell attention: on B200 causal MHA backward, Triton raises Gemini's peak from 0.015x to 0.437x and GPT-5.6 Sol's from 0.339x to 0.494x. Triton's compiler-encoded optimizations and configuration tuning remain especially valuable on Blackwell, while the H100 exception shows that recent LLMs can already make direct CUDA-PTX outperform Triton in a selected setting.
 
 <div class="figure">
-  <img src="/assets/img/gemini31_triton_cuda_h100_b200_fast_at_p.png" alt="Gemini 3.1 Pro comparison between Triton and CUDA-PTX">
+  <img src="/assets/img/gemini31_gpt56_triton_cuda_h100_b200_fast_at_p.png" alt="Gemini 3.1 Pro and GPT-5.6 Sol comparison between Triton and CUDA-PTX on H100 and B200">
   <div class="caption">
-    <strong>Figure 4</strong> Triton remains more robust overall, while direct CUDA-PTX is already competitive on selected Hopper workloads.
+    <strong>Figure 4</strong> Fast<sub>p</sub> distributions for Gemini 3.1 Pro and GPT-5.6 Sol generating Triton or CUDA-PTX kernels with the same eight-turn refinement protocol on H100 (top) and B200 (bottom). Solid lines denote CUDA-PTX and dashed lines denote Triton; dotted lines mark the best correct speedup.
   </div>
 </div>
 <br>
