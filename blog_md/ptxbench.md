@@ -14,10 +14,10 @@ PTX is the lowest-level GPU interface that CUDA programmers can explicitly contr
 
 # What does PTXBench ask?
 
-PTXBench asks how well current LLMs can reason about architecture-specific PTX on H100 and B200 GPUs, not merely whether they can emit a fast CUDA kernel. A model receives an architecture-specific knowledge pack, writes CUDA-PTX, and revises it over multiple turns using compilation, sanitization, correctness, and performance feedback. The benchmark separately checks whether the kernel is functionally correct, whether the requested instruction family actually executes at runtime, and whether the kernel is competitive with frontier libraries. This separation also points to the techniques that will matter next: execution-grounded repair, targeted post-training, runtime instruction verification, and much stronger testing infrastructure.
+PTXBench asks how well current LLMs can reason about architecture-specific PTX on H100 and B200 GPUs, not merely whether they can emit a fast CUDA kernel. A model receives an architecture-specific knowledge pack, writes CUDA-PTX, and revises it over multiple turns using compilation, sanitization, correctness, and performance feedback. The evaluation framework separately checks whether the kernel is functionally correct, whether the requested instruction family actually executes at runtime, and whether the kernel is competitive with frontier libraries. This separation also points to the techniques that will matter next: execution-grounded repair, targeted post-training, runtime instruction verification, and much stronger testing infrastructure.
 
 <div class="figure">
-  <img src="/assets/img/ptxbench-v2.drawio.png" alt="PTXBench workflow from benchmark setup through iterative CUDA-PTX generation, measurement, and repair-conditioned adaptation">
+  <img src="/assets/img/ptxbench-v2.drawio.png" alt="PTXBench workflow from evaluation setup through iterative CUDA-PTX generation, measurement, and repair-conditioned adaptation">
 </div>
 <br>
 
@@ -47,7 +47,7 @@ Specializing a model for CUDA-PTX may not require an enormous corpus. PTXBench a
 </div>
 <br>
 
-Cross-language transfer is more mixed (Figure 3). On the same five Hopper workloads, using the same checkpoint to generate Triton lowers turn-level correctness relative to the base model on every workload, yet raises the best correct speedup on the causal variants from 0.238x to 0.632x for MHA-Fwd-Causal and from 0.043x to 0.331x for MHA-Bwd-Causal. The SFT recipe can therefore improve peak performance substantially even while making correct Triton kernels less likely.
+Cross-language transfer is more mixed (Figure 3). On the same five Hopper workloads, using the same checkpoint to generate Triton lowers turn-level correctness relative to the base model on every workload, yet raises the best correct speedup on the causal variants from 0.238x to 0.632x for MHA-Fwd-Causal and from 0.037x to 0.331x for MHA-Bwd-Causal. The SFT recipe can therefore improve peak performance substantially even while making correct Triton kernels less likely.
 
 <div class="figure">
   <img src="/assets/img/qwen36_ptx_sft_base_triton_fast_at_p_prompt_range.png" alt="Triton transfer comparison between the PTX-SFT and base Qwen3.6-27B checkpoints on five Hopper workloads">
@@ -59,7 +59,7 @@ Cross-language transfer is more mixed (Figure 3). On the same five Hopper worklo
 
 # Takeaway 3: Abstractions still matter, but cracks are appearing
 
-Higher-level abstractions still provide a major advantage, especially on newer hardware, but that advantage is no longer universal. Under the same eight-turn refinement protocol with execution feedback, Triton reaches a higher best correct speedup than CUDA-PTX in 19 of 20 model–architecture–workload comparisons across Gemini 3.1 Pro and GPT-5.6 Sol. The sole exception is GPT-5.6 Sol on H100 causal MHA forward, where CUDA-PTX reaches 0.865x and Triton reaches 0.852x. The largest gaps appear in Blackwell attention: on B200 causal MHA backward, Triton raises Gemini's peak from 0.015x to 0.437x and GPT-5.6 Sol's from 0.339x to 0.494x. Triton's compiler-encoded optimizations and configuration tuning remain especially valuable on Blackwell, while the H100 exception shows that recent LLMs can already make direct CUDA-PTX outperform Triton in a selected setting.
+Higher-level abstractions still provide a major advantage, especially on newer hardware, but that advantage is no longer universal. Under the same eight-turn refinement protocol with execution feedback, Triton reaches a higher best correct speedup than CUDA-PTX in 18 of 20 model–architecture–workload comparisons across Gemini 3.1 Pro and GPT-5.6 Sol, including all 10 Blackwell comparisons. The two exceptions are GPT-5.6 Sol on H100 causal MHA forward, where CUDA-PTX reaches 0.865x versus Triton's 0.852x, and H100 causal MHA backward, where CUDA-PTX reaches 0.746x versus Triton's 0.734x. The largest gaps appear in Blackwell attention: on B200 causal MHA backward, Gemini produces no correct CUDA-PTX kernel but reaches 0.437x with Triton, while GPT-5.6 Sol improves from 0.339x to 0.494x. Triton's compiler-encoded optimizations and configuration tuning remain especially valuable on Blackwell, while the two H100 exceptions show that recent LLMs can already make direct CUDA-PTX outperform Triton in selected settings.
 
 <div class="figure">
   <img src="/assets/img/gemini31_gpt56_triton_cuda_h100_b200_fast_at_p.png" alt="Gemini 3.1 Pro and GPT-5.6 Sol comparison between Triton and CUDA-PTX on H100 and B200">
@@ -71,7 +71,7 @@ Higher-level abstractions still provide a major advantage, especially on newer h
 
 # Takeaway 4: Testing will become the bottleneck
 
-Finding kernels that are both correct and safe requires repeatedly running expensive performance measurements. PTXBench reduces this cost by leveraging the temporary locality of kernel evaluation requests for parallel agent loops. Specifically, PTXBench spawns a seperate host proccess to cache workload state such as input tensors, reference outputs, and reference latencies in the GPU memory. Reusing that state improves kernel evaluation throughput by 2.24x, as Figure 5 shows. Even with reuse, however, evaluation still leaves a headroom 2.72x to address in the future.
+Finding kernels that are both correct and safe requires repeatedly running expensive performance measurements. PTXBench reduces this cost by leveraging the temporary locality of kernel evaluation requests for parallel agent loops. Specifically, PTXBench runs a separate host process that caches workload state such as input tensors, reference outputs, and reference latencies in GPU memory. Reusing that state improves kernel evaluation throughput by 2.24x, as Figure 5 shows. Even with reuse, however, the cached path still takes 2.72x as long as kernel execution alone.
 
 <div class="figure" style="text-align: center;">
   <img src="/assets/img/baseline_cache_cumulative_runtime_large_font.png" alt="Cumulative profiling runtime with and without cached workload state" style="width: 50%; height: auto;">
