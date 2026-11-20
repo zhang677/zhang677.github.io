@@ -1,3 +1,22 @@
+ptxbench2026:
+  title: "PTXBench: Evaluating and Adapting LLMs for GPU Kernel Optimization with Architecture-specific PTX"
+  abstract: "<p>
+  We introduce PTXBench, a benchmark for evaluating and adapting large language models (LLMs) to use architecture-specific PTX for GPU kernel optimization. PTXBench measures functional correctness, whether selected target instructions execute at runtime, and speedup over frontier libraries across GEMM and attention workloads on H100 and B200 GPUs. Our evaluation shows that architecture-specific PTX capability remains uneven: success rates fall substantially on complex attention backward workloads, and executing the target instructions does not necessarily translate into competitive performance. No evaluated model consistently matches frontier libraries across the suite. We further adapt Qwen3.6-27B using supervised fine-tuning. Repair-conditioned training improves several tasks, but generalization remains uneven; data coverage, balance, and the quality of the reasoning teacher matter in addition to dataset size. PTXBench provides an auditable testbed for measuring and improving LLMs' ability to exploit evolving GPU architectures.
+  </p>"
+  venue: "NeurIPS 2026 MLForSys Workshop"
+  year: 2026
+  month: November
+  blog: "https://zhang677.github.io/blog_md/ptxbench.html"
+  pdf: /publications/ptxbench2026.pdf
+  authors:
+    - genghan
+    - yixin
+    - chengze
+    - zhichen
+    - yueming
+    - shaowei
+    - kunle
+
 accelopt2025:
   title: "AccelOpt: A Self-Improving LLM Agentic System for AI Accelerator Kernel Optimization"
   abstract: "<p>
